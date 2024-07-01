@@ -37,6 +37,11 @@ Expected output
 
 ## Info - Hypervisor Overview
 <pre>
+- heavy weight virtualization technology
+  - each vitual machine has to be allocated with dedicated Hardware resources
+    - CPU Cores
+    - RAM
+    - Disk
 - hypervisor is nothing but virtualization technology
 - this came around year 2000
 - unlike the boot loader, more than one Operating System can be active at the same time
@@ -58,9 +63,28 @@ Expected output
 - main advantage of Virtualization over Dual/Multi booting is, more than OS can be actively running in the same laptop/desktop/workstation/server
 - helps in consolidating many server into 1 (few physical servers)
 - technically possible to host 1000 os Virtual Machines within a single Physical Server
+- Server Motherboards with 8 Socket
+- If you install MCM(Multi chip Module - many processors can be fitted in a single socket)
+- each Virtual Machine represents 1 fully function Operating System
+- Viratual Machine(VM) is also called as Guest OS
+- Each Processor supports 
+  - 128 CPU Cores
+  - 256 CPU Cores
+  - 512 CPU Cores
+- Total Physical CPU Cores, on a 8 Socket Motherboard with MCM(1 IC contains 4 Processor, each Processor support 256 Cores)
+  8 x 4 x 256 = 8192 Physical Cores
+- Hyperthreading
+  - each Physical CPU Cores supports 2 logical/virtual cores 
+  - Total virtual cpu cores = 8192 x 2 = 16384
 </pre>
 
-## Info - Containerization Oversion
+## Info - Containerization version
+<pre>
+- light-weight application virtualization technology
+  - because containers don't get their own dedicated hardware resource
+  - containers running in the same host machines, they all share the hardware resources available on the Host OS
+- each container represents one application or one application component ( Message Queue or DB Server, App Server )
+</pre>
 
 ## Info - What is Container Runtime?
 
