@@ -471,3 +471,12 @@ oc get nodes -o wide
 
 Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/b0431e37-d81b-45ea-9ada-e029233d0da2)
+
+## Info - Operating System installed in Openshift nodes
+<pre>
+- Openshift Master nodes can only install Red Hat Enterprise Linux Core OS (RHCOS)
+- Openshift Worker nodes can install either
+  - Red Hat Enterprise Linux (RHEL)
+  - Red Hat Enterprise Linux Core OS (RHCOS)
+- However, it is recommended to install RHCOS in worker and master nodes, as it is easier to upgrade the OS using oc commands or from Red Hat Openshift web console if you opted for RHCOS in all the nodes
+</pre>
