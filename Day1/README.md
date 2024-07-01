@@ -480,3 +480,21 @@ Expected output
   - Red Hat Enterprise Linux Core OS (RHCOS)
 - However, it is recommended to install RHCOS in worker and master nodes, as it is easier to upgrade the OS using oc commands or from Red Hat Openshift web console if you opted for RHCOS in all the nodes
 </pre>
+
+## Info - About Red Hat Enterprise Linux Core OS (RHCOS)
+<pre>
+- it is an optimized OS for Container Orchestration Platforms
+- in case of Kubernetes, the nodes can install any Linux Distributions
+  - Ubuntu
+  - CentOS
+  - Rock Linux
+  - Fedora
+  - RHEL
+  - any Linux distributions is supported
+- RHCOS is a secured Operating System that enforces the best practices are always followed
+- RHCOS also comes with pre-installed Podman container engine and CRI-O Container Runtime
+- Each RHCOS version comes with a specific version of Podman and CRI-O pre-installed
+- RHCOS reserves certain ports for Openshift internal use, any port below 1024 are reserved, user applications are not allowed to use ports upto 1024, anything above 1024 can be used by user application if available
+- RHCOS gives only Read-only persmissions to certain folder
+- RHCOS won't allow writing certain folders, if appliction attempts to modify a read-only folder then the application will be denied permission to run
+</pre>
