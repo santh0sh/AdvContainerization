@@ -530,3 +530,4 @@ exit
 
 Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/d85c5e87-a79a-4173-ae1e-44501358c2ea)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/8bb3343a-f662-41a9-aa25-126f978d51ba)
