@@ -584,3 +584,12 @@ Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/dd3fafff-6af9-4815-8ad5-58bca5f3f82a)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/b7ecb405-804a-4c57-8d70-7eacf436651f)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/febb6015-b405-46cc-9184-77610637aecd)
+
+
+## Info - Openshift Project
+<pre>
+- in order to seggregate applications deployed by one team from the other, project namespaces are used
+- openshift project gives the administrators control on which all openshift users have access to projects and who don't have access
+- it is always a best practice to deploy application within your project
+- when project is deleted, it also ensure all the resources inside the project are also deleted
+</pre>
