@@ -33,6 +33,7 @@ For a completely functional local openshift cluster, you may go for CRC(Code Rea
 
 ## Kindly provide your first day feedback
 <pre>
+https://survey.zohopublic.com/zs/RJBTlG
 </pre>
 
 ## Cloning this Training Repository
