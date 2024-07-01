@@ -1,6 +1,9 @@
 # Openshift July 2024
 
 ## Pre-test URL
+<pre>
+Test link will be shared shortly ...
+</pre>
 
 ## Installing Red Hat Openshift on your laptop
 <pre>
