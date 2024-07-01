@@ -222,3 +222,28 @@ Expected output
 - supports CI/CD
 - support Virtualization
 </pre>
+
+## Info - Container
+<pre>
+- application run inside a container
+- containers has their own namespaces
+- using namespaces containers are isolated from each other
+- running instance of a Container Image
+</pre>  
+
+## Info - Pod Overview
+<pre>
+- is a group of related containers  
+- in every Pod there will be atleast two containers
+- there is secret/hidden/infra container called pause container
+- the container containers provides networking support
+- pause containers gets a hostname and network card with IP address
+- application container - that can run webserver, application server, REST API , SOAP API, Web Service, Microservice, DB Servers, etc.,
+- recommended best practice
+  - one application per Pod ( pause container is not counted )
+- Pod is the smallest resource that can be deployed in Kubernetes/Openshift
+- Pod is a resource (YAML documents) which is stored in etcd database
+- Pod is managed as a database record by API Server control plane component
+- the containers that are part of the same Pod, shares the same IP address, Port range, etc.,
+</pre>
+![pod](pod.png)
