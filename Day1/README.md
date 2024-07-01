@@ -608,3 +608,22 @@ Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/60bcc18e-88d3-4690-8fd4-0bda11738683)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/c7eefcfb-efe0-45ea-abf6-4062bc4c8eb3)
 
+## Lab - Finding the currently active project from CLI
+```
+oc project
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/6b8264e3-3ff2-4e1a-bf6e-db1524dab4dc)
+
+
+## Lab - Creating a new project and switching between projects
+```
+oc new-project jegan
+oc project
+oc project default
+oc project jegan
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/a6878441-1386-4b5f-bd34-ca95e1ead7e4)
