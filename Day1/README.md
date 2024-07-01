@@ -446,3 +446,12 @@ oc whoami
 ```
 Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/016fe485-a90c-4860-80fc-be0336dc54e0)
+
+## Lab - Login to openshift as a kube administrator from command line
+```
+cat ~/openshift.txt
+oc login -u kubeadmin
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/ff3d018c-284a-475b-80ef-f8bd0f5db9b9)
