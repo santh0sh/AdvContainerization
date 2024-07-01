@@ -579,6 +579,5 @@ crictl pods
 ```
 
 Expected output
-
-![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/a09f6cfe-77b8-4e90-863a-eb7ebd32657a)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/dd3fafff-6af9-4815-8ad5-58bca5f3f82a)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/b7ecb405-804a-4c57-8d70-7eacf436651f)
