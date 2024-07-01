@@ -542,3 +542,12 @@ Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/d627ffb0-d996-4398-87b3-54598b156f12)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/50799e91-5721-4ece-b573-359438eaff15)
 
+## Lab - Edit openshift node ( don't edit anything
+```
+oc edit node master-1.ocp4.tektutor.org.labs
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/9f936f66-fc81-49ac-a1a5-51538dab46f1)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/3ad1254c-46ef-4e95-ac69-47e8f164b75c)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/38823c27-78ca-4a1a-9303-48ca3ba9d51b)
