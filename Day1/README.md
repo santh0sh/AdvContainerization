@@ -398,3 +398,19 @@ Responsibilities of a Controller
   - DaemonSet Controller
   - Storage Controller
 </pre>
+
+## Info - Openshift client tools
+<pre>
+- Openshift client tool is oc
+- since openshift is developed on top of Kubernetes, the kubernetes client tool kubectl also works in openshift
+</pre>
+
+Both the openshift clients, will fetch the API Server details from user home, hidden directory named .kube and file name is config
+```
+cat /home/jegan/.kube/config
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/6dd3a09b-a58b-43ee-95a9-9f24cf51c34c)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/c12c681d-2944-4d7a-bdfe-90e815e15273)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/69c4a004-5517-4520-859c-26f8755c347e)
