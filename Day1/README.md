@@ -539,4 +539,5 @@ oc describe node master-1.ocp4.tektutor.org.labs
 
 Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/b2c8173b-c5ed-49fc-89c4-98728e229af8)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/d627ffb0-d996-4398-87b3-54598b156f12)
 
