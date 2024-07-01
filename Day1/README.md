@@ -84,11 +84,36 @@ Expected output
   - because containers don't get their own dedicated hardware resource
   - containers running in the same host machines, they all share the hardware resources available on the Host OS
 - each container represents one application or one application component ( Message Queue or DB Server, App Server )
+- containers runs on top of an OS/VM
+- containers will never replace Operating System
+- containers don't have their own OS Kernel
+- containers doens't represent an Operating System
+- similarities between OS and containers
+  - containers also get their own Network Card
+  - containers get their own IP Address
+  - containers get their own file system
+  - containers also has their own network stack ( 7 OSI Layers )
 </pre>
 
 ## Info - What is Container Runtime?
+<pre>
+- is a low-level software to manage container images and containers
+- it is not so user-friendly to manage containers directly using container runtime softwares
+- hence, end-users like us normally won't use container runtimes
+- Examples
+  - runC is a container runtime
+  - CRI-O Container Runtime
+</pre>
 
 ## Info - What is Container Engine?
+<pre>
+- a high-level user-friendly software that helps us manage container images and containers
+- end-users doen't have to have low-level kernel knowledge to manage container images and containers when they work in container engines
+- container engines internally they depend on Container runtimes to manage images and containers
+- Example
+  - Docker is a Container Engine, internally it depends on containerd which in turn depends on runC container runtime
+  - Podman is a Container Engine, internally it depends on CRI-O container runtime
+</pre>
 
 ## Info - Container Orchestration Platform Overview
 
