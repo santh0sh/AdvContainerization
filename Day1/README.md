@@ -414,3 +414,27 @@ Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/6dd3a09b-a58b-43ee-95a9-9f24cf51c34c)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/c12c681d-2944-4d7a-bdfe-90e815e15273)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/69c4a004-5517-4520-859c-26f8755c347e)
+
+## Demo - Kubeconfig
+
+The standard location where oc/kubectl will attempt to locate the kubeconfig file is user home directory, .kube folder and the file name is config
+```
+cat /home/jegan/.kube/config
+```
+
+In case the kubeconfile is kept in a differnet directory and kubeconif file name is different, we could use kubeconfig flag
+```
+oc get nodes --kubeconfig /home/jegan/.kube/config.bak
+```
+
+The other option is, we could use the KUBECONFIG environment variable to point the kubeconfig file in any directory, the config file can be named anything
+```
+export KUBECONFIG=/home/jegan/.kube/config.bak
+oc get nodes
+UNSET KUBECONFIG
+oc get nodes
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/ac16c1af-3f7e-4f1e-8a00-cdb446d12ba5)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/6c806760-5b6d-4b45-beb6-75768df14383)
