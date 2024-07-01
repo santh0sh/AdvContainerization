@@ -439,3 +439,10 @@ Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/ac16c1af-3f7e-4f1e-8a00-cdb446d12ba5)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/6c806760-5b6d-4b45-beb6-75768df14383)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/4903b8d8-9b3a-48eb-8f76-d6bf7f394afb)
+
+## Lab - Finding which user you have logged in currently from command line
+```
+oc whoami
+```
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/016fe485-a90c-4860-80fc-be0336dc54e0)
