@@ -276,3 +276,48 @@ exit
 
 Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/ed46e4d6-fe53-479f-9652-0660440d75e4)
+
+## Info - ReplicaSet
+
+#### Pod
+<pre>
+- Containerized Applications runs within Pod
+</pre>
+
+#### Running multiples instances of our containerized application using ReplicaSet
+<pre>
+- ReplicaSet indicates, how many Pods of a specific application should be runnig
+- it has fields/attributes to denote
+  - desiredCount - this tells, how many pod instance are expected to be running within openshift
+  - currentCount - this tells, how many pod instances are currently running within openshift
+  - readyCount - this tells, how many pods are in ready state to serve the end-users
+- it is an openshift resource that is stored and maintained within etcd key-value database by API Server
+</pre>
+
+## Info - Deployment
+<pre>
+- stateless application are deployed into openshift as a Deployment
+- Deployment is a Kubernetes/Openshift resource that represents an application deployed into Kubernetes/openshift
+- this has certain attributes that describes
+  - what is the container image that must be used to deploy the Pod with the deployment
+  - it has captures how many Pod instances that must be running at any point of time
+  - name of the deployment
+- this is stored within etcd key-value datastore by API Server ( Control Plane Component )
+</pre>
+
+## Info - What are Kuberentes/Openshift Control Plane Components?
+#### Points to note
+<pre>
+- the node where the Control plane components are running is called master node
+- usually the user applications (pods) won't be deployed on to the master node
+- but the master nodes can be configured to accept user applications as Pods
+- in our lab setup, the master nodes are configured to accept user applications in addition to worker nodes
+</pre>
+
+
+<pre>
+- API Server
+- etcd key-value database
+- scheduler
+- controller managers
+</pre>
