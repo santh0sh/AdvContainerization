@@ -455,3 +455,19 @@ oc login -u kubeadmin
 
 Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/ff3d018c-284a-475b-80ef-f8bd0f5db9b9)
+
+## Lab - Listing the nodes in the openshift cluster
+```
+oc get nodes
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/87ec15dc-5efd-493a-b33a-75b079283afd)
+
+Listing the nodes with node IP details
+```
+oc get nodes -o wide
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/b0431e37-d81b-45ea-9ada-e029233d0da2)
