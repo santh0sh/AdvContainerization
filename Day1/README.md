@@ -576,8 +576,11 @@ Listing the containers running inside the worker2 node
 ```
 crictl ps
 crictl pods
+exit
+exit
 ```
 
 Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/dd3fafff-6af9-4815-8ad5-58bca5f3f82a)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/b7ecb405-804a-4c57-8d70-7eacf436651f)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/febb6015-b405-46cc-9184-77610637aecd)
