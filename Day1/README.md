@@ -356,9 +356,36 @@ oc get pods -n openshift-etcd -o wide| grep etcd-master
 </pre>
 
 ## Info - Scheduler
-Listing all the scheduler pods running in master1, master2 and master openshift nodes
+Listing all the scheduler pods running in master1, master2 and master3 openshift nodes
 <pre>
 oc get pods -n openshift-kube-scheduler -o wide| grep openshift-kube-scheduler-master  
 </pre>
 
 ## Info - Controller Managers
+Listing all the controller pods running in master1, master2 and master 3 openshift nodes
+<pre>
+oc get pods -n openshift-controller-manager -o wide | grep controller-manager  
+</pre>
+
+<pre>
+- controller is an application that runs as a Pod with special permissions to monitor certain resources running in any namespace
+- is a collection of many controllers
+- application that runs in an infinite loop
+- in high-level controllers job is make sure the current state of cluster matches with the expected/desired state
+- whenever there is a deviation between the current state and desired state, the controller do everything that is required to make the current state matching the desired state
+- each controller manages a single Kubernetes/openshift resource
+- in order for the controller to manage a specific type of resource, they will be monitoring all the namespaces cluster-wide
+  - a new deployment created
+  - an existing deploymnet is edited
+  - an existing deployment is scaled up/down
+  - Pod is created/deleted
+- Examples
+  - Deployment Controller manages Deployment resource
+  - ReplicaSet Controller manages ReplicaSet resource
+  - Job Controller
+  - CronJob Controller
+  - Endpoint Controller
+  - StatefulSet Controller
+  - DaemonSet Controller
+  - Storage Controller
+</pre>
