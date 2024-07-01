@@ -627,3 +627,33 @@ oc project jegan
 
 Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/a6878441-1386-4b5f-bd34-ca95e1ead7e4)
+
+## Lab - Deploying your first application into openshift using imperative command
+
+<pre>
+- In the below create command, --image indicates the container image that should used to create the Pod applcation container. 
+- The nginx container image will downloaded from Docker Hub Remote Registry. 
+- The nginx container image may have several tagged version, the term latest indicates we wish to use the latest version of the nginx image from Docker Hub portal while creating the Pod application container
+</pre>
+```
+oc project jegan
+oc create deployment nginx --image=nginx:latest --replicas=3
+```
+
+Listing the deployments in the currently active project
+```
+oc get deployments
+oc get deployment
+oc get deploy
+```
+
+Listing all replicasets in the currently active project
+```
+oc get replicasets
+oc get replicaset
+oc get rs
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/d8aeb631-ad81-4be1-a1cc-67572bb7bc2e)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/ee92203b-0412-42f9-964f-31154f2dc8de)
