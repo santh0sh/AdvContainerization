@@ -204,6 +204,10 @@ Expected output
 - supports both CLI and webconsole
 - comes with in-built internal Image Registry
 - you only get community support
+- supports user-management
+- supports deploying application from source code is called S2I (Source to Image)  
+- supports CI/CD
+- support Virtualization  
 </pre>
 
 ## Info - Red Hat OpenShift
@@ -213,4 +217,8 @@ Expected output
 - is a superset of Kubernetes with many additional features
 - it comes with support from Red Hat ( an IBM company )  
 - requires license for commerical use
+- support user-management
+- supports deploying application from source code is called S2I (Source to Image)  
+- supports CI/CD
+- support Virtualization
 </pre>
