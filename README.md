@@ -2,7 +2,7 @@
 
 ## Pre-test URL
 <pre>
-Test link will be shared shortly ...
+https://rpsconsulting116.examly.io/contest/public?U2FsdGVkX19JAUVetjNPksxKt5kqwQ8eMaahppktjZQ7u9lZR+LJdUqBcJyAHkw4ohNfKk7bYXXQ8vkY902gWA==
 </pre>
 
 ## Installing Red Hat Openshift on your laptop
