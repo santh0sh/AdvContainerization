@@ -570,5 +570,4 @@ oc debug node/worker-2.ocp4.tektutor.org.labs
 
 Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/5f01d2f4-0167-47e2-a85b-3dfdadbf5ff0)
-![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/a3f44efc-3769-4e12-aeee-31ad4702ef97)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/376584f5-db52-4b3f-bd5d-faa8c84846d4)
