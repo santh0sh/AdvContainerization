@@ -6,6 +6,7 @@
 - You can use your personal email-id for pre-test registration ( avoid using your BOFA id )
 - You don't have to share your date of birth
 - You don't have to start your web camera
+- Kindly try to complete the test within 15 minutes, post 15 minutes it may submit the test automatically
 </pre>  
 
 <pre>
