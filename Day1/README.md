@@ -361,6 +361,11 @@ Listing all the scheduler pods running in master1, master2 and master3 openshift
 oc get pods -n openshift-kube-scheduler -o wide| grep openshift-kube-scheduler-master  
 </pre>
 
+<pre>
+- the responsibility of scheduler is find a node where a new Pod can de deployed
+- the scheduler shares the scheduling recommendation for each Pod via REST calls to API Server
+</pre>  
+
 ## Info - Controller Managers
 Listing all the controller pods running in master1, master2 and master 3 openshift nodes
 <pre>
