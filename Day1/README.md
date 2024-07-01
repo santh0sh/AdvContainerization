@@ -15,3 +15,56 @@ cat ~/openshift.txt
 
 Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/98ebaa82-1331-4a2e-a283-a3b860fa1324)
+
+## Info - What is dual/multi booting?
+<pre>
+- assume in your laptop you have installed Windows 11 OS as your primary operating sytem
+- for some R&D purpose, you need let's say Ubuntu 24.04 64-bit OS
+- either you can remove the Windows 11 and install Ubuntu 24.04 or you can retain the Windows 11 OS
+- you can install Boot Loader system utility like
+- Boot loader is a tiny system utility which has to fit within 512 bytes
+- In Hard Disk, the Sector 0 and Byte 0 is referred as Master Boot Record
+- The Boot loader system utility is installed in the Master Boot Record
+  1. LILO (Linux Loader)
+  2. GRUB 2 ( Boot Loader software that get's installed in Master Boot Record(MBR) )
+  3. For Mac Book Pro, BootCamp is a commercial Boot loader that works in Macbooks
+- Whenever we boot our machine, once the Power On Self Test (BIOS POST ) completes, the BIOS will instruct the CPU to load and execute the Boot loader from MBR
+- Once the CPU starts executing the Boot loader utility, it will scan the hard disk looking for installed Operating Systems
+- In case the boot loader finds more than 1 OS, then it gives a menu for you to choose which OS you wish to boot into
+- Only one OS can be active at point of time
+- In case you have booted into Windows, if you wish to work in Ubuntu then you need to first shutdown Windows, then boot into Ubuntu
+</pre>
+
+## Info - Hypervisor Overview
+<pre>
+- hypervisor is nothing but virtualization technology
+- this came around year 2000
+- unlike the boot loader, more than one Operating System can be active at the same time
+- this was considered a IT revolution
+- It comes in 2 flavours
+  1. Type 1 - Bare Metal Hypervisor - Used in Server/Workstations
+  2. Type 2 - Used in Laptop/Desktops/Workstations
+- Type 1
+  - is called Bare Metal because to run the OS within Virtual Machine, you don't need to install any Host OS
+  Examples
+  - VMWare vSphere/vCenter
+- Type 2
+  - Oracle virtualbox - Free and supported in Windows, Linux and Mac 
+  - KVM - Opensource, supports all Linux distributions
+  - Parallel - supported in Mac
+  - VMWare (Paid software)
+    - Wokstation - Supports Linux & Mac
+    - Fusion - supported in Mac  
+- main advantage of Virtualization over Dual/Multi booting is, more than OS can be actively running in the same laptop/desktop/workstation/server
+- helps in consolidating many server into 1 (few physical servers)
+- technically possible to host 1000 os Virtual Machines within a single Physical Server
+</pre>
+
+## Info - Containerization Oversion
+
+## Info - What is Container Runtime?
+
+## Info - What is Container Engine?
+
+## Info - Container Orchestration Platform Overview
+
