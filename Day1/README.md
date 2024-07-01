@@ -593,3 +593,18 @@ Expected output
 - it is always a best practice to deploy application within your project
 - when project is deleted, it also ensure all the resources inside the project are also deleted
 </pre>
+
+## Lab - Listing the namespaces and projects
+<pre>
+oc get namespaces
+oc get namespace
+oc get ns
+
+oc get projects
+oc get project
+</pre>
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/60bcc18e-88d3-4690-8fd4-0bda11738683)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/c7eefcfb-efe0-45ea-abf6-4062bc4c8eb3)
+
