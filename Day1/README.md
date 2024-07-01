@@ -236,7 +236,7 @@ Expected output
 - is a group of related containers  
 - in every Pod there will be atleast two containers
 - there is secret/hidden/infra container called pause container
-- the container containers provides networking support
+- the pause container containers provides networking support
 - pause containers gets a hostname and network card with IP address
 - application container - that can run webserver, application server, REST API , SOAP API, Web Service, Microservice, DB Servers, etc.,
 - recommended best practice
