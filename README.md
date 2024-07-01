@@ -1,6 +1,6 @@
 # Openshift July 2024
 
-## Pre-test URL
+## Pre-test URL (Kindly complete the test - everyone completes we will resume the training)
 <pre>
 https://rpsconsulting116.examly.io/contest/public?U2FsdGVkX19JAUVetjNPksxKt5kqwQ8eMaahppktjZQ7u9lZR+LJdUqBcJyAHkw4ohNfKk7bYXXQ8vkY902gWA==
 </pre>
