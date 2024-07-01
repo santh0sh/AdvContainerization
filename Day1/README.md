@@ -247,3 +247,9 @@ Expected output
 - the containers that are part of the same Pod, shares the same IP address, Port range, etc.,
 </pre>
 ![pod](pod.png)
+
+## Info - Pod and Container states
+<pre>
+https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/  
+</pre>
+
