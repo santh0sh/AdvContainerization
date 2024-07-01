@@ -1,6 +1,13 @@
 # Openshift July 2024
 
-## Pre-test URL (Kindly complete the test - everyone completes we will resume the training)
+## Pre-test URL (Kindly complete the test - once everyone completes the test we will resume the training)
+#### Points to note
+<pre>
+- You can use your personal email-id for pre-test registration ( avoid using your BOFA id )
+- You don't have to share your date of birth
+- You don't have to start your web camera
+</pre>  
+
 <pre>
 https://rpsconsulting116.examly.io/contest/public?U2FsdGVkX19JAUVetjNPksxKt5kqwQ8eMaahppktjZQ7u9lZR+LJdUqBcJyAHkw4ohNfKk7bYXXQ8vkY902gWA==
 </pre>
