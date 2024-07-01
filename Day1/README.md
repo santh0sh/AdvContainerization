@@ -561,3 +561,14 @@ oc get node/master-1.ocp4.tektutor.org.labs -o yaml
 Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/23870636-2f59-45ca-bb20-b673edf3e0d2)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/b1a42498-6a5d-406d-bf02-9e14623b7637)
+
+
+## Lab - Getting inside an openshift node shell ( this is useful to troubleshoot issues as an Administrator )
+```
+oc debug node/worker-2.ocp4.tektutor.org.labs
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/5f01d2f4-0167-47e2-a85b-3dfdadbf5ff0)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/a3f44efc-3769-4e12-aeee-31ad4702ef97)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/376584f5-db52-4b3f-bd5d-faa8c84846d4)
