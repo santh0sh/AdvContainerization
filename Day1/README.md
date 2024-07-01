@@ -140,3 +140,77 @@ Expected output
   7. Azure - AKS ( Azure Kubernetes managed Service )
   8. Azure - ARO ( Azure Red Hat Openshift managed Service )
 </pre>
+
+
+## Info - Docker Overview
+<pre>
+- Docker is a Container Engine
+- Developed in Golang by a company called Docker Inc
+- comes in 2 flavours
+  1. Docker Community Edition - Docker CE ( Free )
+  2. Docker Enterprise Edition - Docker EE ( Paid )
+- follows Client/Server Architecture
+- Docker Registry
+  - collection of many Docker Images
+- Supports 3 types of Docker Registries
+  1. Local Docker Registry
+  2. Private Docker Registry
+    - setup using JFrog Artifactory or Sonatype Nexus
+  3. Remote Docker Registry
+    - website maintained by Docker Inc 
+    - provides many opensource docker images
+</pre>  
+
+## Info - Podman Overview
+<pre>
+- alternate to Docker Container Engine
+- rootless - allows running user application only as a non-admin user
+- is a stand-alone tool which does'nt follow client/server
+- maintained by Red Hat but it is opensource project  
+</pre>  
+
+## Info - Docker SWARM
+<pre>
+- is Docker Inc's native Container Orchestration Platform
+- is a light-weight setup - you can install this easily on your laptop with low-end configuration
+- easy to install, learn
+- not production grade
+- good for learning, dev/qa setup
+- only supports docker containerized application workloads
+</pre>
+
+## Info - Google Kubernetes
+<pre>
+- is opensource, hence free for personal and commercial use
+- you get only community support
+- you get professional support from GCP/AWS/Azure in case you are using Kubernetes Managed Service
+- is a robust, works well in local as well in production grade setup
+- Kubernetes also supports extending Kubernetes API by using Custom Resource Definition & Custom Controllers
+- Kubernetes Operators
+  - You could add new functionality by using third-party Operators in your K8s Cluster
+  - You could develop your own Custom Operators
+  - Operators 
+    - is a combination of Custom Resources and Custom Controller
+- supports command line only
+- user managed is not supported, also doesn't support profession Webconsole
+- Kubernetes Dashboard is considered insecure, hence normally Administrators disable
+- doesn't support internal container registry out of the box
+</pre>
+
+## Info - OKD
+<pre>
+- is opensource Container Orchestration Platform maintained by opensource community, led by Red Hat
+- is developed on top of Google Kubernetes
+- supports both CLI and webconsole
+- comes with in-built internal Image Registry
+- you only get community support
+</pre>
+
+## Info - Red Hat OpenShift
+<pre>
+- is an enterprise product from Red Hat
+- is Red Hat's distribution of Kubernetes with many additional features running on top of Kubernetes
+- is a superset of Kubernetes with many additional features
+- it comes with support from Red Hat ( an IBM company )  
+- requires license for commerical use
+</pre>
