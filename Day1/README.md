@@ -246,6 +246,8 @@ Expected output
 - Pod is managed as a database record by API Server control plane component
 - the containers that are part of the same Pod, shares the same IP address, Port range, etc.,
 </pre>
+
+How does a Pod look?
 ![pod](pod.png)
 
 ## Info - Pod and Container states
@@ -314,7 +316,7 @@ Expected output
 - in our lab setup, the master nodes are configured to accept user applications in addition to worker nodes
 </pre>
 
-
+Below are the control plane components that runs in every master node
 <pre>
 - API Server
 - etcd key-value database
@@ -361,6 +363,7 @@ Listing all the scheduler pods running in master1, master2 and master3 openshift
 oc get pods -n openshift-kube-scheduler -o wide| grep openshift-kube-scheduler-master  
 </pre>
 
+Responsibilities of a scheduler
 <pre>
 - the responsibility of scheduler is find a node where a new Pod can de deployed
 - the scheduler shares the scheduling recommendation for each Pod via REST calls to API Server
@@ -372,6 +375,7 @@ Listing all the controller pods running in master1, master2 and master 3 openshi
 oc get pods -n openshift-controller-manager -o wide | grep controller-manager  
 </pre>
 
+Responsibilities of a Controller
 <pre>
 - controller is an application that runs as a Pod with special permissions to monitor certain resources running in any namespace
 - is a collection of many controllers
