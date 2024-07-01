@@ -321,3 +321,44 @@ Expected output
 - scheduler
 - controller managers
 </pre>
+
+## Info - API Server
+Lising all the API server pods running in master1, master2 and master3 oepnshift nodes
+```
+oc get pods -n openshift-oauth-apiserver | grep apiserver
+```
+<pre>
+- is the heart of Kubernetes/openshift
+- all crucial components in K8s/openshift communicates with API server using REST API calls
+- API Server responds to REST calls by sending broadcasting events
+- API Server is the only components that has read/write permissions to etcd database
+- API server triggers broad-casting events whenever
+  - a new record is added into the etcd database
+  - an existing record is updated in the etcd database
+  - an existing record is deleted in the etcd database
+</pre>
+
+## Info - etcd database
+Listing the etcd pod instances running in master1, master2 and master openshift nodes
+```
+oc get pods -n openshift-etcd -o wide| grep etcd-master
+```
+
+<pre>
+- it is an opensource independent database project
+- it is used in K8s/openshift cluster to maintain the application and cluster status
+- it generally works as a cluster of etcd databases
+- when one etcd database is updated, the other etcd database nodes get synchronized automatically
+- in Openshift, minimum 3 master nodes are created by default, one of the primary reasons for that is the etcd datbase minimum required is 3 nodes/instances
+- distributed database
+- stores data in form of key-value
+- data is organized by key within etcd database
+</pre>
+
+## Info - Scheduler
+Listing all the scheduler pods running in master1, master2 and master openshift nodes
+<pre>
+oc get pods -n openshift-kube-scheduler -o wide| grep openshift-kube-scheduler-master  
+</pre>
+
+## Info - Controller Managers
