@@ -498,3 +498,23 @@ Expected output
 - RHCOS gives only Read-only persmissions to certain folder
 - RHCOS won't allow writing certain folders, if appliction attempts to modify a read-only folder then the application will be denied permission to run
 </pre>
+
+## Red Hat Openshift v3.x and v4.x
+<pre>
+- Until Red Hat Openshift v3.x(v3.11), docker was the default contianer engine supported by Kubernetes and Red Hat Openshift
+- starting from Red Hat Openshift v4.x, docker support was dropped by Kubernetes and Red Hat Openshift
+- Kubernetes supports many different container runtimes and engines, however by default it was supporting Docker and runC out of the box
+- For this, Kubernetes maintained a Container Interface called DockerShim, which is used by kubelet container agent to communicated with docker engine
+- the DockerShim was developed and maintained by Kubernetes team itself
+- In year 2020, Google announced that they won't maintain/support DockerShim moving forward
+- Google also introducted something called CRI (Container Runtime Interface), which is a specfication that the container software vendors must implement in order for Kubernetes to support their container type
+- Red Hat and Google indentified a security flaw in Docker Architecture, they reported the security issue to Docker Inc, but due to some reason they didn't fix the issue for several months as they had their priorities
+- Red Hat acquired a company called CoreOS, they had interesting products
+  1. Core OS - optimized linux OS for Container Orchestration Platforms
+  2. rkt - a container runtime which comes out of the box with their Core OS
+  - Red Hat killed the rkt container runtime project, instead they developed something called CRI-O Container Runtime
+  - the Core OS comes in 2 flavours
+    1. Fedora Core OS - open source linux os optimized for Container Orchestration Platforms ( used in OKD )
+    2. Red Hat Enterprise Linux Core OS (RHCOS) which is used in Red Hat Openshift commercial licensed product
+
+</pre>
