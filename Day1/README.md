@@ -253,3 +253,26 @@ Expected output
 https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/  
 </pre>
 
+## Lab - Creating a Pod with plain Docker
+```
+docker run -d --name nginx_pause --hostname nginx gcr.io/google_containers/pause:latest
+docker ps
+docker run -d --name nginx --network=container:nginx_pause nginx:latest
+docker ps
+```
+
+Finding the IP address of the nginx_pause container
+```
+docker inspect -f {{.NetworkSettings.IPAddress}} nginx_pause
+```
+
+Getting inside the nginx container shell
+```
+docker exec -it nginx sh
+hostname -i
+hostname
+exit
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/ed46e4d6-fe53-479f-9652-0660440d75e4)
