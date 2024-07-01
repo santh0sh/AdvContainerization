@@ -654,6 +654,13 @@ oc get replicaset
 oc get rs
 ```
 
+Listing all pods in the currently active projects
+```
+oc get pods
+oc get pod
+oc get po
+```
+
 Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/d8aeb631-ad81-4be1-a1cc-67572bb7bc2e)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/ee92203b-0412-42f9-964f-31154f2dc8de)
