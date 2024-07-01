@@ -516,5 +516,17 @@ Expected output
   - the Core OS comes in 2 flavours
     1. Fedora Core OS - open source linux os optimized for Container Orchestration Platforms ( used in OKD )
     2. Red Hat Enterprise Linux Core OS (RHCOS) which is used in Red Hat Openshift commercial licensed product
-
 </pre>
+
+## Lab - Understanding docker security flaw
+```
+docker run -dit --name c1 --hostname c1 ubuntu:16.04 /bin/bash
+docker ps
+docker exec -it c1 bash
+ls -l
+exit
+exit
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/d85c5e87-a79a-4173-ae1e-44501358c2ea)
