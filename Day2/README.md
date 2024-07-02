@@ -230,3 +230,27 @@ Expected output
 - Just ClusterIP and LoadBalancer service, NodePort service is a Kubernetes feature
 - Openshift has a better alternate called Route
 </pre>
+
+## Lab - Creating a LoadBalancer external service for nginx deployment
+Let's delete the nginx service we creater earlier
+```
+oc get svc
+oc delete svc/nginx
+oc get svc
+```
+
+Let's create the loadbalancer service
+```
+oc get deploy
+oc expose deploy/nginx --type=LoadBalancer --port=8080
+oc get svc
+oc describe svc/nginx
+```
+
+Accessing the loadbalancer external service
+```
+curl http://192.168.122.90:8080
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/45b4c7ab-c98e-450e-ad95-53306c90905e)
