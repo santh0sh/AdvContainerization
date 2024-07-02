@@ -107,3 +107,33 @@ curl http://localhost:9090
 Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/adba529e-0089-45bc-919e-911586c0a22a)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/1899a1bb-7e45-4c52-99ea-3db84002e337)
+
+## Info - Kubernetes/Openshift Service
+<pre>
+- Service represents a group of pods from a single Deployment
+- Service can be accessed by its Name - Service discovery
+- Types of Services
+  1. ClusterIP - Internal Service ( Supports inbuilt load-balancing )
+  2. NodePort - External Service ( supports inbuilt load-balancing )
+  3. LoadBalancer - External Service ( spins-off an external Load Balancer in AWS/Azure/GCP )
+</pre>
+
+
+## Lab - Creating an internal service for nginx deployment
+<pre>
+- In the below command, type=ClusterIP indicates we want to create an internal clusterIP service
+- ClusterIP service is accessible only within the openshift cluster
+- Pod running with the same cluster can access this type of service
+- For clusterIP service, kube-proxy which runs in every nodes supports the load-balancing
+- as this load-balancing is an internal implementation of Kubernetes/Openshift there will not be any extra charge even if our Openshift runs in public cloud like AWS/Azure/GCP for the service we created
+- the port 8080 is the ports where nginx web server is listening internally with the Pod container
+</pre>
+
+Let's create an internal service for nginx deployment
+```
+oc get deploy
+oc expose deploy/nginx --type=ClusterIP --port=8080
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/b507480c-8f44-4e0a-b17e-9306a2b1ec8a)
