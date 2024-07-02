@@ -290,3 +290,42 @@ curl http://http://nginx-jegan.apps.ocp4.tektutor.org.labs
 
 Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/1113bcde-ade5-4235-a3d8-783716ce88fd)
+
+## Info - What is Kubernetes/Openshift Ingress?
+
+<pre>
+- Ingress is not a service
+- Ingress is a set of forwarding rules
+- The Ingress Controller picks the rules defined in the Ingress and it configures Load balancer either HAProxy or Nginx
+- the 2 most popular ingress controllers are
+  1. Nginx Ingress Controller
+  2. HAProxy Ingress Controller
+</pre>
+
+## Lab - Creating an ingress to forward calls to two different services based on path based routing
+
+You need to edit the ingress.yml and replace the host url from tektutor.apps.ocp4.tektutor.org.labs to tektutor.apps.ocp4.rps.com
+```
+cd ~/openshift-july-2024
+git pull
+cd Day2/ingress
+oc new-project jegan
+oc create deployment nginx --image=bitnami/nginx:latest --replicas=3
+oc create deployment hello --image=tektutor/spring-ms:1.0 --replicas=3
+
+oc expose deploy/nginx --port=8080
+oc expose deploy/hello --port=8080
+
+cat ingress.yml
+oc apply -f ingress.yml
+oc get ingress
+oc describe ingress/tektutor
+curl http://tektutor.apps.ocp4.tektutor.org.labs/nginx
+curl http://tektutor.apps.ocp4.tektutor.org.labs/hello
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/fb6fc903-b378-4ebf-ba7f-81e3e5518368)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/9df766c6-57c7-4c38-8fe7-3348f1bc7124)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/137f21da-4db9-463e-9eb1-83d7caa46897)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/6dddf23b-6d79-4078-bbf6-0f8ec4d30740)
