@@ -253,4 +253,5 @@ curl http://192.168.122.90:8080
 ```
 
 Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/3f5abe17-cc07-41af-b5af-8c1fafc270a3)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/45b4c7ab-c98e-450e-ad95-53306c90905e)
