@@ -303,6 +303,8 @@ Expected output
 </pre>
 
 ## Lab - Creating an ingress to forward calls to two different services based on path based routing
+
+You need to edit the ingress.yml and replace the host url from tektutor.apps.ocp4.tektutor.org.labs to tektutor.apps.ocp4.rps.com
 ```
 cd ~/openshift-july-2024
 git pull
