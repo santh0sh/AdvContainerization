@@ -122,6 +122,7 @@ Expected output
 ## Lab - Creating an internal service for nginx deployment
 <pre>
 - In the below command, type=ClusterIP indicates we want to create an internal clusterIP service
+- this type of service is practically used for databases which are accessed only within the cluster by frontend pods
 - ClusterIP service is accessible only within the openshift cluster
 - Pod running with the same cluster can access this type of service
 - For clusterIP service, kube-proxy which runs in every nodes supports the load-balancing
