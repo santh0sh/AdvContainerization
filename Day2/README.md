@@ -23,7 +23,7 @@ Expected output
 #### Points to remember
 <pre>
 - the bitnami container images follow the Openshift best practices and conventions
-- the bitnami container images are root-less, i.e the applications runs with non-root priviledge as per openshift conventions
+- the bitnami container images are root-less, i.e the applications runs with non-root privilege as per openshift conventions
 - hence, mostly all bitnami images are safer to use in Openshift
 </pre>
 
