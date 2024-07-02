@@ -48,3 +48,15 @@ oc logs -f nginx-66c775969-5vnbr
 Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/7952292f-1cd0-4f43-86cc-6152e5d8f768)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/9eadd409-988e-4a3b-97c9-f8fc1e0bf94c)
+
+
+## Lab - Finding more details about a running pod
+```
+oc get po
+oc describe pod/nginx-66c775969-5vnbr
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/4a3c9c8d-4512-43d1-bcca-56506fc5a3b0)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/28bd80d1-67c1-472c-91c7-4294437e3b07)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/6de9b1ea-6f64-45bc-acc1-57b9cac42073)
