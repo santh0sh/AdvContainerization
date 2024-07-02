@@ -219,3 +219,14 @@ Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/b89580ad-4448-433b-bd90-1907fa51e239)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/1d0bf7e0-ab35-4b5e-a02a-efebaa20f17c)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/5360c970-9029-4aba-b5e2-0289a01b7932)
+
+## Info - NodePort Service gotchas
+<pre>
+- NodePort is neither user friendly nor developer friendly
+- the end-user must know the openshift node details like its hostname, node IP, how many nodes are there in the cluster
+- for nodeport service we create one port in the range 30000-32767 will be opened on every node in the cluster
+- the more nodeport services we create, more number of ports has to be opened up in the firewall
+- opening too many ports leads to security issue
+- Just ClusterIP and LoadBalancer service, NodePort service is a Kubernetes feature
+- Openshift has a better alternate called Route
+</pre>
