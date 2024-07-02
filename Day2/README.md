@@ -156,6 +156,7 @@ Accessing the clusterip internal service from a Pod that runs inside the same cl
 oc create deployment test --image=tektutor/spring-ms:1.0
 oc rsh deploy/test
 curl http://nginx:8080
+exit
 ```
 
 Expected output
