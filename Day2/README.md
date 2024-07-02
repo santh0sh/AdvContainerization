@@ -185,3 +185,36 @@ oc get svc -n openshift-dns
 Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/d1b37f90-9841-4baa-8e0e-3a4e37b79f2e)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/4c465ae6-d3fa-45c6-8b73-9f514afc8dac)
+
+## Lab - Creating an external NodePort service for nginx deployment
+
+We need to first delete the clusterip service we created earlier
+```
+oc get svc
+oc delete svc/nginx
+oc get svc
+```
+
+Let's create the nodeport service
+```
+oc expose deploy/nginx --type=NodePort --port=8080
+oc get svc
+oc describe svc/nginx
+```
+
+As this is an external service, we can directly access using the node name and node port
+```
+oc get nodes
+curl http://master-1.ocp4.tektutor.org.labs:32326
+curl http://master-2.ocp4.tektutor.org.labs:32326
+curl http://master-3.ocp4.tektutor.org.labs:32326
+curl http://worker-1.ocp4.tektutor.org.labs:32326
+curl http://worker-2.ocp4.tektutor.org.labs:32326
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/13fcf686-26ad-4062-8afc-a2cb0f88b58e)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/370c111f-e404-4f82-874d-5a1d42c2d3ed)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/b89580ad-4448-433b-bd90-1907fa51e239)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/1d0bf7e0-ab35-4b5e-a02a-efebaa20f17c)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/5360c970-9029-4aba-b5e2-0289a01b7932)
