@@ -304,6 +304,13 @@ Expected output
 
 ## Lab - Creating an ingress to forward calls to two different services based on path based routing
 
+You can find your openshift base domain using the below command
+```
+oc describe ingresscontroller/default -n openshift-ingress-operator | grep Domain:
+```
+
+As per the output you get for the above command, you need to edit the host url in the ingress.yml.
+
 You need to edit the ingress.yml and replace the host url from tektutor.apps.ocp4.tektutor.org.labs to tektutor.apps.ocp4.rps.com
 ```
 cd ~/openshift-july-2024
@@ -329,3 +336,4 @@ Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/9df766c6-57c7-4c38-8fe7-3348f1bc7124)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/137f21da-4db9-463e-9eb1-83d7caa46897)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/6dddf23b-6d79-4078-bbf6-0f8ec4d30740)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/5ad273e1-2e87-4c24-930e-4e9158efdb1d)
