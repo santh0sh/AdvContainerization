@@ -18,3 +18,29 @@ oc get deploy,rs,po
 
 Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/c07a443d-32db-4bbb-9779-5216baeb7a36)
+
+## Lab - Creating a nginx deployment with bitnami/nginx image
+#### Points to remember
+<pre>
+- the bitnami container images follow the Openshift best practices and conventions
+- the bitnami container images are root-less, i.e the applications runs with non-root priviledge as per openshift conventions
+- hence, mostly all bitnami images are safer to use in Openshift
+</pre>
+
+```
+oc create deployment nginx --image=bitnami/nginx:latest --replicas=3
+oc get deployments
+oc get deployment
+oc get deploy
+
+oc get replicasets
+oc get replicaset
+oc get rs
+
+oc get pods
+oc get pod
+oc get po
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/7952292f-1cd0-4f43-86cc-6152e5d8f768)
