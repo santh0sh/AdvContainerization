@@ -73,7 +73,7 @@ oc create deployment nginx --image=bitnami/nginx:latest --replicas=3
 - the event is received by Deployment Controller, it then sends a REST API call to API Server, requesting it to create a ReplicaSet for ngin deployment
 - API Server receives the request from Deployment Controller and it creates a ReplicaSet record in etcd database
 - API Server sends a broadcasting event saying a New ReplicaSet is created
-- the event is received by ReplicaSet Controller, it then unders 3 Pods are mentioned in the Desired count, hence it makes REST call to API server to create 3 Pods
+- the event is received by ReplicaSet Controller, it then understands 3 Pods are mentioned in the Desired count, hence it makes REST call to API server to create 3 Pods
 - the API Server creates 3 Pod records in etcd database and it sends broadcasting events say new Pod created.  One such event will be broadcasted for every New Pod created.
 - the scheduler receives the event and it sends scheduling recommendation for each Pod to the API Servers
 - API Server receives the REST call from Scheduler, it then retrieves the existing Pod records from etcd and it updates the Pod records with the node details as recommended by Scheduler
