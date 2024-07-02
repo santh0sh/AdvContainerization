@@ -232,7 +232,22 @@ Expected output
 </pre>
 
 ## Lab - Creating a LoadBalancer external service for nginx deployment
-Let's delete the nginx service we creater earlier
+
+For detailed instructions, you may refer my medium article 
+<pre>
+https://medium.com/tektutor/using-metallb-loadbalancer-with-bare-metal-openshift-onprem-4230944bfa35
+</pre>
+
+#### Points to remember
+<pre>
+- Load balancer will not work out of the box in a bare-metal(on-prem) openshift setup
+- We need install metallb operator as an Administrator
+- Once installed we need configure the address-pool i.e range of IP addreseses we need allocate so that when we create lb service, the metall controller will be able to assign an IP from the address-pool we reserved
+- We also need to create a metallb controller instance which will monitor for loadbalancer services created in the cluster
+</pre>
+
+
+Let's delete the nginx service we creater earlier1
 ```
 oc get svc
 oc delete svc/nginx
