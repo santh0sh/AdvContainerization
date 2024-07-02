@@ -270,3 +270,23 @@ curl http://192.168.122.90:8080
 Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/3f5abe17-cc07-41af-b5af-8c1fafc270a3)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/45b4c7ab-c98e-450e-ad95-53306c90905e)
+
+## Lab - Exposing service to external access using Openshift route
+```
+oc new-project jegan
+oc create deployment nginx --image=bitnami/nginx:1.18 --replicas=3
+oc get po
+oc expose deploy/nginx --port=8080
+oc get svc
+oc describe svc/nginx
+```
+
+Now, let's create http route
+```
+oc expose svc/hello
+oc get route
+curl http://http://nginx-jegan.apps.ocp4.tektutor.org.labs
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/1113bcde-ade5-4235-a3d8-783716ce88fd)
