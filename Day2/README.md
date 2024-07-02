@@ -40,7 +40,11 @@ oc get rs
 oc get pods
 oc get pod
 oc get po
+
+oc logs nginx-66c775969-5vnbr
+oc logs -f nginx-66c775969-5vnbr
 ```
 
 Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/7952292f-1cd0-4f43-86cc-6152e5d8f768)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/9eadd409-988e-4a3b-97c9-f8fc1e0bf94c)
