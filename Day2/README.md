@@ -332,6 +332,7 @@ curl http://tektutor.apps.ocp4.tektutor.org.labs/hello
 ```
 
 Expected output
+![image](ingress.png)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/fb6fc903-b378-4ebf-ba7f-81e3e5518368)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/9df766c6-57c7-4c38-8fe7-3348f1bc7124)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/137f21da-4db9-463e-9eb1-83d7caa46897)
