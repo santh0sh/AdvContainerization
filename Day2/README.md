@@ -150,3 +150,14 @@ oc describe svc/nginx
 Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/b507480c-8f44-4e0a-b17e-9306a2b1ec8a)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/d1c7e0a3-2f81-4051-8004-6ce0760a97ce)
+
+Accessing the clusterip internal service from a Pod that runs inside the same cluster
+```
+oc create deployment test --image=tektutor/spring-ms:1.0
+oc rsh deploy/test
+curl http://nginx:8080
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/413bcdce-80b0-435f-958f-43876cd91b50)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/78b00c5e-c86a-4b79-9616-df56b2b04e6e)
