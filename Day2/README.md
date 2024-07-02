@@ -128,13 +128,25 @@ Expected output
 - as this load-balancing is an internal implementation of Kubernetes/Openshift there will not be any extra charge even if our Openshift runs in public cloud like AWS/Azure/GCP for the service we created
 - the port 8080 is the ports where nginx web server is listening internally with the Pod container
 - the endpoints for the service is created by a controller called Endpoint controller
+- the endpoint controller will be watching for new service, deployment scale up/down, dedeployment deletion, pod replaced with another pod
+  
 </pre>
 
 Let's create an internal service for nginx deployment
 ```
 oc get deploy
 oc expose deploy/nginx --type=ClusterIP --port=8080
+oc get endpoints
+oc get services
+oc get service
+oc get svc
+oc describe svc/nginx
+oc scale deploy/nginx --replicas=3
+oc get endpoints
+oc get svc
+oc describe svc/nginx
 ```
 
 Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/b507480c-8f44-4e0a-b17e-9306a2b1ec8a)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/d1c7e0a3-2f81-4051-8004-6ce0760a97ce)
