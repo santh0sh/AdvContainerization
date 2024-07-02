@@ -162,3 +162,26 @@ exit
 Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/413bcdce-80b0-435f-958f-43876cd91b50)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/78b00c5e-c86a-4b79-9616-df56b2b04e6e)
+
+## Info - How the Service Discovery works in Kubernetes/Openshift?
+<pre>
+- When the Pod containers are created by kubelet container agent, it also configures the /etc/resolv.conf file in every Pod container
+- the /etc/resolv.conf file has a nameserver with IP 172.30.0.10
+- the dns-default service has Pod running in each node
+- they will resolve the nginx service name to its respective service IP
+</pre>
+
+Let's get inside the test pod that we created as part of test deployment
+```
+oc rsh deploy/test
+cat /etc/resolv.conf
+```
+
+On the local machine, you can list and see dns service
+```
+oc get svc -n openshift-dns
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/d1b37f90-9841-4baa-8e0e-3a4e37b79f2e)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/4c465ae6-d3fa-45c6-8b73-9f514afc8dac)
