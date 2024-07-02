@@ -84,3 +84,26 @@ oc create deployment nginx --image=bitnami/nginx:latest --replicas=3
 - the kubelet keeps sending this kind of container status updates to API Server like a heart beat fashion
 - the API keeps the Pod status updated based on the status reported by kubelet
 </pre>
+
+## Lab - Pod Port forwarding to access the web page served by a single pod
+#### Points to remember
+<pre>
+- port forwarding must be used only for testing purpose
+- generally used by developers
+- should not be used in production
+- for production use we must service
+</pre>
+
+```
+oc get pods
+oc port-forward nginx-66c775969-zxz5f 9090:8080
+```
+
+From another terminal, you may access the web page served the pod
+```
+curl http://localhost:9090
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/adba529e-0089-45bc-919e-911586c0a22a)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/1899a1bb-7e45-4c52-99ea-3db84002e337)
