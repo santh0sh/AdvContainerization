@@ -127,6 +127,7 @@ Expected output
 - For clusterIP service, kube-proxy which runs in every nodes supports the load-balancing
 - as this load-balancing is an internal implementation of Kubernetes/Openshift there will not be any extra charge even if our Openshift runs in public cloud like AWS/Azure/GCP for the service we created
 - the port 8080 is the ports where nginx web server is listening internally with the Pod container
+- the endpoints for the service is created by a controller called Endpoint controller
 </pre>
 
 Let's create an internal service for nginx deployment
