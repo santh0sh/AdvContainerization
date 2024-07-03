@@ -65,6 +65,10 @@ Expected output
 ## Lab - Deploy nginx in declarative style with --save-config flag
 #### Points to remember
 <pre>
+- oc create should be used only the first time we are creating the resource
+- oc create will assume the resource definitions captured in the yaml file is not deployed already in openshift
+- oc apply must be used after updating any changes done in yaml file following the oc create command
+- oc apply command will work first time and after updating the yaml file as well
 - when we use the save-config flag while using oc create command, it save the meta-data i.e using which yaml file the resources were created in the etcd database
 - so next time apply changes after any modification done in the yaml file, it will validate that we used the same file while creating the resource, this way we avoid the warning we get while using apply in declarative style
 </pre>
