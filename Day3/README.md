@@ -166,3 +166,28 @@ oc get po
 Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/a7282baf-ffb1-4bf1-9c2a-84657bbe4c8d)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/70912604-7273-4f05-89c2-c6927843dc13)
+
+## Lab - Creating a clusterip internal service in declarative style
+```
+cd ~/openshift-july-2024
+git pull
+cd Day3/declarative-manifest-scripts
+oc get deploy,rs,po
+oc create -f nginx-deploy.yml --save-config
+oc get deploy,rs,po
+```
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/c954c2de-b86c-450a-831f-865044026e7f)
+
+Let's create a clusterip internal service
+```
+oc expose deploy/nginx --type=ClusterIP --port=8080 -o yaml --dry-run=client
+oc expose deploy/nginx --type=ClusterIP --port=8080 -o yaml --dry-run=client > nginx-clusterip-svc.yml
+oc create -f nginx-clusterip-svc.yml --save-config
+oc get svc
+oc describe svc/nginx
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/64d049c9-7c61-4a53-aa4d-eea8bec55b4c)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/77bae339-46c0-42c0-a6f3-1e0ae8431256)
