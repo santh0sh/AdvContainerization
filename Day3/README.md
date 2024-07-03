@@ -361,13 +361,25 @@ oc get rs
 oc get rs/nginx-566b5879cb -o yaml | grep image
 oc get rs/nginx-6b49c75d9 -o yaml | grep image
 ```
+
+Checking the rollout status and history
+```
+oc rollout status deploy/nginx
+oc rollout history deploy/nginx
+```
+
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/49a266d7-1417-4860-97ef-765912a1f293)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/773f66b1-ff3d-46c5-b176-1a12e9ee5916)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/c8d0e774-d859-4793-803e-25f26bfcc0d2)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/4181f09f-1af7-42c0-975f-78ba7eefef27)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/919d7800-3191-4ad7-b032-4bf06d837a1d)
 
+If you wish to go back to older version, you may rollback ( practical usecase if newly deployed version unstable)
+```
+oc rollout undo deploy/nginx
+```
 
-![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/53950bcd-32ea-411f-9584-cc9fad94a823)
-![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/4d3a5e5b-1463-42b7-ac5d-0ba2ebd54381)
-
-
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/6f606c74-8778-47fd-b31e-31f05b8ce998)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/b53a3cf0-37f9-4bae-95bc-8f2a47ebceee)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/a7ab4ed6-a68c-4c24-b670-a0e9c9fb882b)
