@@ -416,7 +416,9 @@ Once you updated the mandatory fields, you may click on "Create" button
 - it is always created in Cluster scope, hence any application deployed under any project namespace can claim PV and use it
 - Persistent Volume mandatory attributes
   - Size in MiB/GiB/TiB
-  - AccessModes
+  - AccessModes 
+    - ReadWriteOnce ( All Pods from same node can access the PV )
+    - ReadWriteMany ( All Pod from all nodes can access the PV )
   - Server, Path, etc.,
   - StorageClass - Optional
   - Labels - Optional
@@ -461,7 +463,7 @@ Before proceeding with the deployment, you need to customize mysql-pv.yml, mysql
 ```
 cd ~/openshift-july-2024
 git pull
-cd Day3/persistent-volume
+cd Day3/persistent-volume/mysql
 ls -l
 cat mysql-pv.yml
 oc create -f mysql-pv.yml --save-config
@@ -488,3 +490,79 @@ Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/a77eb458-428b-4023-a905-b9857a905eb4)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/f19cec5e-e2bd-4728-b544-a6b877d81e32)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/2834875b-4893-45e7-a829-d4a8f5b6c4ce)
+
+Getting inside the mysql pod shell
+```
+oc get deploy
+oc rsh deploy/mysql
+mysql -u root -p
+```
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/b855099e-6424-4448-b3c0-3cf6f13b7c7d)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/410c6d98-d7d0-42b1-a807-55d488b95460)
+
+Connecting to mysql server using mysql client from mysql pod terminal, when prompted for password type 'root@123' without quotes
+```
+mysql -u root -p
+SHOW DATABASES;
+CREATE DATABASE tektutor;
+USE tektutor;
+CREATE TABLE TRAINING ( id INT NOT NULL, name VARCHAR(250) NOT NULL, duration VARCHAR(250) NOT NULL, PRIMARY KEY(id) );
+DESCRIBE TABLE training;
+
+INSERT INTO TRAINING VALUES (1, "DevOps", "5 Days");
+INSERT INTO TRAINING VALUES (3, "Advanced Ansible tower", "5 Days");
+
+SELECT * FROM TRAINING;
+exit
+exit
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/f68d6a2d-09a9-4384-bb37-86f7cd3b4559)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/ce2da587-f35b-49da-aed7-79b1578bd760)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/816c24de-db8e-442a-83a2-e5231554ec52)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/bdee9f5e-1de9-4570-8130-30385dc41378)
+
+Delete the mysql pod from openshift webconsole and observe a new mysql pod will be created automatically.
+
+Now, get inside the mysql pod terminal and try the below to see if the database and records are safe
+```
+mysql -u root -p
+SHOW DATABASES;
+USE tektutor;
+SHOW TABLES;
+SELECT * FROM training;
+exit
+exit
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/4c53067c-1060-4a38-a5cc-34059b15e439)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/7df6ff62-a20f-4feb-93df-fa75f3849326)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/238164a6-bd16-425b-aaf9-54662024c12e)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/e88112a1-ae4a-48c4-b645-3bda7ecf8d60)
+
+## Lab - Deploying redis database and persist data in a NFS path using Persistent Volume and Claim
+```
+cd ~/openshift-july-2024
+git pull
+cd Day3/persistent-volume/redis
+cat redis-pv.yml
+oc create -f redis-pv.yml
+oc get pv
+
+cat redis-pvc.yml
+oc create -f redis-pvc.yml
+oc get pvc
+
+cat redis-deploy.yml
+oc create -f redis-deploy.yml
+oc get deploy,po
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/fa4d921d-5310-48e0-a641-33691100701a)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/4196c07e-cc2d-4e04-9379-6395af7edc2a)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/9308b92a-b243-454f-86eb-ff2859afff50)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/bb5ff045-eff9-422e-8a2b-abec913077de)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/66dc628b-b28f-479b-b051-7d11b2198ad9)
