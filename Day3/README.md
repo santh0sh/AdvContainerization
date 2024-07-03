@@ -643,3 +643,53 @@ Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/1f510b99-1f69-47ae-b780-c238a02ede3e)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/680fbb67-8f92-4cca-9ae4-b9cce67b2264)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/4689db07-6e8c-4f08-94a2-6e8e808161fa)
+
+## Info - ConfigMap
+<pre>
+- CongigMap is used to store mulitple key-value configuration data
+- any number of key/value pairs can be stored in configmap
+- this is alternate to properties.xml or properties.yml file used in java or other programming languages
+- this is used only for storing non-sensitive information
+- for storing sensitive information like login credentials, consider using secret
+- practical usecase examples
+  - software tools path
+  - application log path
+</pre>
+
+## Info - Secret
+<pre>
+- secret is also a Map internally just like ConfigMap
+- only difference is the data stored in secret is not revealed, hence your application can securely retrieve and use it
+- passwords, certificates can be stored in secret as key/value
+- the key will be visible but not the password
+- Openshift administrators can view both key/value stored in the secret
+</pre>
+
+## Lab - Let's refactor the wordpress/mariadb multi-pod application using ConfigMap and Secret
+```
+cd ~/openshift-july-2024
+git pull
+cd Day3/persistent-volume
+./deploy.sh
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/87a28f0c-bf04-4e9c-a8b0-d34eff7e60b6)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/b8004fb9-c78e-46cc-b657-31757e1f80a6)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/d457b40d-f5f9-412a-ad3f-6cdac8f58867)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/28fa39be-017e-4795-8d83-d3d7e0dacc42)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/e4405be6-1ed1-456f-99ae-c7f0d151d0c3)
+
+
+Once you are done with this exercise, consider deleting all the resources created part of this exercise to free up resources
+```
+cd ~/openshift-july-2024
+git pull
+cd Day3/persistent-volume
+./delete-all.sh
+```
+
+Expeced output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/0e248a42-cdb6-41bd-ba53-1a24a140bdc7)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/e08eaf0c-4cb9-4278-a0ac-511e74093c48)
+
