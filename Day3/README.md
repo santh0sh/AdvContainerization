@@ -383,3 +383,24 @@ Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/6f606c74-8778-47fd-b31e-31f05b8ce998)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/b53a3cf0-37f9-4bae-95bc-8f2a47ebceee)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/a7ab4ed6-a68c-4c24-b670-a0e9c9fb882b)
+
+## Lab - Deploying application in declarative style from Openshift webconsole
+Go to Developer context in Openshift webconsole on your web browser
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/91fc7858-4e50-40b0-a3ac-914844a28ef2)
+Click Search
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/35d167a6-d5e8-413b-9a51-d4e9e41188f8)
+Search for "Deployment"
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/9bb11bcb-7a5e-4445-9e2a-3508f9553472)
+Click Create Deployment button
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/518168eb-c324-4084-b25a-8e0eec87e70f)
+
+You need to edit name to nginx, app under label to nginx, container name to nginx, image to bitnami/nginx:latest
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/e69bbb7a-4152-4846-8287-4374b07d5580)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/aa759a3c-7e8c-4b61-a1f0-8ec9504eac7a)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/49a84bfe-6f81-4d33-8952-bcbab61f8157)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/0b0a213a-e466-4a69-9760-44b8b433ddde)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/5f33de83-3597-4f8e-aa23-494222760136)
+
+Once you updated the mandatory fields, you may click on "Create" button
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/a1a4278d-cc0b-4bd2-8783-132e20cff319)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/01b6a3e8-fad4-4502-aef8-46e00c82aafb)
