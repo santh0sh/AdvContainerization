@@ -216,3 +216,48 @@ Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/64144742-3515-4e8b-bd56-d52ce1688c6b)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/3b498565-faaa-4ed3-b0cd-2d7d872de8bf)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/9e87d94e-615a-4fc9-a50a-81dc9cb52fc1)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/8aa1e6b5-3e1d-4b28-9fc4-329bacfd97bd)
+
+## Lab - Creating a nodeport external service in declarative style
+
+```
+cd ~/openshift-july-2024
+git pull
+cd Day3/declarative-manifest-scripts
+oc get deploy,rs,po
+oc create -f nginx-deploy.yml --save-config
+oc get deploy,rs,po
+```
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/83e3ca9b-02b6-4538-b650-c8c12b476333)
+
+Let's create a nodeport external service
+```
+oc expose deploy/nginx --type=NodePort --port=8080 -o yaml --dry-run=client
+oc expose deploy/nginx --type=NodePort --port=8080 -o yaml --dry-run=client > nginx-nodeport-svc.yml
+oc delete -f nginx-clusterip-svc.yml
+oc create -f nginx-nodeport-svc.yml --save-config
+oc get svc
+oc describe svc/nginx
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/bd1ca432-c738-49df-976b-733fbe3af4e9)
+
+Accessing the nodeport external service using a test pod
+```
+cd ~/openshift-july-2024
+git pull
+cd Day3/declarative-manifest-scripts
+oc get svc
+oc describe svc/nginx
+ls -l
+cat pod.yml
+oc apply -f pod.yml
+oc exec -it mypod sh
+curl http://nginx:8080
+exit
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/9075f180-88d6-483c-b948-a8880016276b)
