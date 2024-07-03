@@ -299,10 +299,14 @@ Expected output
 ```
 oc get deploy
 oc get deploy/nginx -o yaml | grep image
+oc get po
+oc get po/nginx-566b5879cb-9zgck -o yaml | grep image
+oc get rs
+oc get rs/nginx-566b5879cb -o yaml | grep image
 ```
 
 Expected output
-![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/bfa4afcd-941f-42a6-a04b-bad20a194c65)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/0c080837-0cf6-4229-8a9c-d09d3609b6b4)
 
 <pre>
 - To split the screen horizontal, you need to press Ctrl+B "
@@ -317,28 +321,53 @@ tmux
 ```
 
 Expected output
-![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/b7e00d13-960c-4fab-bbd0-7fbbedb850e7)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/cbe2c284-fd98-4ab2-a48b-50c94a05aab9)
 
 Let's split the terminal horizonal using Ctrl+B "
-![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/ed710d75-3dea-42db-8a52-30279bb73891)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/0585aa78-1805-4f52-8279-53766c32febc)
 
 Move to the bottom splitted window by pressing Ctrl+B down arrow
 ```
 cd ~
+clear
 ```
-![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/82f45959-7627-4c9c-b0d5-5f23b0ba1a18)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/24e2923b-45ad-4d8d-93e6-bbcf505e62c4)
 
 
 Let's split the bottom window vertically
 ```
 Ctrl+B %
+cd ~
+clear
 ```
-![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/bf5b999e-f635-49af-adf3-f0d1ada48d33)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/72277644-3946-47c5-99fc-99943212f9ae)
 
-Let's upgrade then nginx image version from 1.18 to 1.19
+In the bottom left window, run the below command 
 ```
-oc set image deploy/nginx nginx=bitnami/nginx:1.19
-oc get rs
+oc get rs -w
+```
+In the bottom right window, run the below command
+```
 oc get po -w
 ```
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/5812ef3b-e2ce-4572-b434-b75234924a8f)
+
+
+Let's upgrade then nginx image version from 1.18 to 1.19 from the top window
+```
+oc set image deploy/nginx nginx=bitnami/nginx:1.19
+oc get deploy/nginx -o yaml | grep image
+oc get rs
+oc get rs/nginx-566b5879cb -o yaml | grep image
+oc get rs/nginx-6b49c75d9 -o yaml | grep image
+```
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/49a266d7-1417-4860-97ef-765912a1f293)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/773f66b1-ff3d-46c5-b176-1a12e9ee5916)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/c8d0e774-d859-4793-803e-25f26bfcc0d2)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/4181f09f-1af7-42c0-975f-78ba7eefef27)
+
+
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/53950bcd-32ea-411f-9584-cc9fad94a823)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/4d3a5e5b-1463-42b7-ac5d-0ba2ebd54381)
+
 
