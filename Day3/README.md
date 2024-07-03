@@ -61,3 +61,35 @@ oc get deploy,rs,po
 
 Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/c1328eb4-8566-4a60-a6d6-0f0874dae532)
+
+## Lab - Deploy nginx in declarative style with --save-config flag
+#### Points to remember
+<pre>
+- when we use the save-config flag while using oc create command, it save the meta-data i.e using which yaml file the resources were created in the etcd database
+- so next time apply changes after any modification done in the yaml file, it will validate that we used the same file while creating the resource, this way we avoid the warning we get while using apply in declarative style
+</pre>
+
+```
+cd ~/openshift-july-2024
+git pull
+cd Day3/declarative-manifest-scripts
+oc get deploy,rs,po
+
+cat nginx-deploy.yml
+oc create -f nginx-deploy.yml --save-config
+oc get deploy,rs,po
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/c39dd4e9-0305-4031-b162-9c19514bc51e)
+
+
+Update the nginx-deploy.yml, replace replicas from 5 to 3, save it and apply
+```
+cat nginx-deploy.yml
+oc apply -f nginx-deploy.yml
+oc get deploy,rs,po
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/45cee3ab-0b50-45eb-b756-08a13856863e)
