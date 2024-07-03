@@ -489,6 +489,14 @@ Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/f19cec5e-e2bd-4728-b544-a6b877d81e32)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/2834875b-4893-45e7-a829-d4a8f5b6c4ce)
 
+Getting inside the mysql pod shell
+```
+oc get deploy
+oc rsh deploy/mysql
+mysql -u root -p
+```
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/b855099e-6424-4448-b3c0-3cf6f13b7c7d)
+
 Connecting to mysql server using mysql client from mysql pod terminal, when prompted for password type 'root@123' without quotes
 ```
 mysql -u root -p
