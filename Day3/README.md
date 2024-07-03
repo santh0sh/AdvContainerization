@@ -143,4 +143,17 @@ oc get deploy,rs,po
 Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/badd7300-3c1e-432a-882b-b410d942bc0c)
 
+## Lab - Deploying a pod directly without replicaset/depoyment in declarative style
+```
+cd ~/openshift-july-2024
+git pull
+cd Day3/declarative-manifest-scripts
+cat pod.yml
+oc create -f pod.yml --save-config
+oc get po -w
+oc get po
+```
 
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/a7282baf-ffb1-4bf1-9c2a-84657bbe4c8d)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/70912604-7273-4f05-89c2-c6927843dc13)
