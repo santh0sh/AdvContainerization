@@ -99,6 +99,14 @@ Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/45cee3ab-0b50-45eb-b756-08a13856863e)
 
 ## Lab - Deploying replicaset without deployment in declarative style
+#### Points to remember
+<pre>
+- Deploying an application directly using replicaset isn't considered a best practice
+- When the top level resource is replicaset, deployment controller will not monitor the replicaset, hence repairing replicaset is not possible
+- Deployment controller is the one which supports rolling update, because now we deployed replicaset without deployment, rolling update isn't possible
+- Hence, for these reasons we should always deploy stateless applications as a Deployment not using replicaset directly
+</pre>
+
 ```
 oc get rs
 oc get rs -o yaml
@@ -135,4 +143,17 @@ oc get deploy,rs,po
 Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/badd7300-3c1e-432a-882b-b410d942bc0c)
 
+## Lab - Deploying a pod directly without replicaset/depoyment in declarative style
+```
+cd ~/openshift-july-2024
+git pull
+cd Day3/declarative-manifest-scripts
+cat pod.yml
+oc create -f pod.yml --save-config
+oc get po -w
+oc get po
+```
 
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/a7282baf-ffb1-4bf1-9c2a-84657bbe4c8d)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/70912604-7273-4f05-89c2-c6927843dc13)
