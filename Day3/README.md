@@ -569,3 +569,19 @@ Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/73755d8e-2510-41fc-bae3-54396e37f7df)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/aae26661-61ad-4538-9435-9e6b4978949e)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/21c28eee-a98e-4fc7-bf6a-cb5d13d23197)
+
+Once you are done with this exercise, you may clean up all the resources used by this project
+```
+cd ~/openshift-july-2024
+git pull
+cd Day3/persistent-volume/redis
+
+oc delete -f redis-deploy.yml
+oc delete -f redis-pvc.yml
+oc delete -f redis-pv.yml
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/200d2291-3705-4dd7-9e4a-c74e31cdd833)
+
+
