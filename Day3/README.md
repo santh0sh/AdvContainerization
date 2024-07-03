@@ -600,3 +600,14 @@ Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/30d2e524-363d-4a74-8ad4-1f45c47ff9d2)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/a6fed2b6-a956-4117-9c6b-e727098ae1fc)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/3feacb8e-422d-4ec0-ac3f-872a6ab6f43c)
+
+Once you are done with this exercise, you may clean up all the resources that were created in this exercises
+```
+cd ~/openshift-july-2024
+git pull
+cd Day3/persistent-volume/mongodb
+./delete-all.sh
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/f16707fa-12c3-411d-98b5-8979ba9c75e0)
