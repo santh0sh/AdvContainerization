@@ -21,3 +21,4 @@ oc get deploy,rs,po
 Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/d49ff98c-6ec1-498e-b7c7-e4099349efc1)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/0bf32ae6-e7b0-40fe-9134-856fc9b32005)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/b69c4922-4f43-4888-ba23-caf84aaadf5f)
