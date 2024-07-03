@@ -566,3 +566,48 @@ Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/9308b92a-b243-454f-86eb-ff2859afff50)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/bb5ff045-eff9-422e-8a2b-abec913077de)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/66dc628b-b28f-479b-b051-7d11b2198ad9)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/73755d8e-2510-41fc-bae3-54396e37f7df)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/aae26661-61ad-4538-9435-9e6b4978949e)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/21c28eee-a98e-4fc7-bf6a-cb5d13d23197)
+
+Once you are done with this exercise, you may clean up all the resources used by this project
+```
+cd ~/openshift-july-2024
+git pull
+cd Day3/persistent-volume/redis
+
+oc delete -f redis-deploy.yml
+oc delete -f redis-pvc.yml
+oc delete -f redis-pv.yml
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/200d2291-3705-4dd7-9e4a-c74e31cdd833)
+
+## Lab - Deploying mongodb using Persistent volume and claim
+```
+cd ~/openshift-july-2024
+git pull
+cd Day3/persistent-volume/mongodb
+./deploy.sh
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/6c0d2f68-6bf1-49f6-b9fe-cace82da6a93)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/d7f65a03-b12f-4382-b92e-4743d7d89a50)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/359274ba-5ee3-4a59-be2d-f1995939890b)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/c4a74a0e-ffb6-46aa-a47c-e84395d6aa2c)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/30d2e524-363d-4a74-8ad4-1f45c47ff9d2)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/a6fed2b6-a956-4117-9c6b-e727098ae1fc)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/3feacb8e-422d-4ec0-ac3f-872a6ab6f43c)
+
+Once you are done with this exercise, you may clean up all the resources that were created in this exercises
+```
+cd ~/openshift-july-2024
+git pull
+cd Day3/persistent-volume/mongodb
+./delete-all.sh
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/f16707fa-12c3-411d-98b5-8979ba9c75e0)
