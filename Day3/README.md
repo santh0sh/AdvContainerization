@@ -463,7 +463,7 @@ Before proceeding with the deployment, you need to customize mysql-pv.yml, mysql
 ```
 cd ~/openshift-july-2024
 git pull
-cd Day3/persistent-volume
+cd Day3/persistent-volume/mysql
 ls -l
 cat mysql-pv.yml
 oc create -f mysql-pv.yml --save-config
@@ -541,3 +541,28 @@ Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/7df6ff62-a20f-4feb-93df-fa75f3849326)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/238164a6-bd16-425b-aaf9-54662024c12e)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/e88112a1-ae4a-48c4-b645-3bda7ecf8d60)
+
+## Lab - Deploying redis database and persist data in a NFS path using Persistent Volume and Claim
+```
+cd ~/openshift-july-2024
+git pull
+cd Day3/persistent-volume/redis
+cat redis-pv.yml
+oc create -f redis-pv.yml
+oc get pv
+
+cat redis-pvc.yml
+oc create -f redis-pvc.yml
+oc get pvc
+
+cat redis-deploy.yml
+oc create -f redis-deploy.yml
+oc get deploy,po
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/fa4d921d-5310-48e0-a641-33691100701a)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/4196c07e-cc2d-4e04-9379-6395af7edc2a)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/9308b92a-b243-454f-86eb-ff2859afff50)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/bb5ff045-eff9-422e-8a2b-abec913077de)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/66dc628b-b28f-479b-b051-7d11b2198ad9)
