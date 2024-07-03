@@ -99,6 +99,14 @@ Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/45cee3ab-0b50-45eb-b756-08a13856863e)
 
 ## Lab - Deploying replicaset without deployment in declarative style
+#### Points to remember
+<pre>
+- Deploying an application directly using replicaset isn't considered a best practice
+- When the top level resource is replicaset, deployment controller will not monitor the replicaset, hence repairing replicaset is not possible
+- Deployment controller is the one which supports rolling update, because now we deployed replicaset without deployment, rolling update isn't possible
+- Hence, for these reasons we should always deploy stateless applications as a Deployment not using replicaset directly
+</pre>
+
 ```
 oc get rs
 oc get rs -o yaml
