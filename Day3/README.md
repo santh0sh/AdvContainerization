@@ -628,3 +628,18 @@ Expected output
 
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/b546d726-44e0-46d4-a6b9-4f1fd292388a)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/04aeea46-6bd9-4bc2-af0a-078e8d150c51)
+
+Once you are done with this exercise, you may cleanup the resources
+```
+oc get all
+oc get pv,pvc
+cd ~/openshift-july-2024
+git pull
+cd Day3/persistent-volume/wordpress
+ls -l
+./delete-all.yml
+```
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/1f510b99-1f69-47ae-b780-c238a02ede3e)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/680fbb67-8f92-4cca-9ae4-b9cce67b2264)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/4689db07-6e8c-4f08-94a2-6e8e808161fa)
