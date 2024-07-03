@@ -438,11 +438,11 @@ Once you updated the mandatory fields, you may click on "Create" button
 <pre>
 - For Persistent volume, we will be using NFS Server
 - NFS Server is already installed in 
-  - 10.10.15.9
+  - 10.10.15.9 (OS1)
     - user01 thru user08
-  - 10.10.15.34 and
+  - 10.10.15.34 (OS2) and
     - user09 to user16
-  - 10.10.15.5 Linux Servers
+  - 10.10.15.5 (OS3) Linux Servers
     - user17 to user22
   
 - For each participants, there will be about five folders
