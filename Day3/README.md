@@ -496,6 +496,7 @@ oc rsh deploy/mysql
 mysql -u root -p
 ```
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/b855099e-6424-4448-b3c0-3cf6f13b7c7d)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/410c6d98-d7d0-42b1-a807-55d488b95460)
 
 Connecting to mysql server using mysql client from mysql pod terminal, when prompted for password type 'root@123' without quotes
 ```
