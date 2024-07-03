@@ -453,3 +453,38 @@ Once you updated the mandatory fields, you may click on "Create" button
   - /var/nfs/user01/redis
   - /var/nfs/user01/mongodb
 </pre>
+
+## Lab - Deploying mysql with Persistent volume and claim
+
+Before proceeding with the deployment, you need to customize mysql-pv.yml, mysql-pvc.yml and mysql-deploy.yml.
+
+```
+cd ~/openshift-july-2024
+git pull
+cd Day3/persistent-volume
+ls -l
+cat mysql-pv.yml
+oc create -f mysql-pv.yml --save-config
+oc get persistentvolumes
+oc get persistentvolume
+oc get pv
+
+cat mysql-pvc.yml
+oc create -f mysql-pvc.yml --save-config
+oc get persistentvolumeclaims
+oc get persistentvolumeclaim
+oc get pvc
+
+cat mysql-deploy.yml
+oc create -f mysql-deploy.yml --save-config
+oc get deploy,rs,po
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/3b4afe0b-3f4f-442f-9b17-d2195a8c1675)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/05040f27-5583-421b-a9f1-bd334d7aaea6)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/c50fbd25-f1e1-4a89-aaf7-fbd0dab5b80c)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/5c277092-a8ee-45b7-be3a-91826c945c99)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/a77eb458-428b-4023-a905-b9857a905eb4)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/f19cec5e-e2bd-4728-b544-a6b877d81e32)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/2834875b-4893-45e7-a829-d4a8f5b6c4ce)
