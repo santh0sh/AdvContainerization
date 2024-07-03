@@ -416,7 +416,9 @@ Once you updated the mandatory fields, you may click on "Create" button
 - it is always created in Cluster scope, hence any application deployed under any project namespace can claim PV and use it
 - Persistent Volume mandatory attributes
   - Size in MiB/GiB/TiB
-  - AccessModes
+  - AccessModes 
+    - ReadWriteOnce ( All Pods from same node can access the PV )
+    - ReadWriteMany ( All Pod from all nodes can access the PV )
   - Server, Path, etc.,
   - StorageClass - Optional
   - Labels - Optional
