@@ -196,3 +196,23 @@ Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/c5309295-5622-4362-9421-1862217b0d1d)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/90e2b0a8-fa60-41c8-8fbb-ee14210a0599)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/35ce7d0f-466d-411f-9f61-c87279d883ac)
+
+Accessing the clusterip internal service using a test pod
+```
+cd ~/openshift-july-2024
+git pull
+cd Day3/declarative-manifest-scripts
+oc get svc
+oc describe svc/nginx
+ls -l
+cat pod.yml
+oc apply -f pod.yml
+oc exec -it mypod sh
+curl http://nginx:8080
+exit
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/64144742-3515-4e8b-bd56-d52ce1688c6b)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/3b498565-faaa-4ed3-b0cd-2d7d872de8bf)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/9e87d94e-615a-4fc9-a50a-81dc9cb52fc1)
