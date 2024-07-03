@@ -286,3 +286,11 @@ Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/c4b3ff74-3722-4031-bff1-270387137689)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/ad477b5f-b6a9-41bc-ac7a-0c01b7abb680)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/60a0ea6b-b89a-4888-9c33-39c5ccac5e8e)
+
+## Info - Rolling update
+<pre>
+- is a way one can upgrade the application which is already deployed in Openshift to latest version without any downtime
+- rolling udpate happens when we update the container image in a deployment
+- for each container image version, the deployment controller creates one instance of ReplicaSet
+- it is also possible to rollback to previous or any specific version in case you found any issue with the latest verion of your application
+</pre>
