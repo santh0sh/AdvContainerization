@@ -294,3 +294,51 @@ Expected output
 - for each container image version, the deployment controller creates one instance of ReplicaSet
 - it is also possible to rollback to previous or any specific version in case you found any issue with the latest verion of your application
 </pre>
+
+## Lab - Rolling update - upgrading nginx image from 1.18 to 1.19
+```
+oc get deploy
+oc get deploy/nginx -o yaml | grep image
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/bfa4afcd-941f-42a6-a04b-bad20a194c65)
+
+<pre>
+- To split the screen horizontal, you need to press Ctrl+B "
+- To navigate from one splitted window to other, Esc Ctrl+B cursor movement keys (up,down,left,right)
+- To split the screen vertically, you need to press Ctrl+B %
+</pre>
+
+
+Let's use tmux to split the terminal
+```
+tmux
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/b7e00d13-960c-4fab-bbd0-7fbbedb850e7)
+
+Let's split the terminal horizonal using Ctrl+B "
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/ed710d75-3dea-42db-8a52-30279bb73891)
+
+Move to the bottom splitted window by pressing Ctrl+B down arrow
+```
+cd ~
+```
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/82f45959-7627-4c9c-b0d5-5f23b0ba1a18)
+
+
+Let's split the bottom window vertically
+```
+Ctrl+B %
+```
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/bf5b999e-f635-49af-adf3-f0d1ada48d33)
+
+Let's upgrade then nginx image version from 1.18 to 1.19
+```
+oc set image deploy/nginx nginx=bitnami/nginx:1.19
+oc get rs
+oc get po -w
+```
+
