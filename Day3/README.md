@@ -37,7 +37,7 @@ We need to update the replicas in the nginx-deploy.yml file from 3 to 5, save it
 ```
 cd ~/openshift-july-2024
 git pull
-cd Day3/declaratives-manifest-scripts
+cd Day3/declarative-manifest-scripts
 cat nginx-deploy.yml
 oc apply -f nginx-deploy.yml
 oc get po -w
@@ -48,3 +48,16 @@ Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/9ddede29-fb30-40db-a5fe-0110e81b9c18)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/0f2bacfc-b244-4aad-914e-ffe11ce529d1)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/c5c6f02a-17d3-4c97-9541-b1fb3edc9b2e)
+
+## Lab - Deleting a deployment in declarative style
+```
+cd ~/openshift-july-2024
+git pull
+cd Day3/declarative-manifest-scripts
+oc get deploy,rs,po
+oc delete -f nginx-deploy.yml
+oc get deploy,rs,po
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/c1328eb4-8566-4a60-a6d6-0f0874dae532)
