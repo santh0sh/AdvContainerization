@@ -584,4 +584,19 @@ oc delete -f redis-pv.yml
 Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/200d2291-3705-4dd7-9e4a-c74e31cdd833)
 
+## Lab - Deploying mongodb using Persistent volume and claim
+```
+cd ~/openshift-july-2024
+git pull
+cd Day3/persistent-volume/mongodb
+./deploy.sh
+```
 
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/6c0d2f68-6bf1-49f6-b9fe-cace82da6a93)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/d7f65a03-b12f-4382-b92e-4743d7d89a50)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/359274ba-5ee3-4a59-be2d-f1995939890b)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/c4a74a0e-ffb6-46aa-a47c-e84395d6aa2c)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/30d2e524-363d-4a74-8ad4-1f45c47ff9d2)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/a6fed2b6-a956-4117-9c6b-e727098ae1fc)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/3feacb8e-422d-4ec0-ac3f-872a6ab6f43c)
