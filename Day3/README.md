@@ -144,6 +144,15 @@ Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/badd7300-3c1e-432a-882b-b410d942bc0c)
 
 ## Lab - Deploying a pod directly without replicaset/depoyment in declarative style
+#### Points to note
+<pre>
+- Creating a Pod directly without replicaset & deployment is a bad practice
+- As there is no ReplicaSet, ReplicaSet controller will not support scale up/down and healing of pod is also not possible
+- As there is no Deployment, Deployment Controller will not support rolling update
+- One genuine usecase for creating a Pod is for testing purpose
+- With a test pod we can check if the service discovery is working
+</pre>
+
 ```
 cd ~/openshift-july-2024
 git pull
