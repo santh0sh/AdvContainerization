@@ -488,3 +488,22 @@ Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/a77eb458-428b-4023-a905-b9857a905eb4)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/f19cec5e-e2bd-4728-b544-a6b877d81e32)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/2834875b-4893-45e7-a829-d4a8f5b6c4ce)
+
+Connecting to mysql server using mysql client from mysql pod terminal, when prompted for password type 'root@123' without quotes
+```
+mysql -u root -p
+SHOW DATABASES;
+CREATE DATABASE tektutor;
+USE tektutor;
+CREATE TABLE TRAINING ( id INT NOT NULL, name VARCHAR(250) NOT NULL, duration VARCHAR(250) NOT NULL, PRIMARY KEY(id) );
+DESCRIBE TABLE training;
+INSERT INTO TRAINING VALUES (1, "DevOPs", "5 Days");
+SELECT * FROM TRAINING;
+exit
+exit
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/f68d6a2d-09a9-4384-bb37-86f7cd3b4559)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/ce2da587-f35b-49da-aed7-79b1578bd760)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/816c24de-db8e-442a-83a2-e5231554ec52)
