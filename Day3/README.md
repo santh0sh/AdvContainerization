@@ -178,6 +178,7 @@ oc get deploy,rs,po
 ```
 Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/c954c2de-b86c-450a-831f-865044026e7f)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/0d6420eb-44fd-4ee6-896a-cccae0fc8d3c)
 
 Let's create a clusterip internal service
 ```
@@ -191,3 +192,7 @@ oc describe svc/nginx
 Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/64d049c9-7c61-4a53-aa4d-eea8bec55b4c)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/77bae339-46c0-42c0-a6f3-1e0ae8431256)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/9faba10b-1734-496f-b7bf-18a6df768407)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/c5309295-5622-4362-9421-1862217b0d1d)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/90e2b0a8-fa60-41c8-8fbb-ee14210a0599)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/35ce7d0f-466d-411f-9f61-c87279d883ac)
