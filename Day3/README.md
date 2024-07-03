@@ -529,3 +529,4 @@ Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/4c53067c-1060-4a38-a5cc-34059b15e439)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/7df6ff62-a20f-4feb-93df-fa75f3849326)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/238164a6-bd16-425b-aaf9-54662024c12e)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/e88112a1-ae4a-48c4-b645-3bda7ecf8d60)
