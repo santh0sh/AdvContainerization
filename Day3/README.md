@@ -404,3 +404,32 @@ You need to edit name to nginx, app under label to nginx, container name to ngin
 Once you updated the mandatory fields, you may click on "Create" button
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/a1a4278d-cc0b-4bd2-8783-132e20cff319)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/01b6a3e8-fad4-4502-aef8-46e00c82aafb)
+
+## Info - Persistent Volume Overview
+<pre>
+- is an external storage which is used to persistent the data permanently
+- though Pod container's can use its internal storage, we will the lose once the Pod is deleted
+- if we need data to persisted beyond life-time of the Pod, we need to use Persistent volumes
+- Persistent volume are created by OpenShift Administrator
+- Persistent can be provisioned either manually or dynamically using Storage Class
+- Persistent Storage can be provisioned using NFS, AWS,Azure, GCP, etc.,
+- it is always created in Cluster scope, hence any application deployed under any project namespace can claim PV and use it
+- Persistent Volume mandatory attributes
+  - Size in MiB/GiB/TiB
+  - AccessModes
+  - Server, Path, etc.,
+  - StorageClass - Optional
+  - Labels - Optional
+</pre>
+
+## Info - Persistent Volume Claim Overview
+<pre>
+- any application that needs Persistent Volume external storage has to request for it by defining the requirement in the form of Persistent Volume Claim(PVC)
+- Persistent volume claim attributes
+  - Size in MiB/GiB/TiB
+  - AccessMode
+  - StorageClass ( optional )
+  - Labels (optional)
+- the storage controller will search for a matching Persistent Volume as per the PVC attributes
+- if storage controller is not able to find a matching PV, then the PVC will be in Pending state, the Pod that depends on this PVC will also be in Pending state
+</pre>
