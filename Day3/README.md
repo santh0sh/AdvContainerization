@@ -433,3 +433,23 @@ Once you updated the mandatory fields, you may click on "Create" button
 - the storage controller will search for a matching Persistent Volume as per the PVC attributes
 - if storage controller is not able to find a matching PV, then the PVC will be in Pending state, the Pod that depends on this PVC will also be in Pending state
 </pre>
+
+## Info - NFS Shared Folder
+<pre>
+- For Persistent volume, we will be using NFS Server
+- NFS Server is already installed in 
+  - 10.10.15.9
+    - user01 thru user08
+  - 10.10.15.34 and
+    - user09 to user16
+  - 10.10.15.5 Linux Servers
+    - user17 to user22
+  
+- For each participants, there will be about five folders
+  For user01
+  - /var/nfs/user01/mariadb
+  - /var/nfs/user01/mysql
+  - /var/nfs/user01/wordpress
+  - /var/nfs/user01/redis
+  - /var/nfs/user01/mongodb
+</pre>
