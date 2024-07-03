@@ -97,3 +97,42 @@ oc get deploy,rs,po
 
 Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/45cee3ab-0b50-45eb-b756-08a13856863e)
+
+## Lab - Deploying replicaset without deployment in declarative style
+```
+oc get rs
+oc get rs -o yaml
+oc get rs -o json
+oc get rs/nginx-566b5879cb -o yaml
+oc get rs -o yaml > nginx-rs.yml
+cat nginx-rs.yml
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/d593245c-121a-4d4b-8f9e-5fc5fb4acfe4)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/85ef963e-e91b-4255-990a-5c24c2dbe366)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/13513404-e612-48cc-994d-69f58e19d68a)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/a2fb08c3-a475-444a-a0fd-88bf4d9547ee)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/453c14d3-8c89-492c-bdb6-ba9eae17adb7)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/6080a673-5a71-42c7-ae22-c2588865a0d7)
+
+Let's delete the existing deployment
+```
+oc delete -f nginx-deploy.yml
+oc get deploy,rs,po
+cat nginx-rs.yml
+```
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/b5c238b1-b066-4fde-ad2f-ba48fa443dab)
+
+
+Let's now create the replicaset without deployment in declarative style
+```
+oc create -f nginx-rs.yml --save-config
+oc get deploy,rs,po
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/badd7300-3c1e-432a-882b-b410d942bc0c)
+
+
