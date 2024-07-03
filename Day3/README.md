@@ -611,3 +611,19 @@ cd Day3/persistent-volume/mongodb
 
 Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/f16707fa-12c3-411d-98b5-8979ba9c75e0)
+
+## Lab - Deploying a multipod application with Persistent volume and claim ( Wordpress and Mariadb )
+```
+cd ~/openshift-july-2024
+git pull
+cd Day3/persistent-volume/wordpress
+./deploy.sh
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/9964251b-e43c-4619-a985-e3e7543c5d93)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/655f4712-5aee-4207-ae82-a08d6762a14e)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/069f6927-d714-45c8-a60b-44e4d6afc74c)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/e4ef0d7e-4b0a-48fe-94cd-e4f9fbf90e4d)
+
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/b546d726-44e0-46d4-a6b9-4f1fd292388a)
