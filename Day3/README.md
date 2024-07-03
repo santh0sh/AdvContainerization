@@ -511,3 +511,21 @@ Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/ce2da587-f35b-49da-aed7-79b1578bd760)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/816c24de-db8e-442a-83a2-e5231554ec52)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/bdee9f5e-1de9-4570-8130-30385dc41378)
+
+Delete the mysql pod from openshift webconsole and observe a new mysql pod will be created automatically.
+
+Now, get inside the mysql pod terminal and try the below to see if the database and records are safe
+```
+mysql -u root -p
+SHOW DATABASES;
+USE tektutor;
+SHOW TABLES;
+SELECT * FROM training;
+exit
+exit
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/4c53067c-1060-4a38-a5cc-34059b15e439)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/7df6ff62-a20f-4feb-93df-fa75f3849326)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/238164a6-bd16-425b-aaf9-54662024c12e)
