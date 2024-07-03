@@ -261,3 +261,28 @@ exit
 
 Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/9075f180-88d6-483c-b948-a8880016276b)
+
+
+## Lab - Creating a loadbalancer service for nginx deployment in declarative style
+Let's delete the existing nodeport service
+```
+cd ~/openshift-july-2024
+git pull
+cd Day3/declarative-manifest-scripts
+oc delete -f nginx-nodeport-svc.yml
+```
+
+Let's create the lb service in declarative style
+```
+oc get deploy,po
+oc expose deploy/nginx --type=LoadBalancer --port=8080 -o yaml --dry-run=client
+oc expose deploy/nginx --type=LoadBalancer --port=8080 -o yaml --dry-run=client > nginx-lb-svc.yml
+oc create -f nginx-lb-svc.yml
+oc get svc
+oc describe svc/nginx
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/c4b3ff74-3722-4031-bff1-270387137689)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/ad477b5f-b6a9-41bc-ac7a-0c01b7abb680)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/60a0ea6b-b89a-4888-9c33-39c5ccac5e8e)
