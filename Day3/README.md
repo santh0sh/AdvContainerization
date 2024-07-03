@@ -286,3 +286,205 @@ Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/c4b3ff74-3722-4031-bff1-270387137689)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/ad477b5f-b6a9-41bc-ac7a-0c01b7abb680)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/60a0ea6b-b89a-4888-9c33-39c5ccac5e8e)
+
+## Info - Rolling update
+<pre>
+- is a way one can upgrade the application which is already deployed in Openshift to latest version without any downtime
+- rolling udpate happens when we update the container image in a deployment
+- for each container image version, the deployment controller creates one instance of ReplicaSet
+- it is also possible to rollback to previous or any specific version in case you found any issue with the latest verion of your application
+</pre>
+
+## Lab - Rolling update - upgrading nginx image from 1.18 to 1.19
+```
+oc get deploy
+oc get deploy/nginx -o yaml | grep image
+oc get po
+oc get po/nginx-566b5879cb-9zgck -o yaml | grep image
+oc get rs
+oc get rs/nginx-566b5879cb -o yaml | grep image
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/0c080837-0cf6-4229-8a9c-d09d3609b6b4)
+
+<pre>
+- To split the screen horizontal, you need to press Ctrl+B "
+- To navigate from one splitted window to other, Esc Ctrl+B cursor movement keys (up,down,left,right)
+- To split the screen vertically, you need to press Ctrl+B %
+</pre>
+
+
+Let's use tmux to split the terminal
+```
+tmux
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/cbe2c284-fd98-4ab2-a48b-50c94a05aab9)
+
+Let's split the terminal horizonal using Ctrl+B "
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/0585aa78-1805-4f52-8279-53766c32febc)
+
+Move to the bottom splitted window by pressing Ctrl+B down arrow
+```
+cd ~
+clear
+```
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/24e2923b-45ad-4d8d-93e6-bbcf505e62c4)
+
+
+Let's split the bottom window vertically
+```
+Ctrl+B %
+cd ~
+clear
+```
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/72277644-3946-47c5-99fc-99943212f9ae)
+
+In the bottom left window, run the below command 
+```
+oc get rs -w
+```
+In the bottom right window, run the below command
+```
+oc get po -w
+```
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/5812ef3b-e2ce-4572-b434-b75234924a8f)
+
+
+Let's upgrade then nginx image version from 1.18 to 1.19 from the top window
+```
+oc set image deploy/nginx nginx=bitnami/nginx:1.19
+oc get deploy/nginx -o yaml | grep image
+oc get rs
+oc get rs/nginx-566b5879cb -o yaml | grep image
+oc get rs/nginx-6b49c75d9 -o yaml | grep image
+```
+
+Checking the rollout status and history
+```
+oc rollout status deploy/nginx
+oc rollout history deploy/nginx
+```
+
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/49a266d7-1417-4860-97ef-765912a1f293)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/773f66b1-ff3d-46c5-b176-1a12e9ee5916)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/c8d0e774-d859-4793-803e-25f26bfcc0d2)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/4181f09f-1af7-42c0-975f-78ba7eefef27)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/919d7800-3191-4ad7-b032-4bf06d837a1d)
+
+If you wish to go back to older version, you may rollback ( practical usecase if newly deployed version unstable)
+```
+oc rollout undo deploy/nginx
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/6f606c74-8778-47fd-b31e-31f05b8ce998)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/b53a3cf0-37f9-4bae-95bc-8f2a47ebceee)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/a7ab4ed6-a68c-4c24-b670-a0e9c9fb882b)
+
+## Lab - Deploying application in declarative style from Openshift webconsole
+Go to Developer context in Openshift webconsole on your web browser
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/91fc7858-4e50-40b0-a3ac-914844a28ef2)
+Click Search
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/35d167a6-d5e8-413b-9a51-d4e9e41188f8)
+Search for "Deployment"
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/9bb11bcb-7a5e-4445-9e2a-3508f9553472)
+Click Create Deployment button
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/518168eb-c324-4084-b25a-8e0eec87e70f)
+
+You need to edit name to nginx, app under label to nginx, container name to nginx, image to bitnami/nginx:latest
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/e69bbb7a-4152-4846-8287-4374b07d5580)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/aa759a3c-7e8c-4b61-a1f0-8ec9504eac7a)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/49a84bfe-6f81-4d33-8952-bcbab61f8157)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/0b0a213a-e466-4a69-9760-44b8b433ddde)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/5f33de83-3597-4f8e-aa23-494222760136)
+
+Once you updated the mandatory fields, you may click on "Create" button
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/a1a4278d-cc0b-4bd2-8783-132e20cff319)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/01b6a3e8-fad4-4502-aef8-46e00c82aafb)
+
+## Info - Persistent Volume Overview
+<pre>
+- is an external storage which is used to persistent the data permanently
+- though Pod container's can use its internal storage, we will the lose once the Pod is deleted
+- if we need data to persisted beyond life-time of the Pod, we need to use Persistent volumes
+- Persistent volume are created by OpenShift Administrator
+- Persistent can be provisioned either manually or dynamically using Storage Class
+- Persistent Storage can be provisioned using NFS, AWS,Azure, GCP, etc.,
+- it is always created in Cluster scope, hence any application deployed under any project namespace can claim PV and use it
+- Persistent Volume mandatory attributes
+  - Size in MiB/GiB/TiB
+  - AccessModes
+  - Server, Path, etc.,
+  - StorageClass - Optional
+  - Labels - Optional
+</pre>
+
+## Info - Persistent Volume Claim Overview
+<pre>
+- any application that needs Persistent Volume external storage has to request for it by defining the requirement in the form of Persistent Volume Claim(PVC)
+- Persistent volume claim attributes
+  - Size in MiB/GiB/TiB
+  - AccessMode
+  - StorageClass ( optional )
+  - Labels (optional)
+- the storage controller will search for a matching Persistent Volume as per the PVC attributes
+- if storage controller is not able to find a matching PV, then the PVC will be in Pending state, the Pod that depends on this PVC will also be in Pending state
+</pre>
+
+## Info - NFS Shared Folder
+<pre>
+- For Persistent volume, we will be using NFS Server
+- NFS Server is already installed in 
+  - 10.10.15.9 (OS1)
+    - user01 thru user08
+  - 10.10.15.34 (OS2) and
+    - user09 to user16
+  - 10.10.15.5 (OS3) Linux Servers
+    - user17 to user22
+  
+- For each participants, there will be about five folders
+  For user01
+  - /var/nfs/user01/mariadb
+  - /var/nfs/user01/mysql
+  - /var/nfs/user01/wordpress
+  - /var/nfs/user01/redis
+  - /var/nfs/user01/mongodb
+</pre>
+
+## Lab - Deploying mysql with Persistent volume and claim
+
+Before proceeding with the deployment, you need to customize mysql-pv.yml, mysql-pvc.yml and mysql-deploy.yml.
+
+```
+cd ~/openshift-july-2024
+git pull
+cd Day3/persistent-volume
+ls -l
+cat mysql-pv.yml
+oc create -f mysql-pv.yml --save-config
+oc get persistentvolumes
+oc get persistentvolume
+oc get pv
+
+cat mysql-pvc.yml
+oc create -f mysql-pvc.yml --save-config
+oc get persistentvolumeclaims
+oc get persistentvolumeclaim
+oc get pvc
+
+cat mysql-deploy.yml
+oc create -f mysql-deploy.yml --save-config
+oc get deploy,rs,po
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/3b4afe0b-3f4f-442f-9b17-d2195a8c1675)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/05040f27-5583-421b-a9f1-bd334d7aaea6)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/c50fbd25-f1e1-4a89-aaf7-fbd0dab5b80c)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/5c277092-a8ee-45b7-be3a-91826c945c99)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/a77eb458-428b-4023-a905-b9857a905eb4)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/f19cec5e-e2bd-4728-b544-a6b877d81e32)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/2834875b-4893-45e7-a829-d4a8f5b6c4ce)
