@@ -399,4 +399,7 @@ Click on "Continue" button
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/dee09b4f-bd27-4d5b-b0c2-e0001dc59e5a)
 
 Select "Docker client", keep saving all the instructions it shows in a text file for your tomorrow's lab exercises.
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/a42b3179-0d1a-4538-9e48-4cd069bedbe2)
+
+Click on "Generate"
 
