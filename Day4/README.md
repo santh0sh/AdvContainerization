@@ -294,3 +294,20 @@ All Service, search for "NodeJS" and select "NodeJS+Postgresql Ephermeral"
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/c7d3ff96-acd6-45e0-aed3-495af1942785)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/599d1843-8994-4f6f-882e-270cfc027ba4)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/5e5cb8e9-d39d-4d0d-9adc-c89c57f6a447)
+
+## Lab - Deploying angular application into openshift using S2I docker strategy
+```
+oc new-app --name=angular https://github.com/tektutor/openshift-july-2024.git --context-dir=Day4/angular/Angular-openshift-example --strategy=docker
+```
+
+To check the build logs
+```
+oc logs -f buildconfig/angular
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/6ceff96c-9275-4143-856c-3617808e755a)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/e44c58ea-89d0-438c-9d20-8e930763febe)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/320953ff-6dc7-46bb-b78e-72a55453a749)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/6f7766a2-e744-419d-a285-b779a01a195c)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/7cf00c49-4bd0-433f-9185-1051d3ef95a1)
