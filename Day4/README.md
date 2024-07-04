@@ -387,3 +387,16 @@ Select "Pre-built setup"
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/f6644253-0fc6-4b6a-ba27-f1669294011c)
 
 Select "Docker"
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/e5343581-10fd-4ede-8a91-73781c4f449a)
+
+Type your name
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/d402c9d0-5e0e-454c-a3dd-4e1c00844c87)
+
+Click on "Create" button
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/5ca96454-b198-4b3f-bb57-2d687aadf947)
+
+Click on "Continue" button
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/dee09b4f-bd27-4d5b-b0c2-e0001dc59e5a)
+
+Select "Docker client", keep saving all the instructions it shows in a text file for your tomorrow's lab exercises.
+
