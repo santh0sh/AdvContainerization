@@ -83,3 +83,5 @@ oc logs -f
 
 Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/d3ba1903-b5e3-470a-b87e-a72ec846c089)
+
+
