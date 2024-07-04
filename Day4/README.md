@@ -132,3 +132,13 @@ Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/fb388d21-1a4d-4c39-9548-fef22e426930)
 
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/be5868c2-7b01-4627-a2a7-e7af72407128)
+
+
+Once you are done with this exercise, you can uninstall wordpress using helm package manager tool
+```
+helm list
+helm uninstall wordpress
+```
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/9d76d9f5-b940-4080-8274-1e04736da11f)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/fd4a1672-b649-4a05-86e3-6c9b28a51c38)
