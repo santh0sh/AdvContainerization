@@ -83,3 +83,44 @@ oc logs -f
 
 Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/d3ba1903-b5e3-470a-b87e-a72ec846c089)
+
+
+## Info - Helm Overview
+<pre>
+- Just like we have package managers in Linux distributions
+  - apt-get in Ubuntu
+  - yum, dnf,rpm in RHEL based Linux distributions
+- Helm is a Package manager to install/uninstall/upgrade applications in Kubernetes/Openshift
+- Helm also depends on the kube config just like the oc and kubectl client tool
+- helm has to be installed just like oc and kubectl
+- instead of we deploying the yaml files in a specific order while deploying and reverse while deleting, we can package all the yaml files in a Helm recommended directory structure and compress as a file.  The compressed file is called Helm chart.
+- Helm charts can then be distributed to your customers, who can install/uninstall/upgrade the complex application using helm
+- Helm charts are also available in the 
+</pre>
+
+## Lab - Creating custom helm chart (package) for wordpress/mariadb multi-pod application
+```
+cd ~/openshift-july-2024
+git pull
+cd Day4/helm
+helm version
+helm create wordpress
+tree wordpress
+cd wordpress/templates
+rm -rf *
+cd ../..
+cp values.yaml wordpress
+cp scripts/*.yml wordpress/templates
+tree wordpress
+helm package wordpress
+ls -l
+oc delete project jegan
+oc new-project jegan
+helm install wordpress wordpress-0.1.0.tgz
+helm list
+oc get deploy,rs,po,svc,route,pv,pvc
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/9710cfaa-ad40-49c9-b8e9-5ba6183533ae)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/fbde22e0-a8a7-4af2-8b78-6255a791c9fc)
