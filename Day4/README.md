@@ -47,6 +47,7 @@
 - Just like StatefulSet, Deployment also support Persistent Volume, so what exactly is the difference between these two?
   - When we deploy database applications as a Deployment with Persistent Volume with multiple Pod replicas, they don't run a cluster of databases
   - But StatefulSet has an option to create a cluster of databases
+  - Just by deploying an application as a statefulset won't make then run as master and slave, we need to explicitly configure then either via ConfigMap or initContainers, PV/PVC or all of them in combination dependending on the appliction type deployed as Statefulset
   - Each Pod created by StatefulSet controller has an unique Pod identifier, which is also stable
   - the order in which the Pod are started also is guaranteed, assume we are deploying mysql as a statefulset with 3 Pods
     - mysql-0 Pod will be created first
