@@ -124,3 +124,11 @@ oc get deploy,rs,po,svc,route,pv,pvc
 Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/9710cfaa-ad40-49c9-b8e9-5ba6183533ae)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/fbde22e0-a8a7-4af2-8b78-6255a791c9fc)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/17dfc30e-bc4b-47af-9b3b-bf5cc4b4bf9e)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/7518b244-fa54-4485-8279-fa12c17ba234)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/97e6b74a-3fba-4e0a-8951-3eff0d667f91)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/e65c79a4-c82c-4853-9fa0-023bb2f3094b)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/b87bf053-ea19-4d6b-af5a-2c87fdcae7ba)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/fb388d21-1a4d-4c39-9548-fef22e426930)
+
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/be5868c2-7b01-4627-a2a7-e7af72407128)
