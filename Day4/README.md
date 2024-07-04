@@ -338,6 +338,12 @@ We need to sign the public key using the private key and generate a certificate(
 openssl x509 -req -in csr.csr --signkey key.key -out crt.crt
 oc create route edge --service hello --hostname hello-jegan.apps.ocp4.tektutor.org.labs --key key.key --cert crt.crt
 ```
+In the above command, the hello-jegan.apps.ocp4.tektutor.org.labs format is
+<pre>
+hello - is the service name  
+jegan - is the project name
+apps.ocp4.tektutor.org.labs - is the base domain of openshift cluster  
+</pre>
 
 Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/2a531591-3163-4a93-b353-5422b4e88676)
