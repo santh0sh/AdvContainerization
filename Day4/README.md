@@ -345,6 +345,12 @@ jegan - is the project name
 apps.ocp4.tektutor.org.labs - is the base domain of openshift cluster  
 </pre>
 
+List your route
+```
+oc get route
+curl -k https://hello-jegan.apps.ocp4.tektutor.org.labs
+```
+
 Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/2a531591-3163-4a93-b353-5422b4e88676)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/7009f701-b1c1-4c49-8214-9c5708fc3607)
