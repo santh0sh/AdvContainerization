@@ -284,3 +284,13 @@ All Service, search for "NodeJS" and select "NodeJS+Postgresql Ephermeral"
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/8085e02a-a299-41eb-be3f-3fd33818f375)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/8f87501c-6f47-416b-9316-75591287deb2)
 
+## Lab - Deploying Reactjs application
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/74197206-3194-4b1a-832f-0242723ab031)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/0f14cfa7-3c49-415e-8a86-4964be9783c8)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/125764eb-c405-42e0-b373-067a43277f10)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/05906cdb-6203-4076-8d8f-c8d69ac52f08)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/14f99c0e-c1a7-403f-8339-57122b1db782)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/a6bada2f-7e86-4ecb-a4e2-45ff417a8824)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/c7d3ff96-acd6-45e0-aed3-495af1942785)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/599d1843-8994-4f6f-882e-270cfc027ba4)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/5e5cb8e9-d39d-4d0d-9adc-c89c57f6a447)
