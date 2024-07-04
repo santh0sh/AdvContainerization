@@ -270,3 +270,17 @@ Instantiate, accept default, move to bottom and click create button.
 
 To delete the application, right click on the App, click delete
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/5bd4a535-e856-4fb0-abc7-dea4f47cec44)
+
+## Lab - Deploying Nodejs multi-pod application
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/d395b150-53f6-4398-bfe2-4a39127fdf0c)
+All Service, search for "NodeJS" and select "NodeJS+Postgresql Ephermeral"
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/879ebc42-8354-4b88-b1fe-1e767cf7130c)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/216a037a-05f0-4229-975d-ab4427060322)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/1b1d7709-0df9-401d-9b99-081fbd3ae371)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/47ddc514-a338-48e8-add7-cc21d4fb0c81)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/680b3126-4c62-49c3-a37f-2741234d679b)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/05649d2b-148a-4111-b6eb-e78851bff5dc)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/820d3fe6-1048-4039-9e8d-0e88d177f6fb)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/8085e02a-a299-41eb-be3f-3fd33818f375)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/8f87501c-6f47-416b-9316-75591287deb2)
+
