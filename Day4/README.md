@@ -401,5 +401,23 @@ Click on "Continue" button
 Select "Docker client", keep saving all the instructions it shows in a text file for your tomorrow's lab exercises.
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/a42b3179-0d1a-4538-9e48-4cd069bedbe2)
 
-Click on "Generate"
+Click on "Generate", save the token generated in the text file
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/fea4e603-156c-436b-b865-503fbc2111b8)
+
+We need to execute the commands in the linux terminal
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/1213ab22-f15c-456c-bdb2-8610f030e613)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/5101c71d-5e4e-4054-b412-a39a79682d60)
+
+Click "Next" button, copy the instruction in the text file and execute the command in the terminal
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/a484db35-752b-42b4-935a-f45ab249ab6c)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/400cfdde-5098-411a-922e-ea4f16bad5cc)
+
+Click "Next" button, save the instructions in the text file and execute the command shown in the screen on the terminal
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/2ed2c3d7-0f8d-4d8d-8a75-4f6761a23c77)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/8f31d049-2ba5-4220-bf29-de5ca5e581fa)
+
+Click "done" button
+Now you should be able to see the hello-world docker image you pushed from your local machine in the JFrog Artifactory cloud environment.
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/5ca60f1b-577b-48a8-8963-96facb48e16e)
+
 
