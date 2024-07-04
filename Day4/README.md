@@ -39,3 +39,17 @@
   - One kube-proxy Pod runs in every node, this could be deployed as a DaemonSet
   - DNS - which helps in Service Discovery has one Pod running in every node.  This is necessary to resolve the service name to its respective service IP on every node level.  This could be a DaemonSet.
 </pre>
+
+## Info - StatefulSet
+<pre>
+- Initially when Kubernetes was released it was supporting only Stateless applications, which is supported by Deployment
+- Later, they saw a need for some Controller that also supports deploying Stateful applications like Databases
+- Just like StatefulSet, Deployment also support Persistent Volume, so what exactly is the difference between these two?
+  - When we deploy database applications as a Deployment with Persistent Volume with multiple Pod replicas, they don't run a cluster of databases
+  - But StatefulSet has an option to create a cluster of databases
+  - Each Pod created by StatefulSet controller has an unique Pod identifier, which is also stable
+  - the order in which the Pod are started also is guaranteed, assume we are deploying mysql as a statefulset with 3 Pods
+    - mysql-0 Pod will be created first
+    - mysql-1 Pod will only be created after the mysql-0 Pod starts running
+    - mysql-2 Pod will only be created after the mysql-1 Pod starts running
+</pre>
