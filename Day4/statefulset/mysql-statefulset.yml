@@ -67,8 +67,8 @@ spec:
       - name: mysql
         image: mysql:5.7
         env:
-        - name: MYSQL_ALLOW_EMPTY_PASSWORD
-          value: "1"
+        - name: MYSQL_ROOT_PASSWORD
+          value: "root@123"
         ports:
         - name: mysql
           containerPort: 3306
@@ -91,7 +91,7 @@ spec:
         readinessProbe:
           exec:
             # Check we can execute queries over TCP (skip-networking is off).
-            command: ["mysql", "-h", "127.0.0.1", "-e", "SELECT 1"]
+            command: ["mysql", "-h", "127.0.0.1","-u","root", "-proot@123", "-e", "SELECT 1"]
           initialDelaySeconds: 5
           periodSeconds: 2
           timeoutSeconds: 1
@@ -129,7 +129,7 @@ spec:
                   -e "$(<change_master_to.sql.in), \
                           MASTER_HOST='mysql-0.mysql', \
                           MASTER_USER='root', \
-                          MASTER_PASSWORD='', \
+                          MASTER_PASSWORD='root@123', \
                           MASTER_CONNECT_RETRY=10; \
                         START SLAVE;" || exit 1
             # In case of container restart, attempt this at-most-once.
@@ -137,7 +137,7 @@ spec:
           fi
           # Start a server to send backups when requested by peers.
           exec ncat --listen --keep-open --send-only --max-conns=1 3307 -c \
-            "xtrabackup --backup --slave-info --stream=xbstream --host=127.0.0.1 --user=root"
+            "xtrabackup --backup --slave-info --stream=xbstream --host=127.0.0.1 --user=root --passsword=root@123"
         volumeMounts:
         - name: data
           mountPath: /var/lib/mysql
@@ -161,4 +161,4 @@ spec:
       accessModes: ["ReadWriteOnce"]
       resources:
         requests:
-          storage: 10Gi
+          storage: 1Gi

@@ -1,0 +1,16 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: cron-job
+spec:
+  schedule: "15 13 * * *"
+  timeZone: "Asia/Calcutta"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: my-cron-container
+            image: alpine:latest
+            command: ["sh","-c", "echo 'Lunch break - we will resume by 2 pm"]
+          restartPolicy: OnFailure

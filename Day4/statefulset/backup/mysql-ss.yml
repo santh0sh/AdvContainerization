@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: StatefulSet 
+metadata:
+  labels:
+    app: mysql
+  name: mysql
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+      - image: bitnami/mysql:latest
+        name: mysql
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: root@123
