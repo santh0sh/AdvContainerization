@@ -383,3 +383,7 @@ On the left side menus, select "Repositories"
 On top right corner, click "Create Repository"
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/4ffa5a6d-be1a-4d1c-8758-c1ac7b029710)
 
+Select "Pre-built setup"
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/f6644253-0fc6-4b6a-ba27-f1669294011c)
+
+Select "Docker"
