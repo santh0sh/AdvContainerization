@@ -311,3 +311,34 @@ Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/320953ff-6dc7-46bb-b78e-72a55453a749)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/6f7766a2-e744-419d-a285-b779a01a195c)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/7cf00c49-4bd0-433f-9185-1051d3ef95a1)
+
+## Lab - Creating an edge route
+```
+oc delete project jegan
+oc new-project jegan
+oc new-app --name=hello --image=tektutor/spring-ms:1.0 --replicas=3
+```
+
+Find you base domain of your openshift cluster
+```
+oc get ingresses.config/cluster -o jsonpath={.spec.domain}
+```
+We need to create a private key with openssl
+```
+openssl genrsa -out key.key
+```
+
+We need to create a public key using the private key with your openshift cluster domain
+```
+openssl req -new -key key.key -out csr.csr -subj="/CN=hello-jegan.apps.ocp4.tektutor.org.labs"
+```
+
+We need to sign the public key using the private key and generate a certificate(.crt)
+```
+openssl x509 -req -in csr.csr --signkey key.key -out crt.crt
+oc create route edge --service hello --hostname hello-jegan.apps.ocp4.tektutor.org.labs --key key.key --cert crt.crt
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/2a531591-3163-4a93-b353-5422b4e88676)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/7009f701-b1c1-4c49-8214-9c5708fc3607)
