@@ -373,4 +373,3 @@ You need to create a trial JFrog Artifactory (14-days Cloud Trial) @ https://jfr
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/3e9595ab-8885-4b4b-a5d4-35272bc79c2f)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/0942d7bd-6e17-4d40-ba88-3b5b43ada3d2)
 
-You could choose AWS ( they use their own cloud account, hence no charges are applicable to us - I didn't give my mobile number )
