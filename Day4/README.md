@@ -374,3 +374,9 @@ You could choose AWS ( they use their own cloud account, hence no charges are ap
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/3e9595ab-8885-4b4b-a5d4-35272bc79c2f)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/0942d7bd-6e17-4d40-ba88-3b5b43ada3d2)
 
+Switch to Administration Tab
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/e687a509-a03b-408d-bac5-5a8f27457871)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/de9667c2-6433-4731-8dc7-3d62fe3cd942)
+On the left side menus, select "Repositories"
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/9556fad0-1901-4ff5-b541-95735406f2a5)
+
