@@ -354,3 +354,23 @@ curl -k https://hello-jegan.apps.ocp4.tektutor.org.labs
 Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/2a531591-3163-4a93-b353-5422b4e88676)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/7009f701-b1c1-4c49-8214-9c5708fc3607)
+
+## Lab - Creating a JFrog Artifactory - 14 days cloud trial
+You need to create a trial JFrog Artifactory (14-days Cloud Trial) @ https://jfrog.com/start-free/#trialOptions with your personal gmail account(No credit cards required)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/23067ed4-8730-4b19-a7cd-f5120be725f9)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/5e749f6a-bfe4-4b18-ae47-b22356d2597c)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/c3690e95-e1e2-4abd-8a82-d14a8ee9627c)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/7bf4c549-742e-4e49-96ed-80e7ad60a729)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/1bbd526c-0a43-4e2f-979b-ad4e66f476e5)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/1801c872-dba1-4964-9bd0-a2e301215c81)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/c20a39b8-ff9b-4973-854c-7fedfede55a0)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/1b0cbce6-47f3-42c0-a7f0-72e04c6ba77e)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/30991201-be17-47ee-acae-84f1b319d32a)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/b34cc93a-d875-4535-86a7-78d82a7e69fc)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/bc7591bb-022e-406e-8de6-f3322b7a1deb)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/41ce245c-9cf0-4930-b2ec-c400716a701e)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/b03184c3-173c-4b31-bc32-d81c2b84e8d4)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/3e9595ab-8885-4b4b-a5d4-35272bc79c2f)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/0942d7bd-6e17-4d40-ba88-3b5b43ada3d2)
+
+You could choose AWS ( they use their own cloud account, hence no charges are applicable to us - I didn't give my mobile number )
