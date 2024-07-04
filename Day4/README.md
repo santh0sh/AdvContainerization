@@ -172,3 +172,12 @@ Click on "Delete application"
 Type "sample-app" and click on Delete
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/5966014a-b551-489c-9c5e-5a9bdd43192d)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/ac5c1f7d-280e-4150-871c-38839da29c00)
+
+## Lab - Deploying .Net application from Openshift web console using Developer context
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/ba0614d5-ed28-4395-a37b-7bdefe83e86d)
+Click on +Add
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/b00a060f-e34d-4ec0-b36d-8eb19b2bd455)
+Under Getting Started resources, click on "view all samples"
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/f8f0177b-5fd5-4e17-8cb3-8471caf1ea1c)
+Click on "Basic .Net"
+
