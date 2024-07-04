@@ -63,10 +63,12 @@ cd Day4/job
 oc create -f job.yml --save-config
 oc get jobs
 oc get po 
-oc logs -f hello-job-lbh6d 
+oc logs -f hello-job-55j85 
 ```
 
 Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/dbdb2716-b724-4483-975c-bd23625f0cf0)
+
 
 ## Lab - Scheduling  a recurring job that runs at a specific time
 ```
@@ -80,3 +82,4 @@ oc logs -f
 ```
 
 Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/d3ba1903-b5e3-470a-b87e-a72ec846c089)
