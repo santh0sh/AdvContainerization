@@ -142,3 +142,24 @@ helm uninstall wordpress
 Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/9d76d9f5-b940-4080-8274-1e04736da11f)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/fd4a1672-b649-4a05-86e3-6c9b28a51c38)
+
+## Lab - Deploying Java - Springboot application from Openshift web console
+Open the Openshift webconsole --> Developer context
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/fdf153d9-d6ba-40a2-883e-7b469d7c0e26)
+Click on +Add
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/f6d537c5-4feb-43e9-bc5a-fac079676ac0)
+Under Getting started resources, click "View all sample"
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/4c66de6f-5f87-4052-9ed8-35920291f0cd)
+Select "Basic Spring Boot"
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/fb0c1428-2112-4f5e-ba05-cc49416e15e6)
+Click on "Create" button
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/1fa8c5a9-ef1d-4571-bf6d-81b4b625c1a1)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/efbcc46f-deca-4d0a-8d1c-6b1d0fba74e6)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/ac27b913-0be4-471d-b247-4b0d48c7a01d)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/7f5c55da-9246-46af-98ca-d78e267293cd)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/687d06b7-4fff-4136-b79d-050c8c2ceed7)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/ed05338d-0366-4b7c-8f45-30b00a0a0a56)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/52ea7420-49ee-456a-92fa-ce4008bb2659)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/0b875948-ee98-4667-b212-d3f9de4c425f)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/97df8183-60b3-4600-9a0c-96cda6858124)
+
