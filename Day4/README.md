@@ -229,3 +229,23 @@ To Delete the application, right click on the application in the Topology View o
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/4e3ff796-aef3-4046-9ff0-5c82ae9b7aee)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/35876d1f-368d-4ab0-a1dc-98baf158d390)
 
+## Lab - Deploying Quarkus application from Develop Context in Openshift webconsole
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/2d807b24-55e6-4d48-b146-29741a58b48a)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/049ea956-7fd9-4fde-b913-f15f909a4d43)
+Select "Basic Quarkus"
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/f1a14698-8e49-4e70-a1f1-72f37543ca67)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/ce735df1-b477-40f8-8bdb-601f8786d8dc)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/24ab3de5-dcec-4da4-8c52-1463af0967ae)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/7468b91e-b641-4798-b881-5af402888da9)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/079380bb-8304-4278-a779-37afaa5aff86)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/255ebf35-fb3d-4898-8148-f1b6a6674598)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/10ce4525-e918-4405-af9e-1ef636516bc0)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/c2904b40-9c75-4343-b00e-b2d2fa8fdc0f)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/87944a15-b4df-49e5-9912-5a8debb999a0)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/76f82ec0-326e-4788-9381-0d485bd50ed1)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/e2920054-0be0-45f2-bea1-4e7241a6f920)
+
+
+To delete the application
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/94c4e7d6-f151-45a9-8df3-284f3965b7a7)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/16ef942c-82e2-40c5-9320-2b94106a5523)
