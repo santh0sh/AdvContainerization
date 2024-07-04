@@ -63,10 +63,12 @@ cd Day4/job
 oc create -f job.yml --save-config
 oc get jobs
 oc get po 
-oc logs -f hello-job-lbh6d 
+oc logs -f hello-job-55j85 
 ```
 
 Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/dbdb2716-b724-4483-975c-bd23625f0cf0)
+
 
 ## Lab - Scheduling  a recurring job that runs at a specific time
 ```
@@ -80,3 +82,53 @@ oc logs -f
 ```
 
 Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/d3ba1903-b5e3-470a-b87e-a72ec846c089)
+
+
+## Info - Helm Overview
+<pre>
+- Just like we have package managers in Linux distributions
+  - apt-get in Ubuntu
+  - yum, dnf,rpm in RHEL based Linux distributions
+- Helm is a Package manager to install/uninstall/upgrade applications in Kubernetes/Openshift
+- Helm also depends on the kube config just like the oc and kubectl client tool
+- helm has to be installed just like oc and kubectl
+- instead of we deploying the yaml files in a specific order while deploying and reverse while deleting, we can package all the yaml files in a Helm recommended directory structure and compress as a file.  The compressed file is called Helm chart.
+- Helm charts can then be distributed to your customers, who can install/uninstall/upgrade the complex application using helm
+- Helm charts are also available in the 
+</pre>
+
+## Lab - Creating custom helm chart (package) for wordpress/mariadb multi-pod application
+```
+cd ~/openshift-july-2024
+git pull
+cd Day4/helm
+helm version
+helm create wordpress
+tree wordpress
+cd wordpress/templates
+rm -rf *
+cd ../..
+cp values.yaml wordpress
+cp scripts/*.yml wordpress/templates
+tree wordpress
+helm package wordpress
+ls -l
+oc delete project jegan
+oc new-project jegan
+helm install wordpress wordpress-0.1.0.tgz
+helm list
+oc get deploy,rs,po,svc,route,pv,pvc
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/9710cfaa-ad40-49c9-b8e9-5ba6183533ae)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/fbde22e0-a8a7-4af2-8b78-6255a791c9fc)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/17dfc30e-bc4b-47af-9b3b-bf5cc4b4bf9e)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/7518b244-fa54-4485-8279-fa12c17ba234)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/97e6b74a-3fba-4e0a-8951-3eff0d667f91)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/e65c79a4-c82c-4853-9fa0-023bb2f3094b)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/b87bf053-ea19-4d6b-af5a-2c87fdcae7ba)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/fb388d21-1a4d-4c39-9548-fef22e426930)
+
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/be5868c2-7b01-4627-a2a7-e7af72407128)
