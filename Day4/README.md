@@ -421,3 +421,11 @@ Now you should be able to see the hello-world docker image you pushed from your 
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/5ca60f1b-577b-48a8-8963-96facb48e16e)
 
 
+## Request - Kindly create a GitHub account for tomorrow's CI/CD Lab exercise
+<pre>
+- If you already have a GitHub account, you may use your existing account
+- If you don't have one, kindly create a GitHub account
+- You need a GitHub account for couple of reasons
+  1. To fork my Training Repository into your GitHub account for your future references
+  2. To perform CI/CD lab exercise tommorrow
+</pre>
