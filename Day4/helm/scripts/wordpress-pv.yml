@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: wordpress-pv-{{.Values.yourname}}
+  labels:
+    name: {{.Values.yourname}} 
+    app: wordpress
+spec:
+  capacity:
+    storage: {{.Values.wordpress.pvSize}} 
+  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Delete 
+  nfs:
+    server: {{.Values.nfs.serverIP}} 
+    path: {{.Values.wordpress.pvPath}} 

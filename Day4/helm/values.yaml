@@ -1,0 +1,15 @@
+nfs:
+  serverIP: 192.168.1.108
+
+yourname: jegan
+
+wordpress:
+  pvSize: 100Mi
+  pvPath: /var/nfs/jegan/wordpress
+  app: wordpress
+
+mariadb:
+  pvSize: 100Mi
+  pvPath: /var/nfs/jegan/mariadb
+  app: mariadb
+
