@@ -180,4 +180,24 @@ Click on +Add
 Under Getting Started resources, click on "view all samples"
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/f8f0177b-5fd5-4e17-8cb3-8471caf1ea1c)
 Click on "Basic .Net"
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/4528354e-d2c8-480b-a2dc-a5ac247ca551)
+Click on "create" button
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/f6356f32-3e57-44c7-9b28-fb6c6809d327)
+Build Running
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/8a79a91e-5106-475a-b458-8b376b78b94d)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/9176d556-286e-4a94-bd0e-46d25ea56886)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/c31cdcd8-230c-487f-bc9d-8e71b24874d0)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/93fff1e8-b8da-4d92-ab07-0e8ade91b127)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/5fc9769a-eda7-4b98-8d44-720e493b3849)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/9776d659-823d-4d53-9069-33b2b27a6968)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/58097207-c153-4283-b7de-ed9cdedaa6f0)
+
+To delete the application, right on the application in the Topology Graph view
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/b99d41b6-a395-4f01-8066-a953af608320)
+Click on "Delete application"
+Type "sample-app" and click on Delete
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/5978bcd7-781b-4a8f-815e-f1cd6d9d1e05)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/486c1b06-23ed-42ef-a4c2-1f866f2b5c6d)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/4b64d4d4-fb35-442e-9baf-3da8da5b8930)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/07e5ce97-e357-40c3-a5e2-0d01081ca693)
 
