@@ -249,3 +249,24 @@ Select "Basic Quarkus"
 To delete the application
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/94c4e7d6-f151-45a9-8df3-284f3965b7a7)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/16ef942c-82e2-40c5-9320-2b94106a5523)
+
+## Lab - Deploying multi-pod python application
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/1b4f0810-a517-44fd-87a1-b5c2bb7fb653)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/82a5fdb2-7e55-49b6-b052-82fd80f7f1cc)
+All Services
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/c28e6992-b7dc-440d-b107-8c915f4ad82c)
+Search for "Django"
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/2dacb64e-6174-4840-b405-061b9a19b17d)
+Select Ephermeral variant
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/19878913-bdbb-430f-8e93-8bf5b9011045)
+Instantiate, accept default, move to bottom and click create button.
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/7f83d2b8-8fa8-4095-9324-8f70d1094730)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/ca072aed-bb25-462e-91c0-09fd4b298319)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/4a105a4b-c5cf-445e-8611-4025e5c37824)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/bc08d14d-ecdc-4a23-ae6b-b82c651134df)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/28ab2c5f-557e-4a9c-a434-6cf689ff9580)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/08e0b4ad-be9f-4ad2-8275-01b337338a8b)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/65a5b7dc-d8fb-4116-8acc-2e203c855eb8)
+
+To delete the application, right click on the App, click delete
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/5bd4a535-e856-4fb0-abc7-dea4f47cec44)
