@@ -201,3 +201,31 @@ Type "sample-app" and click on Delete
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/4b64d4d4-fb35-442e-9baf-3da8da5b8930)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/07e5ce97-e357-40c3-a5e2-0d01081ca693)
 
+## Lab - Deploying PHP multipod application
+Navigate to Developer context in Openshift webconsole
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/74f9836b-03be-498b-b12e-923238512a23)
+Click +Add
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/5ea99665-e8d5-4141-bdd8-47bece82a279)
+Under Developer Catalog, click on "All Services"
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/72ee28a6-fc6e-481b-99ac-973120e69efa)
+Search for "PHP"
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/624f6e0c-f022-4521-9890-4973530f3dd8)
+Select "CakePHP+Mysql Ephemeral"
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/63e1bfbd-2d22-49e2-9439-e375b7e3a3fc)
+Click "Instantiate Template"
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/2b27254d-403d-4858-8465-d68f64236d0a)
+Accept the defaults, scroll down to click "Create" button
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/0960a5e1-db8f-410c-a80d-d99394ab6e9c)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/9366e8d3-6b1c-4a45-bb5b-9d6c9dce2994)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/cc14efbb-9452-414b-8dd1-d30749b16030)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/f874c81c-990f-4aa4-b371-5adee8298399)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/36f55c41-13c4-469c-bfe5-82892d703804)
+
+To Delete the application, right click on the application in the Topology View over the Graph
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/f4196c02-a35a-4d49-894d-ef0d183986c7)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/5e7a77c2-bdbc-48a2-9271-311a39722d58)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/59a105a3-ec16-47a8-a8ed-71d8869f0d32)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/8ef704b7-69f8-4374-bdb7-dd2e5d0d337f)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/4e3ff796-aef3-4046-9ff0-5c82ae9b7aee)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/35876d1f-368d-4ab0-a1dc-98baf158d390)
+
