@@ -165,3 +165,10 @@ Click on Proceed
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/0b875948-ee98-4667-b212-d3f9de4c425f)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/97df8183-60b3-4600-9a0c-96cda6858124)
 
+To delete the application from Openshift web console, In the Developer context --> Topology --> Right click on the application
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/29bd9700-f3cf-42bd-a7a1-b63903bbc4cc)
+Click on "Delete application"
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/781cf574-cee9-455e-ae34-7aeaa9eccd2d)
+Type "sample-app" and click on Delete
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/5966014a-b551-489c-9c5e-5a9bdd43192d)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/ac5c1f7d-280e-4150-871c-38839da29c00)
