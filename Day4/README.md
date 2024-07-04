@@ -54,3 +54,29 @@
     - mysql-1 Pod will only be created after the mysql-0 Pod starts running
     - mysql-2 Pod will only be created after the mysql-1 Pod starts running
 </pre>
+
+## Lab - Creating a one-time job
+```
+cd ~/openshift-july-2024
+git pull
+cd Day4/job
+oc create -f job.yml --save-config
+oc get jobs
+oc get po 
+oc logs -f hello-job-lbh6d 
+```
+
+Expected output
+
+## Lab - Scheduling  a recurring job that runs at a specific time
+```
+cd ~/openshift-july-2024
+git pull
+cd Day4/cronjob
+oc create -f cronjob.yml --save-config
+oc get cronjobs
+oc get po
+oc logs -f 
+```
+
+Expected output
