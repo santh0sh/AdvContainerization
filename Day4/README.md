@@ -423,9 +423,9 @@ Now you should be able to see the hello-world docker image you pushed from your 
 
 ## Request - Kindly create a GitHub account for tomorrow's CI/CD Lab exercise
 <pre>
-- If you already have a GitHub account, you may use your existing account
-- If you don't have one, kindly create a GitHub account
-- You need a GitHub account for couple of reasons
+- If you already have a personal GitHub account, you may use your existing personal account
+- If you don't have one, kindly create a personal GitHub account
+- You need a Personal GitHub account for couple of reasons
   1. To fork my Training Repository into your GitHub account for your future references
   2. To perform CI/CD lab exercise tommorrow
 </pre>
