@@ -159,7 +159,9 @@ Click on "Create" button
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/7f5c55da-9246-46af-98ca-d78e267293cd)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/687d06b7-4fff-4136-b79d-050c8c2ceed7)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/ed05338d-0366-4b7c-8f45-30b00a0a0a56)
+Click on Advanced button
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/52ea7420-49ee-456a-92fa-ce4008bb2659)
+Click on Proceed
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/0b875948-ee98-4667-b212-d3f9de4c425f)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/97df8183-60b3-4600-9a0c-96cda6858124)
 
