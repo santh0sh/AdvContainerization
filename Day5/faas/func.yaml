@@ -1,0 +1,11 @@
+specVersion: 0.36.0
+name: faas
+runtime: node
+registry: image-registry.openshift-image-registry.svc:5000/jegan-faas
+namespace: jegan-faas
+created: 2024-07-05T17:14:44.348329427+05:30
+build:
+  builder: s2i
+deploy:
+  namespace: jegan-faas
+  image: image-registry.openshift-image-registry.svc:5000/jegan-faas/faas@sha256:4e7167451638dd3bbd2a500088b65ed28082648b2cc2fd498528edd1a07fd763
