@@ -80,10 +80,26 @@ oc expose deploy/hello -o yaml --port=8080 --dry-run=client > hello-svc.yml
 oc create -f hello-svc.yml --save-config
 oc get svc
 oc describe svc/hello
+
+oc expose svc/hello -o yaml --dry-run=client
+oc expose svc/hello -o yaml --dry-run=client > hello-route.yml
+oc explain route
+
+curl http://hello-jegan.apps-crc.testing
+oc logs -f deploy/hello
 ```
 
 Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/6e16c29a-a071-4f53-8049-091f28392d28)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/66eede62-2413-4bab-b021-fc28bfc9e1db)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/1ee4aefe-90e4-4917-a1fb-97eeffb84405)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/b79263f4-133e-4ea4-a9c9-05decef455af)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/90156e6b-269b-467d-8ce9-c9708e958cd0)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/6497558b-b9b7-4d88-ab54-82ffd6306865)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/4707d5db-48c1-4b4f-ab41-59836ac51fea)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/f47f4ce8-f020-4f80-9ae3-cdb72d5448d2)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/74359a27-cb71-4f90-a749-8fc9360b3155)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/38633cb0-79ad-4ea8-8fd7-b7209e13bc9e)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/bc9382ac-b55e-4211-96c9-90f32b020323)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/fb29897b-2b02-4b45-8dc8-82fc0d86c2c1)
 
