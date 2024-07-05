@@ -326,3 +326,64 @@ Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/1f2f1a36-785d-45ff-a342-88b67c5705a5)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/4df75591-3816-4feb-94fe-92c940ed7b40)
 
+## Lab - Knative eventing
+
+Let's deploy a sink service
+```
+oc project jegan-eventing
+kn service create eventinghello --image=quay.io/rhdevelopers/eventinghello:0.0.2
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/ae2fddf9-35ff-4512-bca6-d855e747f7f3)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/9c539bf8-2e8b-4602-8048-82e37978c7e4)
+
+Let's create an event source application
+```
+kn source ping create eventinghello-ping-source --schedule="*/2 * * * *" --data '{"message": "Scale up"}' --sink ksvc:eventinghello
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/d4db3aae-5235-4591-9be9-9cb428bb9269)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/330ad9e5-2c8d-4486-a823-ea88e5c7842a)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/cf035796-8bf6-4e88-b36b-b7e3da0c182f)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/f2437c1e-ee83-4a16-9c85-636c0137cf18)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/21188a83-89a1-4085-a315-760fb205d1b2)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/24b5e139-49d4-4982-aacd-a860e11e7db0)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/bebd34f2-8062-40b4-9346-6f9a99574bf9)
+
+## Lab - Developing a simple knative function in nodejs and deploying into Openshift
+
+This will generate a basic nodejs application in your current directory
+```
+oc new-project jegan-faas
+kn func create -l node
+```
+If you wish to build your appliction
+```
+kn func build
+```
+
+If you wish to run the application locally and test i
+```
+kn func run
+```
+
+Deploy the nodejs application into openshift after building it
+```
+kn func deploy -n jegan-faas
+```
+Test the knative function
+```
+curl -k https://
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/ad57cba6-c221-4879-9aa6-d7c6c8b69f94)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/af45c421-357d-4bd0-92a3-3a55c408f316)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/5dcaeec8-b362-4cdb-bac4-401d3a3b13c4)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/bbe42e64-2d68-4c80-8542-96673eba11c0)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/54e9dee8-32f6-4e2f-8250-f62198f7c236)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/e63b1e31-4cc5-422d-89ee-ebce507b644b)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/15c37b4b-cc06-471d-9400-58d2bb930b8f)
+
