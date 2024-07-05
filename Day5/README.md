@@ -212,3 +212,179 @@ Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/7193279a-e2c3-4c32-a256-f3f652b1c8bc)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/0acd6efa-b700-4959-8724-01f7cd813562)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/b5a1a8ba-7164-44fd-9991-5899909d99ec)
+
+## Info - Knative and Red Hat Serverless Operator
+<pre>
+- Red Hat Serverless operator is based on Knative opensource project
+- Knative provides a serverless application layer on top of OpenShift/Kubernetes
+- the term Knative means Kubernative native
+- Knative is Kubernetes Serverless Framework
+- Knative Framework consists of 3 build blocks
+  - Function
+  - Eventing
+  - Serving
+</pre>
+
+## Info - What does Serverless mean?
+<pre>
+- serverles doesn't mean the absence of servers
+- is an architecture model for running applications in an environment that is abstracted away from developers
+- developers can focus more on developing their application, leaving openshift to deal with where their code/application runs
+- an ideal serverless workload executes a single task
+- a function that retrieves data from a database can be an excellent serverless workload
+- when using serverless, there is a period between the request and creating the Pod environment.
+- This period is called cold start
+- Examples
+  - Openshift serverless workloads follows this workflow
+    - a request comes in
+    - a pod is spun up to service the request
+    - the Pod serves the request
+    - the Pod is destroyed when there is no user traffic to handle ( i.e scaled down to zero )
+    - your service will be scaled down all the way upto 0 Pod where is zero requests
+    - your service will be automatically scaled up when there is a request
+  - Other examples of a serverless workload can be an image processing function
+    - an event could be a phot upload, the uploaded photo triggers an event to run an application to process the image
+    - For example, the application may overlay text, create a banner, or make thumnails
+    - Once the image i stored permanently, the application has served its purpose and is no longer needed
+</pre>
+
+## Info - Serverless Features
+<pre>
+- Stateless Function
+  - a function to query a database and return the data
+  - a function to query weather report and return the data
+- Event Driven
+  - a serverless model relies on a trigger to execute the code
+  - could be a request to an API or an event on a queue
+- Auto scales to zero
+  - Being able to scale to zero means your code only runs when it needs to respond to an event
+  - once the request is served, resources are released
+</pre>
+
+## Lab - Deploying your first knative service
+```
+kn service create hello \
+--image ghcr.io/knative/helloworld-go:latest \
+--port 8080 \
+--env TARGET=World
+```
+
+Accessing the knative application from command line
+```
+curl -k https://hello-jegan-serverless.apps.crc-testing
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/413b5878-328f-4abe-9f01-9cca99c6d48c)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/7a5226ea-f91a-4e94-90d3-cdc793f7bb00)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/6d76a2a8-2343-4fd5-83a0-9b1727bbc5bc)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/34cf21d5-20ef-4ea8-b2ea-de45cde4643f)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/33d33292-968f-4b23-9654-971e7700f883)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/44567fe4-2260-45a2-bcbf-563ff501fa8d)
+
+Update the service ( Rolling update )
+```
+kn service update hello --env TARGET=Knative!
+kn revisions list
+```
+
+Accesing the knative application from command line
+```
+curl -k https://hello-jegan.apps-crc.testing
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/f659d217-73d3-4d7b-8512-fdcae5eac0b6)
+
+Splitting the traffic between two revisions ( something similar to canary deployment )
+```
+kn service update hello --traffic hello-00001=50 --traffic @latest=50
+kn revisions list
+```
+Accesing the knative application from command line
+```
+curl -k https://hello-jegan.apps-crc.testing
+curl -k https://hello-jegan.apps-crc.testing
+curl -k https://hello-jegan.apps-crc.testing
+curl -k https://hello-jegan.apps-crc.testing
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/08aedcce-42e9-42bb-8b7a-5d500d90fb08)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/7d899b0f-f853-4d5d-8cb7-f998d7d89604)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/d8e3f67d-6348-4156-94e8-c202021db2e6)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/53391c21-2cee-41d3-90dd-7bc7bb0d124f)
+
+Delete the knative service
+```
+kn service list
+kn service delete hello
+kn service list
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/1f2f1a36-785d-45ff-a342-88b67c5705a5)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/4df75591-3816-4feb-94fe-92c940ed7b40)
+
+## Lab - Knative eventing
+
+Let's deploy a sink service
+```
+oc project jegan-eventing
+kn service create eventinghello --image=quay.io/rhdevelopers/eventinghello:0.0.2
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/ae2fddf9-35ff-4512-bca6-d855e747f7f3)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/9c539bf8-2e8b-4602-8048-82e37978c7e4)
+
+Let's create an event source application
+```
+kn source ping create eventinghello-ping-source --schedule="*/2 * * * *" --data '{"message": "Scale up"}' --sink ksvc:eventinghello
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/d4db3aae-5235-4591-9be9-9cb428bb9269)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/330ad9e5-2c8d-4486-a823-ea88e5c7842a)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/cf035796-8bf6-4e88-b36b-b7e3da0c182f)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/f2437c1e-ee83-4a16-9c85-636c0137cf18)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/21188a83-89a1-4085-a315-760fb205d1b2)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/24b5e139-49d4-4982-aacd-a860e11e7db0)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/bebd34f2-8062-40b4-9346-6f9a99574bf9)
+
+## Lab - Developing a simple knative function in nodejs and deploying into Openshift
+
+This will generate a basic nodejs application in your current directory
+```
+oc new-project jegan-faas
+kn func create -l node
+```
+If you wish to build your appliction
+```
+kn func build
+```
+
+If you wish to run the application locally and test i
+```
+kn func run
+```
+
+Deploy the nodejs application into openshift after building it
+```
+kn func deploy -n jegan-faas
+```
+Test the knative function
+```
+curl -k https://
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/ad57cba6-c221-4879-9aa6-d7c6c8b69f94)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/af45c421-357d-4bd0-92a3-3a55c408f316)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/5dcaeec8-b362-4cdb-bac4-401d3a3b13c4)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/bbe42e64-2d68-4c80-8542-96673eba11c0)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/54e9dee8-32f6-4e2f-8250-f62198f7c236)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/e63b1e31-4cc5-422d-89ee-ebce507b644b)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/15c37b4b-cc06-471d-9400-58d2bb930b8f)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/5c30f3a0-555c-4d57-b682-7c79097245a3)
+
