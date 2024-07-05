@@ -247,3 +247,17 @@ Expected output
     - For example, the application may overlay text, create a banner, or make thumnails
     - Once the image i stored permanently, the application has served its purpose and is no longer needed
 </pre>
+
+## Info - Serverless Features
+<pre>
+- Stateless Function
+  - a function to query a database and return the data
+  - a function to query weather report and return the data
+- Event Driven
+  - a serverless model relies on a trigger to execute the code
+  - could be a request to an API or an event on a queue
+- Auto scales to zero
+  - Being able to scale to zero means your code only runs when it needs to respond to an event
+  - once the request is served, resources are released
+</pre>
+
