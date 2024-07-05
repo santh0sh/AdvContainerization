@@ -212,3 +212,38 @@ Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/7193279a-e2c3-4c32-a256-f3f652b1c8bc)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/0acd6efa-b700-4959-8724-01f7cd813562)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/b5a1a8ba-7164-44fd-9991-5899909d99ec)
+
+## Info - Knative and Red Hat Serverless Operator
+<pre>
+- Red Hat Serverless operator is based on Knative opensource project
+- Knative provides a serverless application layer on top of OpenShift/Kubernetes
+- the term Knative means Kubernative native
+- Knative is Kubernetes Serverless Framework
+- Knative Framework consists of 3 build blocks
+  - Function
+  - Eventing
+  - Serving
+</pre>
+
+## Info - What does Serverless mean?
+<pre>
+- serverles doesn't mean the absence of servers
+- is an architecture model for running applications in an environment that is abstracted away from developers
+- developers can focus more on developing their application, leaving openshift to deal with where their code/application runs
+- an ideal serverless workload executes a single task
+- a function that retrieves data from a database can be an excellent serverless workload
+- when using serverless, there is a period between the request and creating the Pod environment.
+- This period is called cold start
+- Examples
+  - Openshift serverless workloads follows this workflow
+    - a request comes in
+    - a pod is spun up to service the request
+    - the Pod serves the request
+    - the Pod is destroyed when there is no user traffic to handle ( i.e scaled down to zero )
+    - your service will be scaled down all the way upto 0 Pod where is zero requests
+    - your service will be automatically scaled up when there is a request
+  - Other examples of a serverless workload can be an image processing function
+    - an event could be a phot upload, the uploaded photo triggers an event to run an application to process the image
+    - For example, the application may overlay text, create a banner, or make thumnails
+    - Once the image i stored permanently, the application has served its purpose and is no longer needed
+</pre>
