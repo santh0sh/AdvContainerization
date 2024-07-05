@@ -388,12 +388,12 @@ Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/15c37b4b-cc06-471d-9400-58d2bb930b8f)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/5c30f3a0-555c-4d57-b682-7c79097245a3)
 
-## Request for your feedback
+## Request for your feedback ( Perform from RPS Lab machine )
 <pre>
 https://survey.zohopublic.com/zs/KI0DHJ  
 </pre>
 
-## Post test link
+## Post test link ( Perform from RPS Lab machine )
 <pre>
 https://rpsconsulting116.examly.io/contest/publicU2FsdGVkX1/JCYJ6pgzhyRDN6KxFZZVDm8PAO5DQ1bAAZsl8h8W19j5WVwJ9CvyMbq6DIOfxTZ41/oNdinEYhg==  
 </pre>
