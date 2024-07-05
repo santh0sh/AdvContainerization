@@ -25,5 +25,39 @@
 - the Pod container image must have all the tools required to perform your application build
 - In case your application happens to be java application, to build it you will need a container image that has maven build and appropriate version of JDK
 - In case your application happens to be a python application, to build it you will need a container image that has python version as per your application code
-- 
 </pre>
+
+```
+cd ~/openshift-july-2024
+git pull
+cd Day5/buildconfig
+
+oc create -f imagestream.yml --save-config
+oc get imagestreams
+oc get imagestream
+oc get is
+oc describe is/tektutor-hello
+
+oc create -f buildconfig.yml --save-config
+oc get buildconfigs
+oc get buildconfig
+oc get bc
+
+oc get builds
+oc get build
+
+oc logs -f bc/hello-bc
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/523f55cc-f2f2-45d6-b2c6-f0c0c3c642f4)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/7b7e944c-bb8f-4fe6-8b17-944b66c4af1a)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/43cfc91a-0900-4136-ac87-7e7743313d09)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/173af5ae-166e-455a-b3b4-9fc237ae16e7)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/0dbf23d9-e609-40c6-af85-fe0595e15b7d)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/ba5c8736-6362-423c-b503-b232b27dea6d)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/8ef975ad-fbfb-4fca-9097-e087f2670865)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/faf8045c-fa38-44c2-8c05-1b1217c571f2)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/302db502-c2b5-42d1-b416-90fb990941f7)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/1e0b20f6-a24f-4961-86f1-aa633a9004db)
+
