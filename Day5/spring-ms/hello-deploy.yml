@@ -18,7 +18,7 @@ spec:
         app: hello
     spec:
       containers:
-      - image: default-route-openshift-image-registry.apps-crc.testing/jegan/tektutor-hello:latest
+      - image: image-registry.openshift-image-registry.svc:5000/jegan/tektutor-hello:latest 
         name: tektutor-hello
         resources: {}
 status: {}
