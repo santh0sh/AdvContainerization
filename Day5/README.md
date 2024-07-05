@@ -110,8 +110,26 @@ We need to deploy mysql with tektutor database and greeting table with a single 
 oc create deployment mysql --image=bitnami/mysql:latest -o yaml --dry-run=client
 oc create deployment mysql --image=bitnami/mysql:latest -o yaml --dry-run=client > mysql-deploy.yml
 cat mysql-deploy.yml
-
 ```
+
+Let's get inside the mysql container shell, when prompts for password type 'root@123' as the password without quotes
+```
+oc rsh deploy/mysql
+mysql -u root -p
+SHOW DATABASES;
+USE tektutor;
+CREATE TABLE greeting ( message VARCHAR(200) NOT NULL );
+DESCRIBE TABLE greeting;
+INSERT INTO greeting VALUES ( "Hello Microservice v1.0 !" );
+SELECT * FROM greeting;
+exit
+exit
+```
+
+Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/60b0e3e6-25d9-479d-85ad-d34c4334aea4)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/acff83b0-ae67-4a43-8dc3-448ad4039747)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/1b311549-3f2d-453a-a7d2-db5e29fb7f15)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/7c923e1b-2a1e-4b06-83cc-40ea43b47462)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/afc60d8d-2f32-48ec-9afb-1c48a58f7a97)
 
