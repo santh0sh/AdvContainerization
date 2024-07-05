@@ -1,0 +1,28 @@
+pipeline {
+  agent none
+  stages {
+     stage ( 'Stage 1 - Create an Image Stream" ) {
+        agent { label 'master' }
+        steps {
+		sh "oc apply -f imagestream.yml"
+		sh "oc get imagestreams"
+	}
+     }
+
+     stage ( "Stage 2 - Build Custom Docker Image with our aplication" ) {
+        agent { label 'master' }
+	steps {
+	       sh "oc apply -f buildconfig.yml"
+	}
+     }
+
+     stage ( "Stage 2 - Deploy hello microservice into OpenShift" ) {
+        agent { label 'master' }
+	steps {
+	    sh "oc apply -f hello-deploy.yml"
+	    sh "oc apply -f hello-svc.yml"
+	    sh "oc apply -f hello-route.yml"
+     	}
+    }
+  }
+}
