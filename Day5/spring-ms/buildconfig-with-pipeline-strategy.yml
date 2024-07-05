@@ -15,7 +15,7 @@ spec:
     contextDir: "Day5/spring-ms"
   strategy:
     jenkinsPipelineStrategy: 
-    jenkinsfilePath: ./Jenkinsfile
+      jenkinsfilePath: ./Jenkinsfile
 
   output:
     to:

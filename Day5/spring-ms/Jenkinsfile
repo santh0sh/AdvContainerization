@@ -1,7 +1,7 @@
 pipeline {
   agent none
   stages {
-     stage ( 'Stage 1 - Create an Image Stream" ) {
+     stage ( "Stage 1 - Create an Image Stream" ) {
         agent { label 'master' }
         steps {
 		sh "oc apply -f imagestream.yml"
