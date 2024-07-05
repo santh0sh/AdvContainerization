@@ -170,6 +170,19 @@ oc create secret docker-registry private-jfrog-image-registry --docker-server=te
 Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/6fb2e7c8-330f-4135-b908-08c288304571)
 
+Now let's create a buildconfig that will 
+<pre>
+- build the application binary using cloning latest code from our training github repository
+- build a custom image that will have have application binary
+- push to image to our Private JFrog Artifactory using the login credentials stored in the secret
+</pre>
+```
+cat buildconfig-push-image-to-jfrog-artifactory.yml
 
 ```
-```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/3b79c385-91da-4865-9c35-185c35037dc6)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/65f42e33-1913-4540-92c8-89e2d0e68ada)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/8898a327-fde1-43bb-a621-0e099ff9cfeb)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/b52ab93f-9c35-41a2-a0f1-36e972cab37b)
