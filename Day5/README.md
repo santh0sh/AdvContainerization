@@ -61,3 +61,29 @@ Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/302db502-c2b5-42d1-b416-90fb990941f7)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/1e0b20f6-a24f-4961-86f1-aa633a9004db)
 
+## Lab - Deploying our application using the custom docker image we pushed into Openshift's Internal Container Registry
+```
+cd ~/openshift-july-2024
+git pull
+cd Day5/buildconfig
+
+oc create deployment hello --image=default-route-openshift-image-registry.apps-crc.testing/jegan/tektutor-hello:latest --replicas=3 -o yaml --dry-run=client
+
+oc create deployment hello --image=default-route-openshift-image-registry.apps-crc.testing/jegan/tektutor-hello:latest --replicas=3 -o yaml --dry-run=client > hello-deploy.yml
+
+ls -l
+oc create -f hello-deploy.yml --save-config
+oc get po
+
+oc expose deploy/hello -o yaml --port=8080 --dry-run=client
+oc expose deploy/hello -o yaml --port=8080 --dry-run=client > hello-svc.yml
+oc create -f hello-svc.yml --save-config
+oc get svc
+oc describe svc/hello
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/6e16c29a-a071-4f53-8049-091f28392d28)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/66eede62-2413-4bab-b021-fc28bfc9e1db)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/1ee4aefe-90e4-4917-a1fb-97eeffb84405)
+
