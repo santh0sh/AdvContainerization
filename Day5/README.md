@@ -160,3 +160,16 @@ Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/97f54e3a-610d-4d69-b6df-0b67583a16ab)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/6b3ad31a-8ab0-42a7-8d3a-047dc4a0e6b7)
 
+
+## Lab - Build custom docker image using application source code from GitHub and pushing the image to JFrog Private Container Registry
+We need to create a JFrog secret to push the image to our private JFrog Container Registry
+```
+oc create secret docker-registry private-jfrog-image-registry --docker-server=tektutorjuly2024.jfrog.io --docker-username=<your-jfrog-registered-email> --docker-password=<your-jfrog-token>
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/6fb2e7c8-330f-4135-b908-08c288304571)
+
+
+```
+```
