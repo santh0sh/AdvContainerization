@@ -15,6 +15,15 @@
 - Which an be pushed either to Openshift Internal Container Registry or you can push it to Private Container Registry like JFrog Artifactory, Docker Hub or Sonatype Nexus.
 </pre>  
 
+## Info - Openshift Build Strategies
+<pre>
+- Openshift support many different type of build strategies lke
+  1. docker
+  2. source
+  3. custom
+  4. pipeline
+</pre>  
+
 ## Lab - BuildConfig
 
 <pre>
