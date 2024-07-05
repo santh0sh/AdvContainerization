@@ -19,5 +19,6 @@ spec:
     to:
       kind: DockerImage 
       name: "tektutorjuly2024.jfrog.io/jegan-docker/hello-spring-microservice:1.0"
-    pushSecret: private-jfrog-image-registry
+    pushSecret: 
+      name: private-jfrog-image-registry
          
