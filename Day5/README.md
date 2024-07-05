@@ -315,4 +315,14 @@ Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/d8e3f67d-6348-4156-94e8-c202021db2e6)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/53391c21-2cee-41d3-90dd-7bc7bb0d124f)
 
+Delete the knative service
+```
+kn service list
+kn service delete hello
+kn service list
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/1f2f1a36-785d-45ff-a342-88b67c5705a5)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/4df75591-3816-4feb-94fe-92c940ed7b40)
 
