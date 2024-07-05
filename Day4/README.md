@@ -294,3 +294,138 @@ All Service, search for "NodeJS" and select "NodeJS+Postgresql Ephermeral"
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/c7d3ff96-acd6-45e0-aed3-495af1942785)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/599d1843-8994-4f6f-882e-270cfc027ba4)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/5e5cb8e9-d39d-4d0d-9adc-c89c57f6a447)
+
+## Lab - Deploying angular application into openshift using S2I docker strategy
+```
+oc new-app --name=angular https://github.com/tektutor/openshift-july-2024.git --context-dir=Day4/angular/Angular-openshift-example --strategy=docker
+```
+
+To check the build logs
+```
+oc logs -f buildconfig/angular
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/6ceff96c-9275-4143-856c-3617808e755a)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/e44c58ea-89d0-438c-9d20-8e930763febe)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/320953ff-6dc7-46bb-b78e-72a55453a749)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/6f7766a2-e744-419d-a285-b779a01a195c)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/7cf00c49-4bd0-433f-9185-1051d3ef95a1)
+
+## Lab - Creating an edge route
+```
+oc delete project jegan
+oc new-project jegan
+oc new-app --name=hello --image=tektutor/spring-ms:1.0 --replicas=3
+```
+
+Find you base domain of your openshift cluster
+```
+oc get ingresses.config/cluster -o jsonpath={.spec.domain}
+```
+We need to create a private key with openssl
+```
+openssl genrsa -out key.key
+```
+
+We need to create a public key using the private key with your openshift cluster domain
+```
+openssl req -new -key key.key -out csr.csr -subj="/CN=hello-jegan.apps.ocp4.tektutor.org.labs"
+```
+
+We need to sign the public key using the private key and generate a certificate(.crt)
+```
+openssl x509 -req -in csr.csr --signkey key.key -out crt.crt
+oc create route edge --service hello --hostname hello-jegan.apps.ocp4.tektutor.org.labs --key key.key --cert crt.crt
+```
+In the above command, the hello-jegan.apps.ocp4.tektutor.org.labs format is
+<pre>
+hello - is the service name  
+jegan - is the project name
+apps.ocp4.tektutor.org.labs - is the base domain of openshift cluster  
+</pre>
+
+List your route
+```
+oc get route
+curl -k https://hello-jegan.apps.ocp4.tektutor.org.labs
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/2a531591-3163-4a93-b353-5422b4e88676)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/7009f701-b1c1-4c49-8214-9c5708fc3607)
+
+## Lab - Creating a JFrog Artifactory - 14 days cloud trial
+You need to create a trial JFrog Artifactory (14-days Cloud Trial) @ https://jfrog.com/start-free/#trialOptions with your personal gmail account(No credit cards required)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/23067ed4-8730-4b19-a7cd-f5120be725f9)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/5e749f6a-bfe4-4b18-ae47-b22356d2597c)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/c3690e95-e1e2-4abd-8a82-d14a8ee9627c)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/7bf4c549-742e-4e49-96ed-80e7ad60a729)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/1bbd526c-0a43-4e2f-979b-ad4e66f476e5)
+You could choose AWS ( they use their own cloud account, hence no charges are applicable to us - I didn't give my mobile number )
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/1801c872-dba1-4964-9bd0-a2e301215c81)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/c20a39b8-ff9b-4973-854c-7fedfede55a0)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/1b0cbce6-47f3-42c0-a7f0-72e04c6ba77e)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/30991201-be17-47ee-acae-84f1b319d32a)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/b34cc93a-d875-4535-86a7-78d82a7e69fc)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/bc7591bb-022e-406e-8de6-f3322b7a1deb)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/41ce245c-9cf0-4930-b2ec-c400716a701e)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/b03184c3-173c-4b31-bc32-d81c2b84e8d4)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/3e9595ab-8885-4b4b-a5d4-35272bc79c2f)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/0942d7bd-6e17-4d40-ba88-3b5b43ada3d2)
+
+Switch to Administration Tab
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/e687a509-a03b-408d-bac5-5a8f27457871)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/de9667c2-6433-4731-8dc7-3d62fe3cd942)
+On the left side menus, select "Repositories"
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/9556fad0-1901-4ff5-b541-95735406f2a5)
+
+On top right corner, click "Create Repository"
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/4ffa5a6d-be1a-4d1c-8758-c1ac7b029710)
+
+Select "Pre-built setup"
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/f6644253-0fc6-4b6a-ba27-f1669294011c)
+
+Select "Docker"
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/e5343581-10fd-4ede-8a91-73781c4f449a)
+
+Type your name
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/d402c9d0-5e0e-454c-a3dd-4e1c00844c87)
+
+Click on "Create" button
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/5ca96454-b198-4b3f-bb57-2d687aadf947)
+
+Click on "Continue" button
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/dee09b4f-bd27-4d5b-b0c2-e0001dc59e5a)
+
+Select "Docker client", keep saving all the instructions it shows in a text file for your tomorrow's lab exercises.
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/a42b3179-0d1a-4538-9e48-4cd069bedbe2)
+
+Click on "Generate", save the token generated in the text file
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/fea4e603-156c-436b-b865-503fbc2111b8)
+
+We need to execute the commands in the linux terminal
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/1213ab22-f15c-456c-bdb2-8610f030e613)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/5101c71d-5e4e-4054-b412-a39a79682d60)
+
+Click "Next" button, copy the instruction in the text file and execute the command in the terminal
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/a484db35-752b-42b4-935a-f45ab249ab6c)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/400cfdde-5098-411a-922e-ea4f16bad5cc)
+
+Click "Next" button, save the instructions in the text file and execute the command shown in the screen on the terminal
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/2ed2c3d7-0f8d-4d8d-8a75-4f6761a23c77)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/8f31d049-2ba5-4220-bf29-de5ca5e581fa)
+
+Click "done" button
+Now you should be able to see the hello-world docker image you pushed from your local machine in the JFrog Artifactory cloud environment.
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/5ca60f1b-577b-48a8-8963-96facb48e16e)
+
+
+## Request - Kindly create a GitHub account for tomorrow's CI/CD Lab exercise
+<pre>
+- If you already have a personal GitHub account, you may use your existing personal account
+- If you don't have one, kindly create a personal GitHub account
+- You need a Personal GitHub account for couple of reasons
+  1. To fork my Training Repository into your GitHub account for your future references
+  2. To perform CI/CD lab exercise tommorrow
+</pre>
