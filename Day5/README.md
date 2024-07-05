@@ -155,4 +155,7 @@ curl http://http://hello-jegan.apps-crc.testing
 ```
 Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/c693fd41-50a6-4ef9-8d40-04f80fe35f32)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/fb2fb378-f72c-40fb-8776-5961de40cccb)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/8167ba84-e5a5-45ae-ba41-aede649a722b)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/97f54e3a-610d-4d69-b6df-0b67583a16ab)
 
