@@ -31,6 +31,23 @@ For a completely functional local openshift cluster, you may go for CRC(Code Rea
 ![image](img9.png)
 ![image](img10.png)
 
+You may configure the CPU, RAM and Storage size 
+You need to stop the openshift cluster
+```
+./crc stop
+```
+You can configure as shown below
+```
+./crc config set cpus 8
+./crc config set memory 16384
+./crc config set disk_size 100
+```
+
+You may start the openshift with new configuration
+```
+./crc start
+```
+
 ## Kindly provide your first day feedback
 <pre>
 https://survey.zohopublic.com/zs/RJBTlG
