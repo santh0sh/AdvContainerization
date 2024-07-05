@@ -178,7 +178,10 @@ Now let's create a buildconfig that will
 </pre>
 ```
 cat buildconfig-push-image-to-jfrog-artifactory.yml
-
+oc create -f buildconfig-push-image-to-jfrog-artifactory.yml --save-config
+oc get bc
+oc get builds
+oc logs -f bc/hello-jfrog-bc
 ```
 
 Expected output
@@ -186,3 +189,5 @@ Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/65f42e33-1913-4540-92c8-89e2d0e68ada)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/8898a327-fde1-43bb-a621-0e099ff9cfeb)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/b52ab93f-9c35-41a2-a0f1-36e972cab37b)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/2eaea2fb-0988-4da5-8af1-8ad93164e6a1)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/b1a4f43c-ff37-4769-803b-ae541d0b5c60)
