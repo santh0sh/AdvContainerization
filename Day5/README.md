@@ -102,4 +102,16 @@ Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/38633cb0-79ad-4ea8-8fd7-b7209e13bc9e)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/bc9382ac-b55e-4211-96c9-90f32b020323)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/fb29897b-2b02-4b45-8dc8-82fc0d86c2c1)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/d08d99c7-9b71-453e-a164-3e56ec11d26b)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/cc2f724a-f4db-4b88-8872-4acaa578c79c)
+
+We need to deploy mysql with tektutor database and greeting table with a single record, that is the root-cause of why the hello pods throwing exception when we access the hello microservice route.
+```
+oc create deployment mysql --image=bitnami/mysql:latest -o yaml --dry-run=client
+oc create deployment mysql --image=bitnami/mysql:latest -o yaml --dry-run=client > mysql-deploy.yml
+cat mysql-deploy.yml
+
+```
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/60b0e3e6-25d9-479d-85ad-d34c4334aea4)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/acff83b0-ae67-4a43-8dc3-448ad4039747)
 
