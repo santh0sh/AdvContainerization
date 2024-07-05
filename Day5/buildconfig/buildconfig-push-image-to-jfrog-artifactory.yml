@@ -1,7 +1,7 @@
 apiVersion: build.openshift.io/v1
 kind: BuildConfig
 metadata:
-  name: hello-bc
+  name: hello-jfrog-bc
   labels:
     name: hello
 spec:
@@ -17,5 +17,7 @@ spec:
     type: Docker
   output:
     to:
-      kind: ImageStreamTag
-      name: 'tektutor-hello:latest'
+      kind: DockerImage 
+      name: "tektutorjuly2024.jfrog.io/jegan-docker/hello-spring-microservice:1.0"
+    pushSecret: private-jfrog-image-registry
+         

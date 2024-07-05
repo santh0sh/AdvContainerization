@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: hello
+  name: hello
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: hello
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: hello
+    spec:
+      containers:
+      - image: default-route-openshift-image-registry.apps-crc.testing/jegan/tektutor-hello:latest
+        name: tektutor-hello
+        resources: {}
+status: {}
