@@ -281,3 +281,38 @@ Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/34cf21d5-20ef-4ea8-b2ea-de45cde4643f)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/33d33292-968f-4b23-9654-971e7700f883)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/44567fe4-2260-45a2-bcbf-563ff501fa8d)
+
+Update the service ( Rolling update )
+```
+kn service update hello --env TARGET=Knative!
+kn revisions list
+```
+
+Accesing the knative application from command line
+```
+curl -k https://hello-jegan.apps-crc.testing
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/f659d217-73d3-4d7b-8512-fdcae5eac0b6)
+
+Splitting the traffic between two revisions ( something similar to canary deployment )
+```
+kn service update hello --traffic hello-00001=50 --traffic @latest=50
+kn revisions list
+```
+Accesing the knative application from command line
+```
+curl -k https://hello-jegan.apps-crc.testing
+curl -k https://hello-jegan.apps-crc.testing
+curl -k https://hello-jegan.apps-crc.testing
+curl -k https://hello-jegan.apps-crc.testing
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/08aedcce-42e9-42bb-8b7a-5d500d90fb08)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/7d899b0f-f853-4d5d-8cb7-f998d7d89604)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/d8e3f67d-6348-4156-94e8-c202021db2e6)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/53391c21-2cee-41d3-90dd-7bc7bb0d124f)
+
+
