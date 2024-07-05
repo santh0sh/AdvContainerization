@@ -261,3 +261,23 @@ Expected output
   - once the request is served, resources are released
 </pre>
 
+## Lab - Deploying your first knative service
+```
+kn service create hello \
+--image ghcr.io/knative/helloworld-go:latest \
+--port 8080 \
+--env TARGET=World
+```
+
+Accessing the knative application from command line
+```
+curl -k https://hello-jegan-serverless.apps.crc-testing
+```
+
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/413b5878-328f-4abe-9f01-9cca99c6d48c)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/7a5226ea-f91a-4e94-90d3-cdc793f7bb00)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/6d76a2a8-2343-4fd5-83a0-9b1727bbc5bc)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/34cf21d5-20ef-4ea8-b2ea-de45cde4643f)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/33d33292-968f-4b23-9654-971e7700f883)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/44567fe4-2260-45a2-bcbf-563ff501fa8d)
