@@ -133,3 +133,26 @@ Expected output
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/7c923e1b-2a1e-4b06-83cc-40ea43b47462)
 ![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/afc60d8d-2f32-48ec-9afb-1c48a58f7a97)
 
+We need to create a mysql service as the hello microservice deployment pods will connect to the mysql pod via a service name ( ie. service discovery ).
+
+```
+oc expose deploy/mysql --port=3306 -o yaml --dry-run=client
+oc expose deploy/mysql --port=3306 -o yaml --dry-run=client > mysql-svc.yml
+oc create -f mysql-svc.yml --save-config
+oc get svc
+oc describe svc/mysql
+```
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/bcf22f6c-afaf-4c74-8e2f-f51d9339552d)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/549df2ea-a13e-4024-9ab7-c41607cc4d5f)
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/42121ab4-1909-4837-ac5b-60c6a7c926a7)
+
+
+Now, since the mysql database deployment/service with necessary table and records are in place, let's try accessing the hello route url
+```
+oc get route
+curl http://http://hello-jegan.apps-crc.testing
+```
+Expected output
+![image](https://github.com/tektutor/openshift-july-2024/assets/12674043/c693fd41-50a6-4ef9-8d40-04f80fe35f32)
+
