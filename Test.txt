@@ -1,7 +1,23 @@
-
-
-Ready to turbocharge your systems? Our paper is packed with tricks to keep your workloads in check while sipping coffee. We’re excited to bring this brainchild to Mumbai 2024—expect laughs, lightbulb moments, and maybe even a new approach to resource scaling. Let’s make efficiency fun!
-
----
-
-This version keeps it light-hearted while still emphasizing the value of your paper.
+<build>
+    <plugins>
+        <plugin>
+            <groupId>com.alterego.oss.maven.plugin</groupId>
+            <artifactId>yuicompressor-maven-plugin</artifactId>
+            <version>1.5.0</version>
+            <executions>
+                <execution>
+                    <goals>
+                        <goal>compress</goal>
+                    </goals>
+                    <configuration>
+                        <sourceDirectory>${project.basedir}/src/main/webapp/js</sourceDirectory>
+                        <outputDirectory>${project.build.directory}/minified-js</outputDirectory>
+                        <includes>
+                            <include>**/*.js</include>
+                        </includes>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>
+    </plugins>
+</build>
