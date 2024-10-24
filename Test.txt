@@ -1,23 +1,29 @@
-<build>
-    <plugins>
-        <plugin>
-            <groupId>com.alterego.oss.maven.plugin</groupId>
-            <artifactId>yuicompressor-maven-plugin</artifactId>
-            <version>1.5.0</version>
-            <executions>
-                <execution>
-                    <goals>
-                        <goal>compress</goal>
-                    </goals>
-                    <configuration>
-                        <sourceDirectory>${project.basedir}/src/main/webapp/js</sourceDirectory>
-                        <outputDirectory>${project.build.directory}/minified-js</outputDirectory>
-                        <includes>
-                            <include>**/*.js</include>
-                        </includes>
-                    </configuration>
-                </execution>
-            </executions>
-        </plugin>
-    </plugins>
-</build>
+function createAnchorTags(requestsString) {
+    // Split the semicolon-separated request string into an array
+    var requestsArray = requestsString.split(';');
+    var baseUrl = "https://example.com/request/"; // Replace with your actual base URL
+
+    // Iterate over each request and create the anchor tag
+    var anchorTags = requestsArray.map(function(request) {
+        // Trim any whitespace
+        request = request.trim();
+
+        // Extract only the number part before the dash (if present)
+        var requestId = request.match(/^\d+/);
+
+        if (requestId) {
+            // Construct the anchor tag
+            var url = baseUrl + requestId[0];
+            return '<a href="' + url + '" target="_blank">' + requestId[0] + '</a>';
+        }
+        return '';
+    });
+
+    // Return the final string of anchor tags, joined with a space or separator of your choice
+    return anchorTags.join(' ');
+}
+
+// Example usage:
+var openRequests = "97204; 94303-D; 99597; 87484-D";
+var result = createAnchorTags(openRequests);
+console.log(result);
