@@ -1,11 +1,21 @@
-<% for (Filter filter : dateFilters.getFiltersList()) { %>
-    <div style="display: flex; gap: 10px;"> <!-- Flex container for each pair -->
-        <!-- Start Date -->
-        <label for="<%= filter.getId() %>Start"><%= filter.getContent() %> Start Date</label>
-        <input type="text" class="form-control" name="<%= filter.getValue() %>Start" id="<%= filter.getId() %>Start" />
-        
-        <!-- End Date -->
-        <label for="<%= filter.getId() %>End"><%= filter.getContent() %> End Date</label>
-        <input type="text" class="form-control" name="<%= filter.getValue() %>End" id="<%= filter.getId() %>End" />
-    </div>
-<% } %>
+<div>
+    <% 
+    List<Filter> filters = dateFilters.getFiltersList();
+    for (int i = 0; i < filters.size(); i += 2) { 
+        Filter startFilter = filters.get(i); // Start Date
+        Filter endFilter = (i + 1 < filters.size()) ? filters.get(i + 1) : null; // End Date (or null if it doesn't exist)
+    %>
+        <!-- Flex container for each pair -->
+        <div style="display: flex; gap: 10px;">
+            <!-- Start Date -->
+            <label for="<%= startFilter.getId() %>Start"><%= startFilter.getContent() %> Start Date</label>
+            <input type="text" class="form-control" name="<%= startFilter.getValue() %>Start" id="<%= startFilter.getId() %>Start" />
+
+            <!-- End Date (only if it exists) -->
+            <% if (endFilter != null) { %>
+                <label for="<%= endFilter.getId() %>End"><%= endFilter.getContent() %> End Date</label>
+                <input type="text" class="form-control" name="<%= endFilter.getValue() %>End" id="<%= endFilter.getId() %>End" />
+            <% } %>
+        </div>
+    <% } %>
+</div>
