@@ -1,14 +1,11 @@
-function frameNewUrl(param) {
-    var anchorUrl = $('td.s-title a').attr('href'); // Get the href from the anchor tag inside <td class="s-title">
-
-    if (anchorUrl) {
-        var newUrl = anchorUrl.split('?')[0] + '?newParam=' + param; // Split at '?' and append the new param
-        return newUrl; // Return the new URL
-    }
-
-    return null; // Return null if no URL is found
-}
-
-// Example usage:
-var result = frameNewUrl('newValue');
-console.log(result);
+<% for (Filter filter : dateFilters.getFiltersList()) { %>
+    <div style="display: flex; gap: 10px;"> <!-- Flex container for each pair -->
+        <!-- Start Date -->
+        <label for="<%= filter.getId() %>Start"><%= filter.getContent() %> Start Date</label>
+        <input type="text" class="form-control" name="<%= filter.getValue() %>Start" id="<%= filter.getId() %>Start" />
+        
+        <!-- End Date -->
+        <label for="<%= filter.getId() %>End"><%= filter.getContent() %> End Date</label>
+        <input type="text" class="form-control" name="<%= filter.getValue() %>End" id="<%= filter.getId() %>End" />
+    </div>
+<% } %>
