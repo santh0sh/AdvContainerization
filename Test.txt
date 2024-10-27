@@ -1,21 +1,60 @@
-<div>
-    <% 
-    List<Filter> filters = dateFilters.getFiltersList();
-    for (int i = 0; i < filters.size(); i += 2) { 
-        Filter startFilter = filters.get(i); // Start Date
-        Filter endFilter = (i + 1 < filters.size()) ? filters.get(i + 1) : null; // End Date (or null if it doesn't exist)
-    %>
-        <!-- Flex container for each pair -->
-        <div style="display: flex; gap: 10px;">
-            <!-- Start Date -->
-            <label for="<%= startFilter.getId() %>Start"><%= startFilter.getContent() %> Start Date</label>
-            <input type="text" class="form-control" name="<%= startFilter.getValue() %>Start" id="<%= startFilter.getId() %>Start" />
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.HashMap;
+import java.util.Map;
+import javax.servlet.http.HttpSession;
 
-            <!-- End Date (only if it exists) -->
-            <% if (endFilter != null) { %>
-                <label for="<%= endFilter.getId() %>End"><%= endFilter.getContent() %> End Date</label>
-                <input type="text" class="form-control" name="<%= endFilter.getValue() %>End" id="<%= endFilter.getId() %>End" />
-            <% } %>
-        </div>
-    <% } %>
-</div>
+public class TestGenerateExcel {
+
+    public static void main(String[] args) {
+        try {
+            // Step 1: Read HTML content from local file
+            String htmlFilePath = "/path/to/your/input.html"; // Update with your HTML file path
+            String htmlContent = new String(Files.readAllBytes(Paths.get(htmlFilePath)));
+
+            // Step 2: Set up required parameters
+            Map<String, Object> map = new HashMap<>();
+            // Add any required key-value pairs to the map here if needed
+
+            HttpSession session = null; // Set up or mock your session if needed
+
+            String someString = "exampleString";
+            String uid = "uniqueIdentifier"; // Adjust as required
+
+            // Step 3: Call the method to generate Excel file
+            File outputFile = generateExcelFile(htmlContent, map, session, someString, uid);
+
+            // Step 4: Write the output file locally
+            String outputFilePath = "/path/to/your/output.xlsx"; // Update with your desired output file path
+            try (FileInputStream fis = new FileInputStream(outputFile);
+                 FileOutputStream fos = new FileOutputStream(outputFilePath)) {
+                byte[] buffer = new byte[1024];
+                int bytesRead;
+                while ((bytesRead = fis.read(buffer)) != -1) {
+                    fos.write(buffer, 0, bytesRead);
+                }
+            }
+
+            System.out.println("Excel file generated and saved at: " + outputFilePath);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            System.err.println("An error occurred during file generation.");
+            e.printStackTrace();
+        }
+    }
+
+    public static File generateExcelFile(String html, Map<String, Object> map, HttpSession session, String someString, String uid) throws Exception {
+        // Mocking the Excel generation process
+        // Replace with your actual `generateExcelFile` method implementation
+        File tempExcelFile = File.createTempFile("generated_excel_", ".xlsx");
+        // Add your file generation logic here
+
+        return tempExcelFile;
+    }
+}
