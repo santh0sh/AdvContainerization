@@ -1,60 +1,42 @@
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.HashMap;
-import java.util.Map;
-import javax.servlet.http.HttpSession;
+function validateRefineWidgetForKms(form) {
+    var $askKeywords = $("#askKeywords");
+    if ($askKeywords.val().trim() === "") {
+        alert("You must enter a keyword to complete this search.");
+        return false;
+    }
 
-public class TestGenerateExcel {
+    // Capture start and end dates for each filter field
+    var lastPublishedStartDate = $("#lastPublishedStartDate").val();
+    var lastPublishedEndDate = $("#lastPublishedEndDate").val();
+    var effectiveStartDate = $("#effectiveStartDate").val();
+    var effectiveEndDate = $("#effectiveEndDate").val();
+    var lastReviewedStartDate = $("#lastReviewedStartDate").val();
+    var lastReviewedEndDate = $("#lastReviewedEndDate").val();
 
-    public static void main(String[] args) {
-        try {
-            // Step 1: Read HTML content from local file
-            String htmlFilePath = "/path/to/your/input.html"; // Update with your HTML file path
-            String htmlContent = new String(Files.readAllBytes(Paths.get(htmlFilePath)));
-
-            // Step 2: Set up required parameters
-            Map<String, Object> map = new HashMap<>();
-            // Add any required key-value pairs to the map here if needed
-
-            HttpSession session = null; // Set up or mock your session if needed
-
-            String someString = "exampleString";
-            String uid = "uniqueIdentifier"; // Adjust as required
-
-            // Step 3: Call the method to generate Excel file
-            File outputFile = generateExcelFile(htmlContent, map, session, someString, uid);
-
-            // Step 4: Write the output file locally
-            String outputFilePath = "/path/to/your/output.xlsx"; // Update with your desired output file path
-            try (FileInputStream fis = new FileInputStream(outputFile);
-                 FileOutputStream fos = new FileOutputStream(outputFilePath)) {
-                byte[] buffer = new byte[1024];
-                int bytesRead;
-                while ((bytesRead = fis.read(buffer)) != -1) {
-                    fos.write(buffer, 0, bytesRead);
-                }
-            }
-
-            System.out.println("Excel file generated and saved at: " + outputFilePath);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            System.err.println("An error occurred during file generation.");
-            e.printStackTrace();
+    // Helper function to add or update hidden fields in the form
+    function addOrUpdateFilterField(fieldName, value) {
+        var existingField = $("#" + fieldName);
+        if (existingField.length === 0) {
+            $('<input>').attr({
+                type: 'hidden',
+                id: fieldName,
+                name: fieldName,
+                value: value
+            }).appendTo(form);
+        } else {
+            existingField.val(value);
         }
     }
 
-    public static File generateExcelFile(String html, Map<String, Object> map, HttpSession session, String someString, String uid) throws Exception {
-        // Mocking the Excel generation process
-        // Replace with your actual `generateExcelFile` method implementation
-        File tempExcelFile = File.createTempFile("generated_excel_", ".xlsx");
-        // Add your file generation logic here
-
-        return tempExcelFile;
+    // Construct and add individual filters based on provided date ranges
+    if (lastPublishedStartDate || lastPublishedEndDate) {
+        var publishedDateRange = `[${lastPublishedStartDate ? `"${lastPublishedStartDate}T00:00:00Z"` : '*'} TO ${lastPublishedEndDate ? `"${lastPublishedEndDate}T23:59:59Z"` : '*'}]`;
+        addOrUpdateFilterField('last_published_date', publishedDateRange);
     }
-}
+    if (effectiveStartDate || effectiveEndDate) {
+        var effectiveDateRange = `[${effectiveStartDate ? `"${effectiveStartDate}T00:00:00Z"` : '*'} TO ${effectiveEndDate ? `"${effectiveEndDate}T23:59:59Z"` : '*'}]`;
+        addOrUpdateFilterField('effective_date', effectiveDateRange);
+    }
+    if (lastReviewedStartDate || lastReviewedEndDate) {
+        var reviewedDateRange = `[${lastReviewedStartDate ? `"${lastReviewedStartDate}T00:00:00Z"` : '*'} TO ${lastReviewedEndDate ? `"${lastReviewedEndDate}T23:59:59Z"` : '*'}]`;
+        addOrUpdateFilterField('last_reviewed
