@@ -1,42 +1,79 @@
-function validateRefineWidgetForKms(form) {
-    var $askKeywords = $("#askKeywords");
-    if ($askKeywords.val().trim() === "") {
-        alert("You must enter a keyword to complete this search.");
-        return false;
-    }
+Here are some suggestions to make your content more professional and refined:
 
-    // Capture start and end dates for each filter field
-    var lastPublishedStartDate = $("#lastPublishedStartDate").val();
-    var lastPublishedEndDate = $("#lastPublishedEndDate").val();
-    var effectiveStartDate = $("#effectiveStartDate").val();
-    var effectiveEndDate = $("#effectiveEndDate").val();
-    var lastReviewedStartDate = $("#lastReviewedStartDate").val();
-    var lastReviewedEndDate = $("#lastReviewedEndDate").val();
+Automation of SSH Key Highlights
 
-    // Helper function to add or update hidden fields in the form
-    function addOrUpdateFilterField(fieldName, value) {
-        var existingField = $("#" + fieldName);
-        if (existingField.length === 0) {
-            $('<input>').attr({
-                type: 'hidden',
-                id: fieldName,
-                name: fieldName,
-                value: value
-            }).appendTo(form);
-        } else {
-            existingField.val(value);
-        }
-    }
+Current Draft:
 
-    // Construct and add individual filters based on provided date ranges
-    if (lastPublishedStartDate || lastPublishedEndDate) {
-        var publishedDateRange = `[${lastPublishedStartDate ? `"${lastPublishedStartDate}T00:00:00Z"` : '*'} TO ${lastPublishedEndDate ? `"${lastPublishedEndDate}T23:59:59Z"` : '*'}]`;
-        addOrUpdateFilterField('last_published_date', publishedDateRange);
-    }
-    if (effectiveStartDate || effectiveEndDate) {
-        var effectiveDateRange = `[${effectiveStartDate ? `"${effectiveStartDate}T00:00:00Z"` : '*'} TO ${effectiveEndDate ? `"${effectiveEndDate}T23:59:59Z"` : '*'}]`;
-        addOrUpdateFilterField('effective_date', effectiveDateRange);
-    }
-    if (lastReviewedStartDate || lastReviewedEndDate) {
-        var reviewedDateRange = `[${lastReviewedStartDate ? `"${lastReviewedStartDate}T00:00:00Z"` : '*'} TO ${lastReviewedEndDate ? `"${lastReviewedEndDate}T23:59:59Z"` : '*'}]`;
-        addOrUpdateFilterField('last_reviewed
+Our strategy is to leverage the automation tool for SSH key management and connectivity checks as per GIS standard.
+
+Developed ansible scripts that update SSH keys using an abstract template and Autosys jobs to check SSH connectivity for replication servers.
+
+Manual progress of this for 150+ servers on Flagscape application consumes 180 hours per cycle (time consuming and susceptible to human error).
+
+Automation will get this done in 10 hours for all environments with precision.
+
+This solution easily scales to accommodate additional servers or change SSH key management policies without additional manual effort.
+
+Plans are in pipeline to have talks with Horizon team to promote this template for all the applications.
+
+
+Suggested Improvements:
+
+Our strategy involves leveraging automation tools to manage SSH keys and perform connectivity checks in accordance with GIS standards.
+
+Ansible scripts were developed to update SSH keys using an abstract template, complemented by Autosys jobs to validate SSH connectivity for replication servers.
+
+Manual processing of this task for 150+ servers on the Flagscape application currently consumes 180 hours per cycle, making it both time-intensive and prone to human error.
+
+With automation, this task will be completed within 10 hours across all environments, ensuring precision.
+
+The solution is highly scalable, facilitating the integration of additional servers and seamless changes to SSH key management policies without further manual intervention.
+
+Discussions with the Horizon team are planned to promote the adoption of this template across all applications.
+
+
+KMS Key Highlights
+
+Current Draft:
+
+Offshore team started being integral part of KMS deliverables.
+
+Delivered over 25% of Q3 stories with 50+ story points.
+
+Had good hold on Workflow/Management page changes on KMS application.
+
+
+Suggested Improvements:
+
+The offshore team has become an integral part of the KMS deliverables.
+
+Successfully delivered over 25% of Q3 stories, totaling 50+ story points.
+
+Demonstrated strong proficiency in managing Workflow and implementing changes in the KMS application.
+
+
+Build Tool Migration Key Points
+
+Current Draft:
+
+Inhouse CI does not support multiple build pipelines and build time is higher with current system.
+
+All artifacts moved to single build pipeline and removed all dependency jars from repository in sync with desired standards.
+
+Integrated Unit test for all legacy modules in the new pipeline.
+
+Faster build time and opens door for module segregation and made it easy for OpenText upgrade.
+
+
+Suggested Improvements:
+
+The in-house CI system does not support multiple build pipelines, resulting in longer build times.
+
+All artifacts have been consolidated into a single build pipeline, and dependency jars have been removed from the repository to align with standard practices.
+
+Unit testing for all legacy modules has been integrated into the new pipeline.
+
+The new build process has significantly reduced build times, facilitated module segregation, and streamlined the OpenText upgrade process.
+
+
+These revisions aim to enhance clarity, maintain a professional tone, and ensure more concise and impactful language. Let me know if you'd like further adjustments or additional sections reviewed!
