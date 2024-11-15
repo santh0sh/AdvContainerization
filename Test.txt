@@ -1,79 +1,28 @@
-Here are some suggestions to make your content more professional and refined:
 
-Automation of SSH Key Highlights
+---
 
-Current Draft:
+"Hey team! Today, we’re going to talk about our recent initiative: the migration of Flagscape from Ant to Maven. This was a big project, spanning from July to September 2024, with a few key goals and some valuable lessons learned along the way. So let’s break it down!
 
-Our strategy is to leverage the automation tool for SSH key management and connectivity checks as per GIS standard.
+Project Goals and Objectives:
+Our main goal was to modernize and streamline the build process. We were working with dual pipelines in Ant, which wasn’t compatible with Horizon’s requirements for a unified build process. Moving to Maven allowed us to create a more efficient and cohesive build structure, which ultimately makes things easier to manage and cuts down on build times.
 
-Developed ansible scripts that update SSH keys using an abstract template and Autosys jobs to check SSH connectivity for replication servers.
+Scope of the Project:
+The scope was clear: build a scalable, maintainable, and efficient system that aligns with today’s development practices. By switching to Maven, we’re now in line with modern standards and have a strong foundation for handling artifacts more effectively.
 
-Manual progress of this for 150+ servers on Flagscape application consumes 180 hours per cycle (time consuming and susceptible to human error).
+Challenges We Faced:
+Of course, no migration is without its bumps! First, we had to manage custom JAR dependencies across submodules to make sure nothing broke along the way. Then, there was the challenge of ensuring compatibility with older components—nobody wanted to rely on old Ant scripts! Lastly, we had to make sure this transition didn’t disrupt our existing CI/CD pipelines, like Jenkins. But with careful planning and testing, we pulled it off smoothly.
 
-Automation will get this done in 10 hours for all environments with precision.
+Highlights and Wins:
+Now, let’s talk about what went right! Maven’s built-in dependency management saved us time and reduced manual work on library updates. Plus, the structured Maven lifecycle—things like compile, test, and package—made it easier for us to manage complex builds. Overall, this transition has already started paying off in terms of efficiency.
 
-This solution easily scales to accommodate additional servers or change SSH key management policies without additional manual effort.
+Impact and Takeaways:
+The migration has had a big impact on our workflow. Project management has become much smoother, builds are more stable, and the team is now more comfortable with Maven, which opens the door for us to integrate other modern tools down the line.
 
-Plans are in pipeline to have talks with Horizon team to promote this template for all the applications.
-
-
-Suggested Improvements:
-
-Our strategy involves leveraging automation tools to manage SSH keys and perform connectivity checks in accordance with GIS standards.
-
-Ansible scripts were developed to update SSH keys using an abstract template, complemented by Autosys jobs to validate SSH connectivity for replication servers.
-
-Manual processing of this task for 150+ servers on the Flagscape application currently consumes 180 hours per cycle, making it both time-intensive and prone to human error.
-
-With automation, this task will be completed within 10 hours across all environments, ensuring precision.
-
-The solution is highly scalable, facilitating the integration of additional servers and seamless changes to SSH key management policies without further manual intervention.
-
-Discussions with the Horizon team are planned to promote the adoption of this template across all applications.
+Wrap-Up:
+So, in short, migrating to Maven was a great step forward. It was a challenging but rewarding experience, and we’re already seeing the benefits in our day-to-day work. Thanks for everyone’s hard work on this, and I’m excited to see what we can achieve with this new setup!"
 
 
-KMS Key Highlights
+---
 
-Current Draft:
+This script is designed to be conversational, highlighting the key points in a friendly and engaging way, suitable for a quick team update. Let me know if you'd like further customization!
 
-Offshore team started being integral part of KMS deliverables.
-
-Delivered over 25% of Q3 stories with 50+ story points.
-
-Had good hold on Workflow/Management page changes on KMS application.
-
-
-Suggested Improvements:
-
-The offshore team has become an integral part of the KMS deliverables.
-
-Successfully delivered over 25% of Q3 stories, totaling 50+ story points.
-
-Demonstrated strong proficiency in managing Workflow and implementing changes in the KMS application.
-
-
-Build Tool Migration Key Points
-
-Current Draft:
-
-Inhouse CI does not support multiple build pipelines and build time is higher with current system.
-
-All artifacts moved to single build pipeline and removed all dependency jars from repository in sync with desired standards.
-
-Integrated Unit test for all legacy modules in the new pipeline.
-
-Faster build time and opens door for module segregation and made it easy for OpenText upgrade.
-
-
-Suggested Improvements:
-
-The in-house CI system does not support multiple build pipelines, resulting in longer build times.
-
-All artifacts have been consolidated into a single build pipeline, and dependency jars have been removed from the repository to align with standard practices.
-
-Unit testing for all legacy modules has been integrated into the new pipeline.
-
-The new build process has significantly reduced build times, facilitated module segregation, and streamlined the OpenText upgrade process.
-
-
-These revisions aim to enhance clarity, maintain a professional tone, and ensure more concise and impactful language. Let me know if you'd like further adjustments or additional sections reviewed!
