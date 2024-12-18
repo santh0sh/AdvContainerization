@@ -1,66 +1,23 @@
-Here’s a professionally adjusted version of your year-end appraisal comments, ensuring alignment with your mid-year feedback while emphasizing exceptional performance and readiness for career progression.
-
-
----
-
-Year-End Self-Appraisal Comments
-
-The second half of the year has been extremely rewarding, and I am pleased to highlight my significant contributions, growth, and leadership initiatives. I believe I have demonstrated exceptional performance and readiness to take the next step in my career.
-
-Key Achievements and Deliverables
-
-Q3 and Q4 Deliverables: Successfully delivered the KMS and Flagscape projects with notable outcomes, particularly in the automation project, contributing directly to KMS key enhancements.
-
-Profile Enhancements: Implemented critical changes to profile functionalities, enabling streamlined integration and optimized application usage, which was well appreciated by business teams and leadership.
-
-SSH Key Remediation: Delivered a crucial milestone on SSH key remediation, showcasing effective problem-solving and technical expertise.
-
-Build Tool Conversion: Spearheaded the conversion of the build tool from Ant to Maven, a massive initiative ensuring future scalability. I also played a pivotal role in path testing and supporting the OI upgrade plan.
-
-Unit Test Case Development: Proactively initiated writing unit test cases for Flagscape development, achieving 20% coverage for 3 key modules, which enhances code quality and sustainability.
-
-
-Initiatives and Thought Leadership
-
-Successfully submitted two OPEX ideas on:
-
-Self-service automation for Mail Code Change Requests.
-
-SSH Key Remediation.
-
-
-Presented multiple decks on container onboarding and the Ant to Maven conversion strategy, showcasing leadership in key technical advancements.
-
-Notably delivered presentations during leadership team meetings and contributed to the Team Recognition Event, driving visibility for team efforts.
-
-
-Recognition and Leadership Development
-
-Recognized by the leadership team for my contributions in multiple areas, further reinforced by my performance in the GBS EET weekly recognition event.
-
-Demonstrated strong mentoring skills by onboarding campus graduates and overseeing vendor teams, ensuring smooth integration and performance.
-
-
-Organizational Contributions
-
-Played a key role in organizational events and team engagement:
-
-Volunteered as the primary photographer for Aditya Bhasin’s visit during TLF Fest, an opportunity that allowed me to collaborate with senior leadership, including Madhuri and Aditya Bhasin.
-
-Received the Silver Award from the Chennai Market Leader, a proud achievement reflecting my impactful contributions.
-
-Contributed to other team events like coastal cleanup, team outings, and knowledge-sharing initiatives, fostering a positive team culture.
-
-
-
-Summary and Career Progression
-
-This year has been a transformative one, with significant contributions in technical excellence, leadership, and organizational initiatives. I have consistently demonstrated my ability to deliver high-impact results, drive innovation, and take ownership of critical projects.
-
-With a strong track record of success and continuous growth, I am confident in my readiness to transition to the next level of responsibility and leadership in my career. I look forward to taking on greater challenges, contributing further to organizational goals, and delivering exceptional results.
-
-
----
-
-This revised version aligns your achievements with professional standards while highlighting your readiness for career progression. Let me know if you need any additional edits!
-
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                echo "Building the project..."
+                // Simulate a success/failure step
+                sh 'exit 0' // Change to 'exit 1' for failure
+            }
+        }
+    }
+    post {
+        always {
+            script {
+                if (currentBuild.currentResult == 'SUCCESS') {
+                    echo "Build status: SUCCESS"
+                } else {
+                    echo "Build status: ${currentBuild.currentResult}"
+                }
+            }
+        }
+    }
+}
