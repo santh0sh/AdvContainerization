@@ -1,23 +1,126 @@
-pipeline {
-    agent any
-    stages {
-        stage('Build') {
-            steps {
-                echo "Building the project..."
-                // Simulate a success/failure step
-                sh 'exit 0' // Change to 'exit 1' for failure
-            }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SharePoint</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
         }
-    }
-    post {
-        always {
-            script {
-                if (currentBuild.currentResult == 'SUCCESS') {
-                    echo "Build status: SUCCESS"
-                } else {
-                    echo "Build status: ${currentBuild.currentResult}"
-                }
-            }
+        .header {
+            background-color: white;
+            padding: 15px;
+            border-bottom: 1px solid #e5e5e5;
         }
-    }
-}
+        .email-info {
+            border-bottom: 1px solid #e5e5e5;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+        .profile-pic {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: #0078d4;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 4px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+        }
+        .carousel {
+            margin-bottom: 20px;
+        }
+        .menu-item {
+            margin-bottom: 10px;
+        }
+        .submenu {
+            margin-left: 20px;
+        }
+        a {
+            color: #0078d4;
+            text-decoration: none;
+        }
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #92c353;
+            border-radius: 50%;
+            display: inline-block;
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="email-info">
+            <div>
+                <span class="profile-pic"></span>
+                <strong>Boopathi, N</strong>
+                <span class="status-dot"></span>
+            </div>
+            <div>To: Jain, Harshit</div>
+            <div>Cc: DPaula, Sanjay</div>
+            <div>Subject: SharePoint</div>
+        </div>
+
+        <div class="main-content">
+            <div>Page with:</div>
+            <ul>
+                <li>Top Menu</li>
+                <li>Carousel</li>
+                <li>Hits & Headlines Section</li>
+            </ul>
+
+            <div class="carousel">
+                <div>Carousel (max 3-5 items)</div>
+                <ul>
+                    <li>Top news(s) of the week</li>
+                    <li>Know Your Leader</li>
+                    <li>#InSpotlight</li>
+                    <li>#CulturalIntegration</li>
+                    <li>Active Blog</li>
+                </ul>
+            </div>
+
+            <div class="top-menu">
+                <div class="menu-item"><a href="#">About CAL Tech</a></div>
+                <div class="menu-item">
+                    <a href="#">My Resources</a>
+                    <div class="submenu">
+                        <div><a href="#">Team Showcase</a></div>
+                        <div><a href="#">Release Calendar</a></div>
+                        <div><a href="#">#InSpotlight</a></div>
+                        <div><a href="#">#CulturalIntegration</a></div>
+                        <div><a href="#">Photo Library</a></div>
+                        <div><a href="#">Event Calendar</a></div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <a href="#">Let's engage</a>
+                    <div class="submenu">
+                        <div><a href="#">Blogs</a></div>
+                        <div><a href="#">Ideas for Improvement</a></div>
+                    </div>
+                </div>
+                <div class="menu-item"><a href="#">Recognitions</a></div>
+                <div class="menu-item"><a href="#">Open Positions</a></div>
+                <div class="menu-item">
+                    <a href="#">Important Links:</a>
+                    <div class="submenu">
+                        <div><a href="#">A page with all useful links grouped by CAL Tech (Confluence, Jira, SharePoint etc.)</a></div>
+                        <div><a href="#">Other links like GT, Academy on Demand, Enterprise Manager Development etc.</a></div>
+                    </div>
+                </div>
+                <div class="menu-item"><a href="#">Contact us</a></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
