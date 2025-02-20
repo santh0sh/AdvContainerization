@@ -1,6 +1,7 @@
 @Repository
-public interface PressReleaseRepository extends JpaRepository<PressReleaseEntity, String> {
+public interface PressReleaseCategoryMapRepository extends JpaRepository<PressReleaseCategoryMapEntity, String> {
 
-    // Fetch press releases based on category ID using method naming convention
-    List<PressReleaseEntity> findByCategoryMappings_CategoryEntity_CategoryId(String categoryId);
+    @Query("SELECT prMap.pressReleaseEntity FROM PressReleaseCategoryMapEntity prMap " +
+           "WHERE prMap.categoryEntity.category_id = :categoryId")
+    List<PressReleaseEntity> findPressReleasesByCategoryId(@Param("categoryId") String categoryId);
 }
