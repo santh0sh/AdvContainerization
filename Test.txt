@@ -1,12 +1,22 @@
-CREATE TABLE informatical_articles (
-    prid            VARCHAR2(32) PRIMARY KEY DEFAULT UPPER(RAWTOHEX(SYS_GUID())), -- Unique ID (GUID)
-    title           VARCHAR2(255) NOT NULL, -- Main title of the article
-    subtitle        VARCHAR2(255), -- Subtitle (optional)
-    category        VARCHAR2(100) NOT NULL, -- Category of the article
-    content         CLOB NOT NULL, -- Full content of the article
-    thumbnail       BLOB, -- Image thumbnail (optional)
-    publish_time    TIMESTAMP DEFAULT SYSTIMESTAMP, -- Publishing time (default: current time)
-    send_email      CHAR(1) CHECK (send_email IN ('Y', 'N')) DEFAULT 'N', -- Email notification flag
-    created_at      TIMESTAMP DEFAULT SYSTIMESTAMP, -- Record creation timestamp
-    updated_at      TIMESTAMP DEFAULT SYSTIMESTAMP ON UPDATE CURRENT_TIMESTAMP -- Last updated timestamp
+-- Category Table
+CREATE TABLE press_release_category (
+    category_id    NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY, -- Auto-incremented Category ID
+    category_name  VARCHAR2(100) UNIQUE NOT NULL, -- Unique category name
+    created_at     TIMESTAMP DEFAULT SYSTIMESTAMP -- Timestamp for record creation
+);
+
+-- Press Release Table
+CREATE TABLE press_release (
+    prid           VARCHAR2(32) PRIMARY KEY DEFAULT UPPER(RAWTOHEX(SYS_GUID())), -- Unique Primary Key
+    title          VARCHAR2(255) NOT NULL, -- Press Release Title
+    subtitle       VARCHAR2(255), -- Subtitle (optional)
+    category_id    NUMBER NOT NULL, -- Foreign Key Reference to Category
+    content        CLOB NOT NULL, -- Full content
+    thumbnail      BLOB, -- Image thumbnail (optional)
+    publish_time   TIMESTAMP DEFAULT SYSTIMESTAMP, -- Publish time
+    send_email     CHAR(1) CHECK (send_email IN ('Y', 'N')) DEFAULT 'N', -- Email notification flag
+    created_at     TIMESTAMP DEFAULT SYSTIMESTAMP, -- Creation timestamp
+    updated_at     TIMESTAMP DEFAULT SYSTIMESTAMP ON UPDATE CURRENT_TIMESTAMP, -- Last update timestamp
+    CONSTRAINT fk_press_release_category FOREIGN KEY (category_id) 
+        REFERENCES press_release_category (category_id) ON DELETE CASCADE
 );
