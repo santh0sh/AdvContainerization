@@ -1,10 +1,31 @@
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired;
 
-@Repository
-public interface PressReleaseRepository extends JpaRepository<PressReleaseEntity, String> {
-    
-    @Query("SELECT pr FROM PressReleaseEntity pr ORDER BY pr.publishedDate DESC")
-    Page<PressReleaseEntity> findPressReleases(Pageable pageable);
+import java.util.List;
+import java.util.stream.Collectors;
+
+@Service
+public class PressReleaseService {
+
+    private final PressReleaseRepository pressReleaseRepository;
+
+    @Autowired
+    public PressReleaseService(PressReleaseRepository pressReleaseRepository) {
+        this.pressReleaseRepository = pressReleaseRepository;
+    }
+
+    public List<PressReleaseDTO> getPressReleases(int start, int limit) {
+        Pageable pageable = PageRequest.of(start / limit, limit);
+        Page<PressReleaseEntity> pressReleasePage = pressReleaseRepository.findPressReleases(pageable);
+
+        return pressReleasePage.getContent().stream()
+            .map(pr -> new PressReleaseDTO(pr, pr.getCategoryMappings().stream()
+                .map(mapping -> mapping.getCategoryEntity().getCategoryName())
+                .distinct()
+                .collect(Collectors.toList())))
+            .collect(Collectors.toList());
+    }
 }
