@@ -1,83 +1,38 @@
-import org.springframework.stereotype.Service; import org.springframework.transaction.annotation.Transactional; import org.springframework.beans.factory.annotation.Autowired; import java.util.Date; import java.util.List; import java.util.Optional; import java.util.stream.Collectors;
-
-@Service public class PressReleaseService {
-
-@Autowired
-private PressReleaseRepository pressReleaseRepository;
-
-@Autowired
-private CategoryRepository categoryRepository;
-
-@Autowired
-private PressReleaseCategoryMapRepository pressReleaseCategoryMapRepository;
-
 @Transactional
-public PressReleaseDTO savePressRelease(PressReleaseDTO pressReleaseDTO) {
-    PressReleaseEntity pressReleaseEntity = new PressReleaseEntity();
-    pressReleaseEntity.setPrId(pressReleaseDTO.getPrId());
-    pressReleaseEntity.setPrTitle(pressReleaseDTO.getPrTitle());
-    pressReleaseEntity.setPrThumbnailPath(pressReleaseDTO.getPrThumbnailPath());
-    pressReleaseEntity.setPrBodyContent(pressReleaseDTO.getPrBodyContent());
-    pressReleaseEntity.setPrPublishedDate(DateUtil.parse(pressReleaseDTO.getPrPublishedDate()));
-    pressReleaseEntity.setPrUpdatedDate(new Date());
-    
-    PressReleaseEntity savedPressRelease = pressReleaseRepository.save(pressReleaseEntity);
-    
-    List<PressReleaseCategoryMapEntity> categoryMappings = pressReleaseDTO.getCategoryIds().stream().map(categoryId -> {
-        CategoryEntity category = categoryRepository.findById(categoryId)
-                .orElseThrow(() -> new RuntimeException("Category not found"));
-        PressReleaseCategoryMapEntity categoryMapping = new PressReleaseCategoryMapEntity();
-        categoryMapping.setPressReleaseEntity(savedPressRelease);
-        categoryMapping.setCategoryEntity(category);
-        return categoryMapping;
-    }).collect(Collectors.toList());
-    
-    pressReleaseCategoryMapRepository.saveAll(categoryMappings);
-    
-    PressReleaseDTO savedDTO = new PressReleaseDTO();
-    savedDTO.setPrId(savedPressRelease.getPrId());
-    savedDTO.setPrTitle(savedPressRelease.getPrTitle());
-    savedDTO.setPrThumbnailPath(savedPressRelease.getPrThumbnailPath());
-    savedDTO.setPrBodyContent(savedPressRelease.getPrBodyContent());
-    savedDTO.setPrPublishedDate(savedPressRelease.getPrPublishedDate().toString());
-    
-    return savedDTO;
-}
-
-@Transactional
-public PressReleaseDTO updatePressRelease(String prId, PressReleaseDTO pressReleaseDTO) {
-    PressReleaseEntity existingPressRelease = pressReleaseRepository.findById(prId)
+public PressReleaseDTO updatePressRelease(PressReleaseDTO prDTO) {
+    // Fetch existing Press Release or throw exception
+    PressReleaseEntity prFromDB = pressReleaseRepository.findById(prDTO.getPrId())
             .orElseThrow(() -> new RuntimeException("Press Release not found"));
-    
-    existingPressRelease.setPrTitle(pressReleaseDTO.getPrTitle());
-    existingPressRelease.setPrThumbnailPath(pressReleaseDTO.getPrThumbnailPath());
-    existingPressRelease.setPrBodyContent(pressReleaseDTO.getPrBodyContent());
-    existingPressRelease.setPrUpdatedDate(new Date());
-    
-    PressReleaseEntity updatedPressRelease = pressReleaseRepository.save(existingPressRelease);
-    
-    pressReleaseCategoryMapRepository.deleteByPressReleaseEntity(existingPressRelease);
-    
-    List<PressReleaseCategoryMapEntity> updatedCategoryMappings = pressReleaseDTO.getCategoryIds().stream().map(categoryId -> {
-        CategoryEntity category = categoryRepository.findById(categoryId)
-                .orElseThrow(() -> new RuntimeException("Category not found"));
-        PressReleaseCategoryMapEntity categoryMapping = new PressReleaseCategoryMapEntity();
-        categoryMapping.setPressReleaseEntity(updatedPressRelease);
-        categoryMapping.setCategoryEntity(category);
-        return categoryMapping;
-    }).collect(Collectors.toList());
-    
+
+    // Copy updated fields from DTO to Entity
+    BeanUtils.copyProperties(prDTO, prFromDB);
+
+    // Save the updated Press Release
+    PressReleaseEntity updatedEntity = pressReleaseRepository.save(prFromDB);
+
+    // Step 1: Delete existing category mappings
+    pressReleaseCategoryMapRepository.deleteByPressReleaseEntity(prFromDB);
+
+    // Step 2: Create new category mappings
+    List<PressReleaseCategoryMapEntity> updatedCategoryMappings = prDTO.getCategories().stream()
+            .map(categoryId -> {
+                CategoryEntity category = categoryRepository.findById(categoryId)
+                        .orElseThrow(() -> new RuntimeException("Category not found"));
+
+                PressReleaseCategoryMapEntity categoryMapping = new PressReleaseCategoryMapEntity();
+                categoryMapping.setPressReleaseEntity(updatedEntity);
+                categoryMapping.setCategoryEntity(category);
+
+                return categoryMapping;
+            })
+            .collect(Collectors.toList());
+
+    // Save the new category mappings
     pressReleaseCategoryMapRepository.saveAll(updatedCategoryMappings);
-    
+
+    // Convert back to DTO and return
     PressReleaseDTO updatedDTO = new PressReleaseDTO();
-    updatedDTO.setPrId(updatedPressRelease.getPrId());
-    updatedDTO.setPrTitle(updatedPressRelease.getPrTitle());
-    updatedDTO.setPrThumbnailPath(updatedPressRelease.getPrThumbnailPath());
-    updatedDTO.setPrBodyContent(updatedPressRelease.getPrBodyContent());
-    updatedDTO.setPrPublishedDate(updatedPressRelease.getPrPublishedDate().toString());
+    BeanUtils.copyProperties(updatedEntity, updatedDTO);
     
     return updatedDTO;
 }
-
-}
-
