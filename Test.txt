@@ -1,3 +1,10 @@
+
+<dependency>
+    <groupId>com.googlecode.jmapper-framework</groupId>
+    <artifactId>jmapper-core</artifactId>
+    <version>1.6.1</version>
+</dependency>
+
 import org.springframework.stereotype.Service; import org.springframework.transaction.annotation.Transactional; import org.springframework.beans.factory.annotation.Autowired; import com.googlecode.jmapper.JMapper; import java.util.Date; import java.util.List; import java.util.Optional; import java.util.stream.Collectors;
 
 @Service public class PressReleaseService {
