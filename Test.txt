@@ -1,11 +1,4 @@
-
-<dependency>
-    <groupId>com.googlecode.jmapper-framework</groupId>
-    <artifactId>jmapper-core</artifactId>
-    <version>1.6.1</version>
-</dependency>
-
-import org.springframework.stereotype.Service; import org.springframework.transaction.annotation.Transactional; import org.springframework.beans.factory.annotation.Autowired; import com.googlecode.jmapper.JMapper; import java.util.Date; import java.util.List; import java.util.Optional; import java.util.stream.Collectors;
+import org.springframework.stereotype.Service; import org.springframework.transaction.annotation.Transactional; import org.springframework.beans.factory.annotation.Autowired; import java.util.Date; import java.util.List; import java.util.Optional; import java.util.stream.Collectors;
 
 @Service public class PressReleaseService {
 
@@ -18,16 +11,15 @@ private CategoryRepository categoryRepository;
 @Autowired
 private PressReleaseCategoryMapRepository pressReleaseCategoryMapRepository;
 
-private final JMapper<PressReleaseEntity, PressReleaseDTO> pressReleaseMapper = 
-        new JMapper<>(PressReleaseEntity.class, PressReleaseDTO.class);
-private final JMapper<PressReleaseDTO, PressReleaseEntity> pressReleaseDtoMapper = 
-        new JMapper<>(PressReleaseDTO.class, PressReleaseEntity.class);
-
 @Transactional
 public PressReleaseDTO savePressRelease(PressReleaseDTO pressReleaseDTO) {
-    PressReleaseEntity pressReleaseEntity = pressReleaseMapper.getDestination(pressReleaseDTO);
-    pressReleaseEntity.setPublishedDate(DateUtil.parse(pressReleaseDTO.getPublishedDate()));
-    pressReleaseEntity.setUpdatedDate(new Date());
+    PressReleaseEntity pressReleaseEntity = new PressReleaseEntity();
+    pressReleaseEntity.setPrId(pressReleaseDTO.getPrId());
+    pressReleaseEntity.setPrTitle(pressReleaseDTO.getPrTitle());
+    pressReleaseEntity.setPrThumbnailPath(pressReleaseDTO.getPrThumbnailPath());
+    pressReleaseEntity.setPrBodyContent(pressReleaseDTO.getPrBodyContent());
+    pressReleaseEntity.setPrPublishedDate(DateUtil.parse(pressReleaseDTO.getPrPublishedDate()));
+    pressReleaseEntity.setPrUpdatedDate(new Date());
     
     PressReleaseEntity savedPressRelease = pressReleaseRepository.save(pressReleaseEntity);
     
@@ -35,38 +27,56 @@ public PressReleaseDTO savePressRelease(PressReleaseDTO pressReleaseDTO) {
         CategoryEntity category = categoryRepository.findById(categoryId)
                 .orElseThrow(() -> new RuntimeException("Category not found"));
         PressReleaseCategoryMapEntity categoryMapping = new PressReleaseCategoryMapEntity();
-        categoryMapping.setPressRelease(savedPressRelease);
-        categoryMapping.setCategory(category);
+        categoryMapping.setPressReleaseEntity(savedPressRelease);
+        categoryMapping.setCategoryEntity(category);
         return categoryMapping;
     }).collect(Collectors.toList());
     
     pressReleaseCategoryMapRepository.saveAll(categoryMappings);
-    return pressReleaseDtoMapper.getDestination(savedPressRelease);
+    
+    PressReleaseDTO savedDTO = new PressReleaseDTO();
+    savedDTO.setPrId(savedPressRelease.getPrId());
+    savedDTO.setPrTitle(savedPressRelease.getPrTitle());
+    savedDTO.setPrThumbnailPath(savedPressRelease.getPrThumbnailPath());
+    savedDTO.setPrBodyContent(savedPressRelease.getPrBodyContent());
+    savedDTO.setPrPublishedDate(savedPressRelease.getPrPublishedDate().toString());
+    
+    return savedDTO;
 }
 
 @Transactional
-public PressReleaseDTO updatePressRelease(String pressReleaseId, PressReleaseDTO pressReleaseDTO) {
-    PressReleaseEntity existingPressRelease = pressReleaseRepository.findById(pressReleaseId)
+public PressReleaseDTO updatePressRelease(String prId, PressReleaseDTO pressReleaseDTO) {
+    PressReleaseEntity existingPressRelease = pressReleaseRepository.findById(prId)
             .orElseThrow(() -> new RuntimeException("Press Release not found"));
     
-    pressReleaseMapper.getDestination(pressReleaseDTO, existingPressRelease);
-    existingPressRelease.setUpdatedDate(new Date());
+    existingPressRelease.setPrTitle(pressReleaseDTO.getPrTitle());
+    existingPressRelease.setPrThumbnailPath(pressReleaseDTO.getPrThumbnailPath());
+    existingPressRelease.setPrBodyContent(pressReleaseDTO.getPrBodyContent());
+    existingPressRelease.setPrUpdatedDate(new Date());
     
     PressReleaseEntity updatedPressRelease = pressReleaseRepository.save(existingPressRelease);
     
-    pressReleaseCategoryMapRepository.deleteByPressRelease(existingPressRelease);
+    pressReleaseCategoryMapRepository.deleteByPressReleaseEntity(existingPressRelease);
     
     List<PressReleaseCategoryMapEntity> updatedCategoryMappings = pressReleaseDTO.getCategoryIds().stream().map(categoryId -> {
         CategoryEntity category = categoryRepository.findById(categoryId)
                 .orElseThrow(() -> new RuntimeException("Category not found"));
         PressReleaseCategoryMapEntity categoryMapping = new PressReleaseCategoryMapEntity();
-        categoryMapping.setPressRelease(updatedPressRelease);
-        categoryMapping.setCategory(category);
+        categoryMapping.setPressReleaseEntity(updatedPressRelease);
+        categoryMapping.setCategoryEntity(category);
         return categoryMapping;
     }).collect(Collectors.toList());
     
     pressReleaseCategoryMapRepository.saveAll(updatedCategoryMappings);
-    return pressReleaseDtoMapper.getDestination(updatedPressRelease);
+    
+    PressReleaseDTO updatedDTO = new PressReleaseDTO();
+    updatedDTO.setPrId(updatedPressRelease.getPrId());
+    updatedDTO.setPrTitle(updatedPressRelease.getPrTitle());
+    updatedDTO.setPrThumbnailPath(updatedPressRelease.getPrThumbnailPath());
+    updatedDTO.setPrBodyContent(updatedPressRelease.getPrBodyContent());
+    updatedDTO.setPrPublishedDate(updatedPressRelease.getPrPublishedDate().toString());
+    
+    return updatedDTO;
 }
 
 }
