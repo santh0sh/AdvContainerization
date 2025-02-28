@@ -1,48 +1,11 @@
-@Repository
-public interface PressReleaseCategoryMapRepository extends JpaRepository<PressReleaseCategoryMapEntity, Long> {
-    
-    @Modifying
-    @Transactional
-    @Query("DELETE FROM PressReleaseCategoryMapEntity p WHERE p.pressReleaseEntity = :pressReleaseEntity")
-    void deleteByPressReleaseEntity(@Param("pressReleaseEntity") PressReleaseEntity pressReleaseEntity);
+public interface TagRepository extends JpaRepository<TagEntity, String> {
+
+    List<TagEntity> findByTagTypeOrderByTagNameAsc(String tagType);
 }
 
-
-@Transactional
-public PressReleaseDTO updatePressRelease(PressReleaseDTO prDTO) {
-    // Fetch existing Press Release or throw exception
-    PressReleaseEntity prFromDB = pressReleaseRepository.findById(prDTO.getPrId())
-            .orElseThrow(() -> new RuntimeException("Press Release not found"));
-
-    // Copy updated fields from DTO to Entity
-    BeanUtils.copyProperties(prDTO, prFromDB);
-
-    // Save the updated Press Release
-    PressReleaseEntity updatedEntity = pressReleaseRepository.save(prFromDB);
-
-    // Step 1: Delete existing category mappings
-    pressReleaseCategoryMapRepository.deleteByPressReleaseEntity(prFromDB);
-
-    // Step 2: Create new category mappings
-    List<PressReleaseCategoryMapEntity> updatedCategoryMappings = prDTO.getCategories().stream()
-            .map(categoryId -> {
-                CategoryEntity category = categoryRepository.findById(categoryId)
-                        .orElseThrow(() -> new RuntimeException("Category not found"));
-
-                PressReleaseCategoryMapEntity categoryMapping = new PressReleaseCategoryMapEntity();
-                categoryMapping.setPressReleaseEntity(updatedEntity);
-                categoryMapping.setCategoryEntity(category);
-
-                return categoryMapping;
-            })
-            .collect(Collectors.toList());
-
-    // Save the new category mappings
-    pressReleaseCategoryMapRepository.saveAll(updatedCategoryMappings);
-
-    // Convert back to DTO and return
-    PressReleaseDTO updatedDTO = new PressReleaseDTO();
-    BeanUtils.copyProperties(updatedEntity, updatedDTO);
-    
-    return updatedDTO;
+public List<TagDTO> getTagsByType(String tagType) {
+    return tagRepository.findByTagTypeOrderByTagNameAsc(tagType)
+        .stream()
+        .map(tag -> new TagDTO(tag.getTagId(), tag.getTagName(), tag.getTagDesc(), tag.getTagType()))
+        .collect(Collectors.toList());
 }
