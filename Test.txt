@@ -1,11 +1,11 @@
-public interface TagRepository extends JpaRepository<TagEntity, String> {
-
-    List<TagEntity> findByTagTypeOrderByTagNameAsc(String tagType);
-}
-
-public List<TagDTO> getTagsByType(String tagType) {
-    return tagRepository.findByTagTypeOrderByTagNameAsc(tagType)
-        .stream()
-        .map(tag -> new TagDTO(tag.getTagId(), tag.getTagName(), tag.getTagDesc(), tag.getTagType()))
-        .collect(Collectors.toList());
-}
+SELECT 
+    pr.PR_ID,
+    pr.PR_TITLE,
+    pr.PR_THUMBNAIL_PATH,
+    pr.PR_THUMBNAIL_ALT_TEXT,
+    pr.PR_PUBLISHED_DATE
+FROM tb_pr_press_release pr
+INNER JOIN tb_pr_pr_tag_map map ON pr.PR_ID = map.PR_ID
+INNER JOIN tb_pr_tag tag ON map.tag_id = tag.tag_id
+WHERE tag.pr_id = 'bb7621c3-9cc0-4455-aaba-12df6f723601'
+AND pr.PR_ID != 'bb7621c3-9cc0-4455-aaba-12df6f723601';
