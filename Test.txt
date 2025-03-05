@@ -1,11 +1,49 @@
-SELECT 
-    pr.PR_ID,
-    pr.PR_TITLE,
-    pr.PR_THUMBNAIL_PATH,
-    pr.PR_THUMBNAIL_ALT_TEXT,
-    pr.PR_PUBLISHED_DATE
-FROM tb_pr_press_release pr
-INNER JOIN tb_pr_pr_tag_map map ON pr.PR_ID = map.PR_ID
-INNER JOIN tb_pr_tag tag ON map.tag_id = tag.tag_id
-WHERE tag.pr_id = 'bb7621c3-9cc0-4455-aaba-12df6f723601'
-AND pr.PR_ID != 'bb7621c3-9cc0-4455-aaba-12df6f723601';
+Slide: Jenkins Quiz - Question
+
+What is a Jenkins pipeline used for?
+
+A) Managing databases
+
+B) Automating deployment and testing
+
+C) Hosting websites
+
+D) Monitoring performance
+
+
+
+---
+
+Slide: Jenkins Quiz - Answer & Explanation
+
+Answer: B) Automating deployment and testing
+
+Explanation:
+A Jenkins pipeline is used to define a series of automated steps to build, test, and deploy applications, making the CI/CD process more streamlined and efficient.
+
+
+---
+
+Slide: Jenkins Quiz - Question
+
+Which scripting language is commonly used for writing Jenkins pipelines?
+
+A) Python
+
+B) Groovy
+
+C) JavaScript
+
+D) Ruby
+
+
+
+---
+
+Slide: Jenkins Quiz - Answer & Explanation
+
+Answer: B) Groovy
+
+Explanation:
+Jenkins pipelines are typically written using the Groovy scripting language, which allows for flexibility and control over build processes.
+
