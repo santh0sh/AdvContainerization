@@ -1,49 +1,96 @@
-Slide: Jenkins Quiz - Question
+Ansible Quiz - Question
 
-What is a Jenkins pipeline used for?
+Which command is used to execute a playbook in Ansible?
 
-A) Managing databases
+A) ansible-playbook
 
-B) Automating deployment and testing
+B) ansible-run
 
-C) Hosting websites
+C) ansible-execute
 
-D) Monitoring performance
+D) ansible-launch
 
 
 
 ---
 
-Slide: Jenkins Quiz - Answer & Explanation
+Ansible Quiz - Answer & Explanation
 
-Answer: B) Automating deployment and testing
+Answer: A) ansible-playbook
 
 Explanation:
-A Jenkins pipeline is used to define a series of automated steps to build, test, and deploy applications, making the CI/CD process more streamlined and efficient.
+The ansible-playbook command is used to run playbooks in Ansible, which contain instructions for configuring systems and deploying applications.
 
 
 ---
 
-Slide: Jenkins Quiz - Question
+Ansible Quiz - Question
 
-Which scripting language is commonly used for writing Jenkins pipelines?
+True or False: Ansible uses SSH as its default method for connecting to managed nodes.
 
-A) Python
+True
 
-B) Groovy
-
-C) JavaScript
-
-D) Ruby
+False
 
 
 
 ---
 
-Slide: Jenkins Quiz - Answer & Explanation
+Ansible Quiz - Answer & Explanation
 
-Answer: B) Groovy
+Answer: True
 
 Explanation:
-Jenkins pipelines are typically written using the Groovy scripting language, which allows for flexibility and control over build processes.
+Ansible uses SSH as its default communication protocol to connect to and manage remote nodes without requiring additional software or agents.
+
+
+---
+
+
+---
+
+Git Quiz - Question
+
+Which Git command is used to view the history of commits?
+
+A) git history
+
+B) git log
+
+C) git status
+
+D) git diff
+
+
+
+---
+
+Git Quiz - Answer & Explanation
+
+Answer: B) git log
+
+Explanation:
+The git log command displays a list of all the commits made in a repository, including commit messages, authors, and timestamps.
+
+
+---
+
+Git Quiz - Question
+
+True or False: The command git clone is used to create a copy of a remote repository on your local machine.
+
+True
+
+False
+
+
+
+---
+
+Git Quiz - Answer & Explanation
+
+Answer: True
+
+Explanation:
+The git clone command is used to copy a remote Git repository to a local directory, including all files, branches, and commit history.
 
