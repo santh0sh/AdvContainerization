@@ -1,96 +1,44 @@
-Ansible Quiz - Question
+-- Rename the existing table to a more meaningful name
+ALTER TABLE CDS.TB_CDS_BULK_MAILCODE_ERROR_LOG 
+RENAME TO CDS.TB_USER_UPDATE_LOG;
 
-Which command is used to execute a playbook in Ansible?
+-- Drop the existing trigger
+DROP TRIGGER CDS.TB_CDS_BULK_MAILCODE_ERROR_LOG_TRIGGER;
 
-A) ansible-playbook
+-- Drop the existing sequence
+DROP SEQUENCE CDS.TB_CDS_BULK_MAILCODE_ERROR_LOG_SEQ;
 
-B) ansible-run
+-- Alter the renamed table to match the new structure
+ALTER TABLE CDS.TB_USER_UPDATE_LOG 
+ADD (
+    UPDATED_BY VARCHAR2(50 BYTE),
+    DETAILS CLOB,  -- Stores JSON structured data
+    STATUS VARCHAR2(20 BYTE) CHECK (STATUS IN ('Success', 'Failure')),
+    FAILURE_REASON VARCHAR2(255 BYTE),
+    UPDATED_AT TIMESTAMP DEFAULT SYSTIMESTAMP
+);
 
-C) ansible-execute
+-- Modify columns if necessary to ensure consistency
+ALTER TABLE CDS.TB_USER_UPDATE_LOG 
+MODIFY UPLOAD_DATE TIMESTAMP DEFAULT SYSTIMESTAMP;
 
-D) ansible-launch
+-- Create a new sequence for auto-incrementing the ID column
+CREATE SEQUENCE CDS.TB_USER_UPDATE_LOG_SEQ
+START WITH 1000
+INCREMENT BY 1
+NOMAXVALUE
+NOCYCLE
+NOCACHE
+NOORDER;
 
-
-
----
-
-Ansible Quiz - Answer & Explanation
-
-Answer: A) ansible-playbook
-
-Explanation:
-The ansible-playbook command is used to run playbooks in Ansible, which contain instructions for configuring systems and deploying applications.
-
-
----
-
-Ansible Quiz - Question
-
-True or False: Ansible uses SSH as its default method for connecting to managed nodes.
-
-True
-
-False
-
-
-
----
-
-Ansible Quiz - Answer & Explanation
-
-Answer: True
-
-Explanation:
-Ansible uses SSH as its default communication protocol to connect to and manage remote nodes without requiring additional software or agents.
-
-
----
-
-
----
-
-Git Quiz - Question
-
-Which Git command is used to view the history of commits?
-
-A) git history
-
-B) git log
-
-C) git status
-
-D) git diff
-
-
-
----
-
-Git Quiz - Answer & Explanation
-
-Answer: B) git log
-
-Explanation:
-The git log command displays a list of all the commits made in a repository, including commit messages, authors, and timestamps.
-
-
----
-
-Git Quiz - Question
-
-True or False: The command git clone is used to create a copy of a remote repository on your local machine.
-
-True
-
-False
-
-
-
----
-
-Git Quiz - Answer & Explanation
-
-Answer: True
-
-Explanation:
-The git clone command is used to copy a remote Git repository to a local directory, including all files, branches, and commit history.
-
+-- Recreate the trigger for auto-increment
+CREATE OR REPLACE TRIGGER CDS.TB_USER_UPDATE_LOG_TRIGGER
+BEFORE INSERT ON CDS.TB_USER_UPDATE_LOG
+FOR EACH ROW
+BEGIN
+    IF :NEW.ID IS NULL THEN
+        SELECT CDS.TB_USER_UPDATE_LOG_SEQ.NEXTVAL
+        INTO :NEW.ID FROM DUAL;
+    END IF;
+END;
+/
