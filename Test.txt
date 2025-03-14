@@ -1,1 +1,24 @@
-^.*(.{8})$
+Here’s a professionally framed response with a cheerful tone:
+
+
+---
+
+Subject: RE: Open Text March 2025 LOB Production Validation
+
+Dear Team,
+
+I’m pleased to share that our code changes have been successfully deployed and are now live for Business Review! A big shout-out to Suvarna, Sudhakar, Aparna, and Boopathi for your valuable contributions towards the Maven Build conversion. Your efforts were instrumental in making this a smooth and seamless deployment.
+
+A special thanks to Kotti, Siddharaj, and Bala for your support during the release. With this milestone, we have officially onboarded Maven as the build tool for Flagscape, streamlining our CI process and eliminating multi-pipeline complexities.
+
+Great job, everyone! Let’s keep up the momentum.
+
+Best,
+Santhosh
+
+
+---
+
+This keeps it professional, appreciative, and positive. Let me know if you'd like any tweaks!
+
+
