@@ -1,24 +1,79 @@
-Here’s a professionally framed response with a cheerful tone:
+Organization & Finance Hierarchy
 
 
 ---
 
-Subject: RE: Open Text March 2025 LOB Production Validation
+Strategy
 
-Dear Team,
-
-I’m pleased to share that our code changes have been successfully deployed and are now live for Business Review! A big shout-out to Suvarna, Sudhakar, Aparna, and Boopathi for your valuable contributions towards the Maven Build conversion. Your efforts were instrumental in making this a smooth and seamless deployment.
-
-A special thanks to Kotti, Siddharaj, and Bala for your support during the release. With this milestone, we have officially onboarded Maven as the build tool for Flagscape, streamlining our CI process and eliminating multi-pipeline complexities.
-
-Great job, everyone! Let’s keep up the momentum.
-
-Best,
-Santhosh
+During our migration to ReactJS, Kendo UI was selected as a component library due to its prior usage in various EET applications. While this provided immediate compatibility, Kendo UI requires an individual developer license rather than a corporate license, leading to ongoing annual licensing costs of $1400 per developer. To optimize costs and streamline development, we propose transitioning to custom React-based components that offer the same functionality without licensing constraints.
 
 
 ---
 
-This keeps it professional, appreciative, and positive. Let me know if you'd like any tweaks!
+Current State
 
+Licensing Challenge: The current Telerik Kendo UI license is tied to individual developers, making it non-compliant with corporate best practices.
+
+Inefficient License Management: Storing license files in our repository introduces compliance risks and complicates governance.
+
+Recurring Cost: Annual renewal of the $1400 per developer license results in unnecessary financial overhead.
+
+
+
+---
+
+Target Outcomes
+
+To address these challenges, we propose developing custom React-based components to replace Kendo UI’s Tree component. This approach will:
+
+Eliminate licensing costs while maintaining functionality.
+
+Utilize cost-effective, scalable, and open-source React components.
+
+Enhance governance, compliance, and security by removing dependency on individual licenses.
+
+
+
+---
+
+Benefit Calculation
+
+Replacing Kendo UI with React-based components will result in:
+
+Direct cost savings of $1400 per developer annually.
+
+No ongoing licensing fees, ensuring long-term financial benefits.
+
+Operational efficiency by eliminating license management efforts.
+
+
+
+---
+
+Business Benefit
+
+No yearly renewal required: The new solution will be a fully custom, in-house component.
+
+Sustainable and scalable: Future-proofing development by avoiding vendor lock-in.
+
+Compliance & risk mitigation: Eliminates dependency on individual developer licenses, ensuring corporate governance best practices.
+
+
+> Estimated Benefit: Cost savings of $1400 per developer annually
+
+
+
+
+---
+
+Mails (As Per Project Impact)
+
+Stakeholders and relevant teams will be informed about the migration plan and implementation timeline.
+
+Collaboration will be ensured to minimize transition impact and facilitate a smooth integration process.
+
+A structured communication plan will be established to track and report progress effectively.
+
+
+This initiative aligns with operational excellence goals, ensuring cost efficiency, compliance, and sustainable development practices.
 
