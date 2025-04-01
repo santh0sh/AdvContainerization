@@ -1,2 +1,19 @@
-During our ReactJS migration, Kendo UI was used but required a $1400 per developer annual license, causing cost and compliance issues. We propose replacing it with custom React-based components, eliminating costs, ensuring compliance, and enhancing scalability. This will save expenses, remove license risks, and improve long-term sustainability.
+Here is a more concise and professional version of your email:
+
+
+---
+
+Subject: Availability on Friday
+
+Hi Robin,
+
+I wanted to inform you that I had to log off early last Friday due to some personal matters related to my home shifting. I also misplaced my phone and could retrieve it only today. Apologies for the missed calls—I'm working on catching up and ensuring continuity.
+
+Best regards,
+Santhosh
+
+
+---
+
+Let me know if you'd like to tweak the tone or add any specific detail.
 
