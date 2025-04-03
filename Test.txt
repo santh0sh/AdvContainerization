@@ -1,31 +1,38 @@
-Here's the revised version of the email with that detail added:
+Here is the professionally reframed version of your Strengths and Declaration sections tailored for a Senior Production Support role:
 
 
 ---
 
-Subject: Request for Review and Feedback on PMDesign Implementation and API Integration Approach
+STRENGTHS
 
-Hi Jeff,
+Strong verbal and written communication skills, enabling clear collaboration across cross-functional teams.
 
-I hope you're doing well.
+Proven ability to remain composed and efficient under pressure, especially in high-severity production incidents.
 
-We wanted to share the current design approach we've taken for the new PMDesign feature and seek your feedback on its implementation.
+Quick grasp of new technologies with a continuous learning mindset and adaptability to evolving environments.
 
-The PMDesign functionality is intended for APS and Business users to perform bulk mail code uploads. To ensure it aligns with the existing user experience, we’ve integrated this as a new tab under the "Profile" section within the Social Tools area, as this page is not expected to be accessed by general users.
+Highly action-oriented with a focus on delivering timely, result-driven solutions.
 
-For the backend, we chose to develop the required service using Spring Boot and integrated it within the existing BAC People API codebase. This approach allowed us to leverage existing infrastructure and maintain consistency across services.
+Demonstrated leadership in coordinating incident resolution and ensuring service continuity.
 
-However, during our integration and testing on the Preview site, we encountered CORS and SSO-related issues when attempting to connect to the Delivery API from the UI. Based on Qutub’s suggestion, we adjusted our approach to directly call the Delivery API using its hostname, which resolved the issue successfully.
+Excellent time management and multitasking skills with a track record of meeting SLAs and operational KPIs.
 
-We would appreciate it if you could review this design and implementation approach and advise if it aligns with best practices or if you foresee any concerns with this setup—particularly regarding scalability, security, or long-term maintainability.
-
-Looking forward to your feedback.
-
-Best regards,
-Santhosh
 
 
 ---
 
-Let me know if you'd like a more concise version or if you want to attach any supporting documentation or links.
+DECLARATION
+
+I hereby declare that the above-mentioned details are true to the best of my knowledge and belief. I take full responsibility for the accuracy and authenticity of the information provided.
+
+Date:
+Place: Hyderabad
+
+Usha Parvathi Nekkanti
+(Signature)
+
+
+---
+
+Let me know if you'd like a Word version or wish to include any achievements or certifications in this section.
 
