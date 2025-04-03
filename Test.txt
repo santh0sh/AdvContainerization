@@ -1,13 +1,25 @@
-Here is a more concise and professional version of your email:
+Here's the revised version of the email with that detail added:
 
 
 ---
 
-Subject: Availability on Friday
+Subject: Request for Review and Feedback on PMDesign Implementation and API Integration Approach
 
-Hi Robin,
+Hi Jeff,
 
-I wanted to inform you that I had to log off early last Friday due to some personal matters related to my home shifting. I also misplaced my phone and could retrieve it only today. Apologies for the missed calls—I'm working on catching up and ensuring continuity.
+I hope you're doing well.
+
+We wanted to share the current design approach we've taken for the new PMDesign feature and seek your feedback on its implementation.
+
+The PMDesign functionality is intended for APS and Business users to perform bulk mail code uploads. To ensure it aligns with the existing user experience, we’ve integrated this as a new tab under the "Profile" section within the Social Tools area, as this page is not expected to be accessed by general users.
+
+For the backend, we chose to develop the required service using Spring Boot and integrated it within the existing BAC People API codebase. This approach allowed us to leverage existing infrastructure and maintain consistency across services.
+
+However, during our integration and testing on the Preview site, we encountered CORS and SSO-related issues when attempting to connect to the Delivery API from the UI. Based on Qutub’s suggestion, we adjusted our approach to directly call the Delivery API using its hostname, which resolved the issue successfully.
+
+We would appreciate it if you could review this design and implementation approach and advise if it aligns with best practices or if you foresee any concerns with this setup—particularly regarding scalability, security, or long-term maintainability.
+
+Looking forward to your feedback.
 
 Best regards,
 Santhosh
@@ -15,5 +27,5 @@ Santhosh
 
 ---
 
-Let me know if you'd like to tweak the tone or add any specific detail.
+Let me know if you'd like a more concise version or if you want to attach any supporting documentation or links.
 
