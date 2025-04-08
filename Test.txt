@@ -1,71 +1,10 @@
-Your Profile Summary section has strong content and showcases relevant experience well. Here's a detailed evaluation along with suggestions for improvement:
+<%@ page contentType="multipart/form-data" %>
 
+<%@ page import="javax.servlet.annotation.MultipartConfig" %>
+<%@ MultipartConfig %>
 
----
-
-Strengths
-
-Years of Experience: Clear mention of 8.8 years gives an accurate career span.
-
-Relevant Roles: Highlights Application Support and Infra Specialist roles—great for a production support-focused resume.
-
-Use of Keywords: Phrases like Application Stability, Subject Matter Expert, Automation, and Shell Scripting are spot-on for your field.
-
-Technical Emphasis: Good mention of UNIX/Linux environments and SQL scripting.
-
-Soft Skills: Mentions being proactive, quick learner, enthusiastic—these add personality to the profile.
-
-
-
----
-
-Areas for Improvement
-
-1. Polish Wording and Flow:
-
-Some phrases are slightly wordy or grammatically off. Polishing them can make the summary more compelling and professional.
-
-
-
-2. Bullet Structure:
-
-Ensure consistency in phrasing—some bullets start with action verbs, others with roles or characteristics.
-
-
-
-3. Avoid Redundancy:
-
-Repetition of concepts like “Application Stability” and “troubleshooting” can be reduced or reframed.
-
-
-
-
-
----
-
-Suggested Revision:
-
-PROFILE SUMMARY
-
-Accomplished IT professional with 8.8 years of extensive experience in Production/Application Support and Infrastructure Operations.
-
-Proven expertise in driving end-to-end application stability, performance tuning, and operational excellence.
-
-Adept at resolving complex production issues swiftly using a wide range of monitoring tools, scripts, and automation techniques.
-
-Passionate and proactive learner with a strong inclination toward mastering emerging technologies and continuous service improvement.
-
-Skilled in coaching teams, leading knowledge transitions, and standardizing support processes through comprehensive SOP documentation.
-
-Recognized as a Subject Matter Expert for application-level enhancements, collaborating across development, infra, and client teams.
-
-Hands-on experience working in UNIX/Linux environments with sound knowledge of command-line operations and log analysis.
-
-Strong scripting capabilities in Shell and SQL, with a focus on automation to reduce manual efforts and increase system efficiency.
-
-
-
----
-
-Let me know if you'd like this revised version included in a formatted document or adjusted further based on a specific job role.
-
+<%@ page contentType="multipart/form-data" %>
+<%@ page import="javax.servlet.annotation.MultipartConfig" %>
+<%@ page import="javax.servlet.http.Part" %>
+<%@ page import="java.util.Collection" %>
+<%@ MultipartConfig %>
