@@ -1,27 +1,65 @@
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import org.springframework.web.servlet.HandlerInterceptor;
+@Override
+public boolean preHandle(@NonNull HttpServletRequest request,
+                         @NonNull HttpServletResponse response,
+                         @NonNull Object handler) throws Exception {
 
-public class CustomInterceptor implements HandlerInterceptor {
-
-    @Override
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        String uri = request.getRequestURI();
+    try {
+        String requestUrl = request.getRequestURI();
+        String fullUrl = request.getRequestURL().toString();
         String contentType = request.getContentType();
+        String dispatcher = request.getDispatcherType().name();
+        String bypassHeader = request.getHeader("X-Bypass-Interceptor");
 
-        // Logging (optional)
-        System.out.println("Intercepted URI: " + uri);
-        System.out.println("Content-Type: " + contentType);
+        log.info("DispatcherType: {}", dispatcher);
+        log.info("Request URI: {}", requestUrl);
+        log.info("Full URL: {}", fullUrl);
+        log.info("Content-Type: {}", contentType);
+        log.info("X-Bypass-Interceptor: {}", bypassHeader);
 
-        // Bypass logic
-        if (uri.contains("delivery00") &&
-            contentType != null &&
-            contentType.toLowerCase().startsWith("multipart/")) {
-            System.out.println("Bypassing interceptor for multipart delivery00 request");
-            return true; // Skip the interceptor logic
+        // 1. Skip if error dispatcher (e.g., forwarded to /flg_cntns/error)
+        if ("ERROR".equalsIgnoreCase(dispatcher)) {
+            log.info("Bypassing interceptor due to ERROR dispatch");
+            return true;
         }
 
-        // Default: continue with interceptor logic
-        return true;
+        // 2. Bypass for custom upload requests via header
+        if ("true".equalsIgnoreCase(bypassHeader)) {
+            log.info("Bypassing interceptor via X-Bypass-Interceptor header");
+            return true;
+        }
+
+        // 3. Bypass if URI contains delivery00 and is multipart
+        if (requestUrl.contains("delivery00") &&
+            contentType != null &&
+            contentType.toLowerCase().startsWith("multipart/")) {
+            log.info("Bypassing interceptor for delivery00 multipart upload");
+            return true;
+        }
+
+        // 4. Swagger-related bypass
+        if (requestUrl.contains("swagger-ui") || requestUrl.contains("v3/api-docs")) {
+            return true;
+        }
+
+        // 5. Fallback check for Swagger toggle service
+        if (!swaggerToggleService.getSwaggerToggle()) {
+            throw new BacPeopleAuthorisationException("Swagger access not enabled");
+        }
+
+        // 6. Final check for dev/local without auth
+        String local = request.getRemoteHost();
+        String authKey = request.getHeader("AUTHORIZATION");
+        if ("localhost".equalsIgnoreCase(local) || "dev".equalsIgnoreCase(local)) {
+            return true;
+        }
+
+    } catch (Exception e) {
+        response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+        response.setContentType("text/plain");
+        response.getWriter().write("Interceptor error: " + e.getMessage());
+        return false;
     }
+
+    // Default fallback - block unauthorized access
+    throw new BacPeopleAuthorisationException("You do not have authorization to use this API");
 }
