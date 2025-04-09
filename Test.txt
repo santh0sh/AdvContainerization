@@ -1,70 +1,31 @@
-public String uploadExcel(String urlString, String loggedInUser, FileItem file) {
-    String boundary = "===" + System.currentTimeMillis() + "===";
-    String lineEnd = "\r\n";
-    String twoHyphens = "--";
-    String charset = "UTF-8";
-    StringBuilder apiResponse = new StringBuilder();
-    String errorMessage = "";
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function () {
+    $('#uploadForm').on('submit', function (e) {
+        e.preventDefault(); // Stop default form submission
 
-    try {
-        HttpURLConnection conn = (HttpURLConnection) new URL(urlString).openConnection();
-        conn.setDoOutput(true);
-        conn.setDoInput(true);
-        conn.setUseCaches(false);
-        conn.setRequestMethod("POST");
-        conn.setRequestProperty("Content-Type", "multipart/form-data; boundary=" + boundary);
-        conn.setRequestProperty("X-Bypass-Interceptor", "true");
+        var formData = new FormData(this);
 
-        OutputStream outputStream = conn.getOutputStream();
-        PrintWriter writer = new PrintWriter(new OutputStreamWriter(outputStream, charset), true);
-
-        // --- File Part ---
-        writer.append(twoHyphens).append(boundary).append(lineEnd);
-        writer.append("Content-Disposition: form-data; name=\"file\"; filename=\"")
-              .append(file.getName()).append("\"").append(lineEnd);
-        writer.append("Content-Type: application/octet-stream").append(lineEnd);
-        writer.append(lineEnd).flush();
-
-        try (InputStream inputStream = file.getInputStream()) {
-            byte[] buffer = new byte[4096];
-            int bytesRead;
-            while ((bytesRead = inputStream.read(buffer)) != -1) {
-                outputStream.write(buffer, 0, bytesRead);
+        $.ajax({
+            url: $(this).attr('action'),
+            type: 'POST',
+            data: formData,
+            contentType: false, // Important for file upload
+            processData: false, // Prevent jQuery from processing the data
+            beforeSend: function () {
+                $('#loadingSpinner').show(); // Show loading spinner if needed
+            },
+            success: function (response) {
+                $('#loadingSpinner').hide();
+                alert("Upload successful!");
+                // Optionally handle response content
+                $('#responseContainer').html(response); 
+            },
+            error: function (xhr, status, error) {
+                $('#loadingSpinner').hide();
+                alert("Error occurred: " + error);
             }
-        }
-        outputStream.flush();
-        writer.append(lineEnd).flush();
-
-        // --- loggedInUser Part ---
-        writer.append(twoHyphens).append(boundary).append(lineEnd);
-        writer.append("Content-Disposition: form-data; name=\"loggedInUser\"").append(lineEnd);
-        writer.append("Content-Type: text/plain; charset=").append(charset).append(lineEnd);
-        writer.append(lineEnd);
-        writer.append(loggedInUser).append(lineEnd).flush();
-
-        // --- End of Multipart ---
-        writer.append(twoHyphens).append(boundary).append(twoHyphens).append(lineEnd);
-        writer.flush();
-        writer.close();
-        outputStream.close();
-
-        // --- Read Response ---
-        int status = conn.getResponseCode();
-        InputStream responseStream = (status >= 400) ? conn.getErrorStream() : conn.getInputStream();
-
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(responseStream, charset))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                apiResponse.append(line);
-            }
-        }
-
-        conn.disconnect();
-        return apiResponse.toString();
-
-    } catch (Exception e) {
-        e.printStackTrace();
-        errorMessage = "Error uploading file: " + e.getMessage();
-        return errorMessage;
-    }
-}
+        });
+    });
+});
+</script>
