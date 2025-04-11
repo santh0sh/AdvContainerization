@@ -1,16 +1,95 @@
-As part of the CMS POC initiative aimed at evaluating a potential in-house replacement for the current Newsroom and Flagscape applications, this task focuses on implementing and validating a specific area of functionality. The goal is to explore technical feasibility, assess integration capabilities, and establish a foundational structure for scalable development.
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Proxy Mail Code Scenarios</title>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: Arial, sans-serif;
+    }
+    th, td {
+      border: 1px solid #aaa;
+      padding: 8px;
+      text-align: center;
+    }
+    th {
+      background-color: #d3d3d3;
+    }
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
 
-This sub-task specifically covers: [Insert specific focus here, e.g., creating DB tables, developing Spring Boot endpoints, exploring content versioning strategies].
+<table>
+  <thead>
+    <tr>
+      <th>Eligibility</th>
+      <th>Scenario</th>
+      <th>Auto-Suggestion Behavior</th>
+      <th>Action Allowed</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Eligible for Proxy Mail Code</td>
+      <td>Standard → Standard</td>
+      <td>Proxy codes shown</td>
+      <td>Can switch to standard</td>
+    </tr>
+    <tr>
+      <td>Eligible for Proxy Mail Code</td>
+      <td>Standard → Proxy</td>
+      <td>Proxy codes shown</td>
+      <td>Can switch to standard</td>
+    </tr>
+    <tr>
+      <td>Eligible for Proxy Mail Code</td>
+      <td>Proxy → Proxy</td>
+      <td>Proxy codes shown</td>
+      <td>Can switch to proxy</td>
+    </tr>
+    <tr>
+      <td>Eligible for Proxy Mail Code</td>
+      <td>Manager Editing Eligible Profile</td>
+      <td>Proxy codes shown</td>
+      <td>Can switch if eligible</td>
+    </tr>
+    <tr>
+      <td>Eligible for Proxy Mail Code</td>
+      <td>Proxy User Editing Eligible Profile</td>
+      <td>Proxy codes shown</td>
+      <td>Can switch if eligible</td>
+    </tr>
+    <tr>
+      <td>Not Eligible for Proxy Mail Code</td>
+      <td>Standard → Standard</td>
+      <td>Proxy codes not shown</td>
+      <td>Can switch to standard</td>
+    </tr>
+    <tr>
+      <td>Not Eligible for Proxy Mail Code</td>
+      <td>Manager Editing Ineligible Profile</td>
+      <td>Only standard codes shown</td>
+      <td>Cannot assign proxy</td>
+    </tr>
+    <tr>
+      <td>Not Eligible for Proxy Mail Code</td>
+      <td>Proxy User Editing Ineligible Profile</td>
+      <td>Only standard codes shown</td>
+      <td>Cannot assign proxy</td>
+    </tr>
+    <tr>
+      <td>Admin Edit Role</td>
+      <td>Any → Any</td>
+      <td>All codes shown</td>
+      <td>Can assign any code regardless of eligibility</td>
+    </tr>
+  </tbody>
+</table>
 
-
----
-
-Acceptance Criteria:
-
-The implementation aligns with the overall CMS architecture and design principles defined in the spike.
-
-The solution demonstrates technical feasibility and addresses integration considerations where applicable.
-
-Deliverables (code/config/artifacts) are committed to the POC branch/repository with relevant documentation.
-
-Observations, blockers, or findings are captured and shared for discussion in the spike review session.
+</body>
+</html>
