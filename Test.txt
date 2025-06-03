@@ -1,3 +1,18 @@
-We have been actively using GitHub Copilot across our applications, and I’d like to share a few observations. One of the key benefits we've seen is its assistance in understanding and refactoring legacy code, especially as we modernize older applications. Copilot often provides better alternatives and suggestions that streamline the development process.
+Here’s a concise and impactful demo description for your chosen idea:
 
-Additionally, we’ve explored using it for drafting emails where it helps validate our context and improve communication clarity. While we’re still progressing in fully leveraging its capabilities, the insights it offers—whether for code or content—have already proven valuable in multiple scenarios
+
+---
+
+Title:
+
+Boosting Code Quality and Test Coverage using SonarLint, SonarQube & GitHub Copilot
+
+Concept/Demo Description:
+
+This demo showcases how a developer can significantly improve code quality and unit test coverage by integrating SonarLint for real-time feedback, SonarQube for centralized quality analysis, and GitHub Copilot for intelligent code and test generation. The flow demonstrates how SonarLint flags issues during coding, how Copilot assists in writing cleaner logic and unit tests, and how SonarQube validates improvements via quality gates and coverage reports. This integrated approach accelerates development while reducing technical debt.
+
+
+---
+
+Let me know if you want it trimmed further for submission or expanded for the presentation draft.
+
