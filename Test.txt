@@ -1,18 +1,7 @@
-Here’s a concise and impactful demo description for your chosen idea:
+The first half of the year has been both busy and rewarding. I delivered the Q1 release on time and helped ensure smooth monthly container deployments. Across the team, we completed around 100 stories and hit over 490 story points—solid output with consistent pace.
 
+Alongside project work, I got hands-on with a few POCs, especially around in-house CMS solutions, and contributed to the design phase of the Newsroom rewrite. I also started diving into Generative AI, picked up a few external certifications, and used that learning to support our internal Copilot rollout.
 
----
+One of the highlights was leading a Copilot workshop as part of the in-house ambassador program. It was a great opportunity to collaborate across teams, and the outcomes we achieved were later shared during the All Hands.
 
-Title:
-
-Boosting Code Quality and Test Coverage using SonarLint, SonarQube & GitHub Copilot
-
-Concept/Demo Description:
-
-This demo showcases how a developer can significantly improve code quality and unit test coverage by integrating SonarLint for real-time feedback, SonarQube for centralized quality analysis, and GitHub Copilot for intelligent code and test generation. The flow demonstrates how SonarLint flags issues during coding, how Copilot assists in writing cleaner logic and unit tests, and how SonarQube validates improvements via quality gates and coverage reports. This integrated approach accelerates development while reducing technical debt.
-
-
----
-
-Let me know if you want it trimmed further for submission or expanded for the presentation draft.
-
+Looking back, this half-year has been a mix of delivery, learning, and sharing knowledge. I’m hoping to keep that momentum going into the next stretch.
