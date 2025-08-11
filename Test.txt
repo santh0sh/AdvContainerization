@@ -1,7 +1,5 @@
-The first half of the year has been both busy and rewarding. I delivered the Q1 release on time and helped ensure smooth monthly container deployments. Across the team, we completed around 100 stories and hit over 490 story points—solid output with consistent pace.
+Problem Statement
+Multiple clients directly access backend services, causing duplicated authentication logic, inconsistent policies, brittle endpoints, and fragmented monitoring. This increases security risks, slows changes, and makes governance harder.
 
-Alongside project work, I got hands-on with a few POCs, especially around in-house CMS solutions, and contributed to the design phase of the Newsroom rewrite. I also started diving into Generative AI, picked up a few external certifications, and used that learning to support our internal Copilot rollout.
-
-One of the highlights was leading a Copilot workshop as part of the in-house ambassador program. It was a great opportunity to collaborate across teams, and the outcomes we achieved were later shared during the All Hands.
-
-Looking back, this half-year has been a mix of delivery, learning, and sharing knowledge. I’m hoping to keep that momentum going into the next stretch.
+Solution
+Introduce an API Gateway as a single secure entry point to all backend services. Centralize authentication, rate limiting, routing, caching, and request transformations. Provide unified logging, metrics, and tracing for full observability. Enable canary releases, policy enforcement, and traffic shaping to reduce change risk, improve performance, and allow backend services to evolve without breaking clients.
