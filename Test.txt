@@ -1,5 +1,334 @@
-Problem Statement
-Multiple clients directly access backend services, causing duplicated authentication logic, inconsistent policies, brittle endpoints, and fragmented monitoring. This increases security risks, slows changes, and makes governance harder.
+-- ==========================================
+-- 1. Pages
+-- ==========================================
+CREATE TABLE pages (
+  id            BIGSERIAL PRIMARY KEY,
+  slug          TEXT UNIQUE NOT NULL,
+  title         TEXT NOT NULL,
+  status        TEXT NOT NULL DEFAULT 'draft',
+  created_at    TIMESTAMPTZ NOT NULL DEFAULT now(),
+  updated_at    TIMESTAMPTZ NOT NULL DEFAULT now()
+);
 
-Solution
-Introduce an API Gateway as a single secure entry point to all backend services. Centralize authentication, rate limiting, routing, caching, and request transformations. Provide unified logging, metrics, and tracing for full observability. Enable canary releases, policy enforcement, and traffic shaping to reduce change risk, improve performance, and allow backend services to evolve without breaking clients.
+-- ==========================================
+-- 2. Component types (press_release_cards, cta_subscribe, journalist_resources…)
+-- ==========================================
+CREATE TABLE component_types (
+  id            BIGSERIAL PRIMARY KEY,
+  name          TEXT UNIQUE NOT NULL,
+  description   TEXT
+);
+
+-- ==========================================
+-- 3. Components (instances of a type on a page)
+-- ==========================================
+CREATE TABLE components (
+  id            BIGSERIAL PRIMARY KEY,
+  page_id       BIGINT NOT NULL REFERENCES pages(id) ON DELETE CASCADE,
+  type_id       BIGINT NOT NULL REFERENCES component_types(id) ON DELETE RESTRICT,
+  key           TEXT NOT NULL,
+  display_name  TEXT,
+  position      INT NOT NULL DEFAULT 0,
+  is_enabled    BOOLEAN NOT NULL DEFAULT TRUE,
+  created_at    TIMESTAMPTZ NOT NULL DEFAULT now(),
+  updated_at    TIMESTAMPTZ NOT NULL DEFAULT now(),
+  UNIQUE (page_id, key)
+);
+
+-- ==========================================
+-- 4. Field definitions (schema per component type)
+-- ==========================================
+CREATE TYPE field_data_type AS ENUM ('string','text','url','boolean','integer','decimal','json','asset');
+
+CREATE TABLE field_definitions (
+  id                 BIGSERIAL PRIMARY KEY,
+  component_type_id  BIGINT NOT NULL REFERENCES component_types(id) ON DELETE CASCADE,
+  name               TEXT NOT NULL,
+  label              TEXT NOT NULL,
+  data_type          field_data_type NOT NULL,
+  is_required        BOOLEAN NOT NULL DEFAULT FALSE,
+  is_repeatable      BOOLEAN NOT NULL DEFAULT FALSE,
+  default_value      TEXT,
+  validation_json    JSONB,
+  help_text          TEXT,
+  UNIQUE (component_type_id, name)
+);
+
+-- ==========================================
+-- 5. Component items (rows inside a component)
+-- ==========================================
+CREATE TABLE component_items (
+  id            BIGSERIAL PRIMARY KEY,
+  component_id  BIGINT NOT NULL REFERENCES components(id) ON DELETE CASCADE,
+  position      INT NOT NULL DEFAULT 0,
+  is_enabled    BOOLEAN NOT NULL DEFAULT TRUE,
+  created_at    TIMESTAMPTZ NOT NULL DEFAULT now(),
+  updated_at    TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+-- ==========================================
+-- 6. Field values (actual content per item × field)
+-- ==========================================
+CREATE TABLE field_values (
+  id                  BIGSERIAL PRIMARY KEY,
+  item_id             BIGINT NOT NULL REFERENCES component_items(id) ON DELETE CASCADE,
+  field_definition_id BIGINT NOT NULL REFERENCES field_definitions(id) ON DELETE CASCADE,
+  value               JSONB,
+  UNIQUE (item_id, field_definition_id)
+);
+
+-- ==========================================
+-- 7. Media assets (icons, images)
+-- ==========================================
+CREATE TABLE media_assets (
+  id            BIGSERIAL PRIMARY KEY,
+  url           TEXT NOT NULL,
+  alt_text      TEXT,
+  mime_type     TEXT,
+  width         INT,
+  height        INT,
+  created_at    TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+
+
+
+
+4
+
+
+
+-- ==========================================
+-- Journalist Resources Component Setup
+-- ==========================================
+
+-- 1) Ensure the component type exists
+INSERT INTO component_types (name, description)
+VALUES ('journalist_resources', 'Grid of resource links with icon, title, link, and mandatory flag')
+ON CONFLICT (name) DO NOTHING;
+
+-- 2) Define the fields (if not already present)
+WITH t AS (
+  SELECT id FROM component_types WHERE name='journalist_resources'
+)
+INSERT INTO field_definitions (component_type_id, name, label, data_type, is_required)
+SELECT id,'icon','Icon','asset',TRUE FROM t
+UNION ALL
+SELECT id,'title','Title','string',TRUE FROM t
+UNION ALL
+SELECT id,'link','Link URL','url',TRUE FROM t
+UNION ALL
+SELECT id,'mandatory','Mandatory','boolean',FALSE FROM t
+ON CONFLICT DO NOTHING;
+
+-- 3) Insert the component into the page (replace :page_id with your actual page id)
+INSERT INTO components (page_id, type_id, key, display_name, position)
+SELECT :page_id, ct.id, 'journalist-resources', 'Journalist resources', 3
+FROM component_types ct WHERE ct.name='journalist_resources'
+RETURNING id;   -- => :cmp_jr
+
+-- ==========================================
+-- Journalist Resources Items
+-- ==========================================
+
+-- 4) Insert icons
+INSERT INTO media_assets (url, alt_text, mime_type) VALUES
+('https://cdn.example.com/icons/awards.svg','Awards icon','image/svg+xml'),
+('https://cdn.example.com/icons/institute.svg','Institute icon','image/svg+xml'),
+('https://cdn.example.com/icons/biographies.svg','Executive biographies icon','image/svg+xml'),
+('https://cdn.example.com/icons/media-contacts.svg','Media contacts icon','image/svg+xml'),
+('https://cdn.example.com/icons/media-library.svg','Media content library icon','image/svg+xml'),
+('https://cdn.example.com/icons/prime-rate.svg','Prime rate icon','image/svg+xml')
+RETURNING id;  -- assume these return 6101..6106
+
+-- 5) Insert 6 items for the component (replace :cmp_jr with returned id above)
+INSERT INTO component_items (component_id, position) VALUES
+(:cmp_jr,1),(:cmp_jr,2),(:cmp_jr,3),(:cmp_jr,4),(:cmp_jr,5),(:cmp_jr,6)
+RETURNING id;  -- assume 3201..3206
+
+-- 6) Insert values for each item
+-- Awards & recognition
+INSERT INTO field_values (item_id, field_definition_id, value)
+SELECT 3201, (SELECT id FROM field_definitions WHERE name='icon' AND component_type_id=(SELECT id FROM component_types WHERE name='journalist_resources')), jsonb_build_object('v',6101)
+UNION ALL
+SELECT 3201, (SELECT id FROM field_definitions WHERE name='title' AND component_type_id=(SELECT id FROM component_types WHERE name='journalist_resources')), jsonb_build_object('v','Awards & recognition')
+UNION ALL
+SELECT 3201, (SELECT id FROM field_definitions WHERE name='link' AND component_type_id=(SELECT id FROM component_types WHERE name='journalist_resources')), jsonb_build_object('v','https://about.bankofamerica.com/en/our-company/awards')
+UNION ALL
+SELECT 3201, (SELECT id FROM field_definitions WHERE name='mandatory' AND component_type_id=(SELECT id FROM component_types WHERE name='journalist_resources')), jsonb_build_object('v',true);
+
+-- Bank of America Institute
+INSERT INTO field_values (item_id, field_definition_id, value)
+SELECT 3202, (SELECT id FROM field_definitions WHERE name='icon' AND component_type_id=(SELECT id FROM component_types WHERE name='journalist_resources')), jsonb_build_object('v',6102)
+UNION ALL
+SELECT 3202, (SELECT id FROM field_definitions WHERE name='title' AND component_type_id=(SELECT id FROM component_types WHERE name='journalist_resources')), jsonb_build_object('v','Bank of America Institute')
+UNION ALL
+SELECT 3202, (SELECT id FROM field_definitions WHERE name='link' AND component_type_id=(SELECT id FROM component_types WHERE name='journalist_resources')), jsonb_build_object('v','https://institute.bankofamerica.com/')
+UNION ALL
+SELECT 3202, (SELECT id FROM field_definitions WHERE name='mandatory' AND component_type_id=(SELECT id FROM component_types WHERE name='journalist_resources')), jsonb_build_object('v',false);
+
+-- Executive biographies
+INSERT INTO field_values (item_id, field_definition_id, value)
+SELECT 3203, (SELECT id FROM field_definitions WHERE name='icon' AND component_type_id=(SELECT id FROM component_types WHERE name='journalist_resources')), jsonb_build_object('v',6103)
+UNION ALL
+SELECT 3203, (SELECT id FROM field_definitions WHERE name='title' AND component_type_id=(SELECT id FROM component_types WHERE name='journalist_resources')), jsonb_build_object('v','Executive biographies')
+UNION ALL
+SELECT 3203, (SELECT id FROM field_definitions WHERE name='link' AND component_type_id=(SELECT id FROM component_types WHERE name='journalist_resources')), jsonb_build_object('v','https://about.bankofamerica.com/en/our-company/leadership')
+UNION ALL
+SELECT 3203, (SELECT id FROM field_definitions WHERE name='mandatory' AND component_type_id=(SELECT id FROM component_types WHERE name='journalist_resources')), jsonb_build_object('v',false);
+
+-- Media contacts
+INSERT INTO field_values (item_id, field_definition_id, value)
+SELECT 3204, (SELECT id FROM field_definitions WHERE name='icon' AND component_type_id=(SELECT id FROM component_types WHERE name='journalist_resources')), jsonb_build_object('v',6104)
+UNION ALL
+SELECT 3204, (SELECT id FROM field_definitions WHERE name='title' AND component_type_id=(SELECT id FROM component_types WHERE name='journalist_resources')), jsonb_build_object('v','Media contacts')
+UNION ALL
+SELECT 3204, (SELECT id FROM field_definitions WHERE name='link' AND component_type_id=(SELECT id FROM component_types WHERE name='journalist_resources')), jsonb_build_object('v','https://newsroom.bankofamerica.com/media-contacts')
+UNION ALL
+SELECT 3204, (SELECT id FROM field_definitions WHERE name='mandatory' AND component_type_id=(SELECT id FROM component_types WHERE name='journalist_resources')), jsonb_build_object('v',false);
+
+-- Media content library
+INSERT INTO field_values (item_id, field_definition_id, value)
+SELECT 3205, (SELECT id FROM field_definitions WHERE name='icon' AND component_type_id=(SELECT id FROM component_types WHERE name='journalist_resources')), jsonb_build_object('v',6105)
+UNION ALL
+SELECT 3205, (SELECT id FROM field_definitions WHERE name='title' AND component_type_id=(SELECT id FROM component_types WHERE name='journalist_resources')), jsonb_build_object('v','Media content library')
+UNION ALL
+SELECT 3205, (SELECT id FROM field_definitions WHERE name='link' AND component_type_id=(SELECT id FROM component_types WHERE name='journalist_resources')), jsonb_build_object('v','https://newsroom.bankofamerica.com/media-library')
+UNION ALL
+SELECT 3205, (SELECT id FROM field_definitions WHERE name='mandatory' AND component_type_id=(SELECT id FROM component_types WHERE name='journalist_resources')), jsonb_build_object('v',false);
+
+-- Prime rate
+INSERT INTO field_values (item_id, field_definition_id, value)
+SELECT 3206, (SELECT id FROM field_definitions WHERE name='icon' AND component_type_id=(SELECT id FROM component_types WHERE name='journalist_resources')), jsonb_build_object('v',6106)
+UNION ALL
+SELECT 3206, (SELECT id FROM field_definitions WHERE name='title' AND component_type_id=(SELECT id FROM component_types WHERE name='journalist_resources')), jsonb_build_object('v','Prime rate')
+UNION ALL
+SELECT 3206, (SELECT id FROM field_definitions WHERE name='link' AND component_type_id=(SELECT id FROM component_types WHERE name='journalist_resources')), jsonb_build_object('v','https://about.bankofamerica.com/en/our-company/prime-rate')
+UNION ALL
+SELECT 3206, (SELECT id FROM field_definitions WHERE name='mandatory' AND component_type_id=(SELECT id FROM component_types WHERE name='journalist_resources')), jsonb_build_object('v',false);
+
+
+
+cta
+
+
+
+
+
+
+
+
+-- Component type
+INSERT INTO component_types (name, description)
+VALUES ('cta_subscribe', 'Call-to-action with body text and a single button')
+ON CONFLICT (name) DO NOTHING;
+
+-- Field definitions
+WITH t AS (SELECT id FROM component_types WHERE name='cta_subscribe')
+INSERT INTO field_definitions (component_type_id, name, label, data_type, is_required)
+SELECT id,'body','Body text','text',TRUE FROM t
+UNION ALL
+SELECT id,'button_label','Button label','string',TRUE FROM t
+UNION ALL
+SELECT id,'button_url','Button URL','url',TRUE FROM t
+ON CONFLICT DO NOTHING;
+
+-- Component instance (replace :page_id with your page id)
+INSERT INTO components (page_id, type_id, key, display_name, position)
+SELECT :page_id, ct.id, 'cta-subscribe', 'Subscribe CTA', 2
+FROM component_types ct WHERE ct.name='cta_subscribe'
+RETURNING id;   -- => :cmp_cta
+
+-- One item
+INSERT INTO component_items (component_id, position) VALUES (:cmp_cta, 1)
+RETURNING id;  -- => :cta_item
+
+-- Field values
+WITH f AS (
+  SELECT fd.id, fd.name FROM field_definitions fd
+  JOIN component_types ct ON ct.id=fd.component_type_id
+  WHERE ct.name='cta_subscribe'
+)
+INSERT INTO field_values (item_id, field_definition_id, value)
+SELECT :cta_item,(SELECT id FROM f WHERE name='body'),
+  jsonb_build_object('v','Get Bank of America news updates, including dividend announcements and other important information to your inbox.') UNION ALL
+SELECT :cta_item,(SELECT id FROM f WHERE name='button_label'),
+  jsonb_build_object('v','Subscribe') UNION ALL
+SELECT :cta_item,(SELECT id FROM f WHERE name='button_url'),
+  jsonb_build_object('v','https://newsroom.bankofamerica.com/subscribe');
+
+
+
+press release 
+
+
+-- Component type (if not already created)
+INSERT INTO component_types (name, description)
+VALUES ('press_release_cards', 'List of press-release tiles with image, title, datetime, and link')
+ON CONFLICT (name) DO NOTHING;
+
+-- Field definitions
+WITH t AS (SELECT id FROM component_types WHERE name='press_release_cards')
+INSERT INTO field_definitions (component_type_id, name, label, data_type, is_required)
+SELECT id,'image','Image','asset',TRUE FROM t
+UNION ALL
+SELECT id,'title','Title','string',TRUE FROM t
+UNION ALL
+SELECT id,'datetime_label','Datetime label','string',TRUE FROM t
+UNION ALL
+SELECT id,'link','Link URL','url',TRUE FROM t
+ON CONFLICT DO NOTHING;
+
+-- Component instance (replace :page_id with your page id)
+INSERT INTO components (page_id, type_id, key, display_name, position)
+SELECT :page_id, ct.id, 'press-release-cards', 'Press releases', 1
+FROM component_types ct WHERE ct.name='press_release_cards'
+RETURNING id;   -- => :cmp_press
+
+-- Icons/images for the cards
+INSERT INTO media_assets (url, alt_text, mime_type) VALUES
+('https://cdn.example.com/boa-logo-1.png','BOA logo 1','image/png'),
+('https://cdn.example.com/boa-chicago-1.png','Chicago Marathon logo','image/png')
+RETURNING id;   -- assume 7001, 7002
+
+-- Two items (the cards themselves)
+INSERT INTO component_items (component_id, position) VALUES
+(:cmp_press, 1),
+(:cmp_press, 2)
+RETURNING id;  -- => :pr1, :pr2
+
+-- Insert field values for Card 1
+WITH f AS (
+  SELECT fd.id, fd.name FROM field_definitions fd
+  JOIN component_types ct ON ct.id=fd.component_type_id
+  WHERE ct.name='press_release_cards'
+)
+INSERT INTO field_values (item_id, field_definition_id, value)
+SELECT :pr1,(SELECT id FROM f WHERE name='image'),         jsonb_build_object('v',7001) UNION ALL
+SELECT :pr1,(SELECT id FROM f WHERE name='title'),         jsonb_build_object('v','Bank of America Announces 2025 Investor Day') UNION ALL
+SELECT :pr1,(SELECT id FROM f WHERE name='datetime_label'),jsonb_build_object('v','August 18, 2025 at 9:00 AM ET') UNION ALL
+SELECT :pr1,(SELECT id FROM f WHERE name='link'),          jsonb_build_object('v','https://newsroom.bankofamerica.com/...');
+
+-- Insert field values for Card 2
+WITH f AS (
+  SELECT fd.id, fd.name FROM field_definitions fd
+  JOIN component_types ct ON ct.id=fd.component_type_id
+  WHERE ct.name='press_release_cards'
+)
+INSERT INTO field_values (item_id, field_definition_id, value)
+SELECT :pr2,(SELECT id FROM f WHERE name='image'),         jsonb_build_object('v',7002) UNION ALL
+SELECT :pr2,(SELECT id FROM f WHERE name='title'),         jsonb_build_object('v','Bank of America Chicago Marathon') UNION ALL
+SELECT :pr2,(SELECT id FROM f WHERE name='datetime_label'),jsonb_build_object('v','August 14, 2025 at 10:00 AM ET') UNION ALL
+SELECT :pr2,(SELECT id FROM f WHERE name='link'),          jsonb_build_object('v','https://newsroom.bankofamerica.com/...');
+
+
+
+
+
+
+
+
+
+
+
+
