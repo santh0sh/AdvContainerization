@@ -1,10 +1,37 @@
-{
-  "pageId": "3509844-…",
-  "compLabel": "JournalistResource",
-  "valueGrpCounter": 1,
-  "attributes": [
-    { "attrName": "title", "dataType": "text", "attrValue": "Journalist Resource" },
-    { "attrName": "icon", "dataType": "image", "attrValue": "/icons/jr.png" },
-    { "attrName": "link", "dataType": "url", "attrValue": "http://example.com" }
-  ]
-}
+-- one row per (PAGE_ID, COMP_LABEL, COMP_NAME, COMP_POSITION, VALUE_GRP_COUNTER)
+-- columns = ATTR_NAMEs; values = ATTR_VALUE
+SELECT
+  PAGE_ID,
+  COMP_LABEL,
+  COMP_NAME,
+  COMP_POSITION,
+  VALUE_GRP_COUNTER,
+  title,
+  awardsTitle,
+  mediaContentLink,
+  mediaContentLabel,
+  jrIconLabel,
+  jrIconImage,
+  jrLink,
+  primaryRateLink
+FROM (
+  SELECT
+    PAGE_ID, COMP_LABEL, COMP_NAME, COMP_POSITION,
+    VALUE_GRP_COUNTER, ATTR_NAME, ATTR_VALUE
+  FROM TB_MR_COMP_ATTR_DATA_VALUES
+  WHERE PAGE_ID = :pageId
+)
+PIVOT (
+  MAX(ATTR_VALUE)
+  FOR ATTR_NAME IN (
+    'title'             AS title,
+    'awardsTitle'       AS awardsTitle,
+    'mediaContentLink'  AS mediaContentLink,
+    'mediaContentLabel' AS mediaContentLabel,
+    'JR_iconlabel'      AS jrIconLabel,
+    'JR_iconImage'      AS jrIconImage,
+    'JR_link'           AS jrLink,
+    'primaryRateLink'   AS primaryRateLink
+  )
+)
+ORDER BY COMP_LABEL, COMP_POSITION, VALUE_GRP_COUNTER;
