@@ -1,15 +1,10 @@
-SELECT JSON_OBJECT(
-    'pageId' VALUE PAGE_ID,
-    'compLabel' VALUE COMP_LABEL,
-    'valueGrpCounter' VALUE VALUE_GRP_COUNTER,
-    'attributes' VALUE JSON_ARRAYAGG(
-        JSON_OBJECT(
-            'attrName' VALUE ATTR_NAME,
-            'dataType' VALUE DATA_TYPE,
-            'attrValue' VALUE ATTR_VALUE
-        )
-    )
-) AS group_json
-FROM TB_MR_COMP_ATTR_DATA_VALUES
-WHERE PAGE_ID = :your_page_id
-GROUP BY PAGE_ID, COMP_LABEL, VALUE_GRP_COUNTER;
+{
+  "pageId": "3509844-…",
+  "compLabel": "JournalistResource",
+  "valueGrpCounter": 1,
+  "attributes": [
+    { "attrName": "title", "dataType": "text", "attrValue": "Journalist Resource" },
+    { "attrName": "icon", "dataType": "image", "attrValue": "/icons/jr.png" },
+    { "attrName": "link", "dataType": "url", "attrValue": "http://example.com" }
+  ]
+}
