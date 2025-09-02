@@ -1,37 +1,28 @@
--- one row per (PAGE_ID, COMP_LABEL, COMP_NAME, COMP_POSITION, VALUE_GRP_COUNTER)
--- columns = ATTR_NAMEs; values = ATTR_VALUE
-SELECT
-  PAGE_ID,
-  COMP_LABEL,
-  COMP_NAME,
-  COMP_POSITION,
-  VALUE_GRP_COUNTER,
-  title,
-  awardsTitle,
-  mediaContentLink,
-  mediaContentLabel,
-  jrIconLabel,
-  jrIconImage,
-  jrLink,
-  primaryRateLink
-FROM (
-  SELECT
-    PAGE_ID, COMP_LABEL, COMP_NAME, COMP_POSITION,
-    VALUE_GRP_COUNTER, ATTR_NAME, ATTR_VALUE
-  FROM TB_MR_COMP_ATTR_DATA_VALUES
-  WHERE PAGE_ID = :pageId
-)
-PIVOT (
-  MAX(ATTR_VALUE)
-  FOR ATTR_NAME IN (
-    'title'             AS title,
-    'awardsTitle'       AS awardsTitle,
-    'mediaContentLink'  AS mediaContentLink,
-    'mediaContentLabel' AS mediaContentLabel,
-    'JR_iconlabel'      AS jrIconLabel,
-    'JR_iconImage'      AS jrIconImage,
-    'JR_link'           AS jrLink,
-    'primaryRateLink'   AS primaryRateLink
-  )
-)
-ORDER BY COMP_LABEL, COMP_POSITION, VALUE_GRP_COUNTER;
+* Resequence group ids contiguously (1..G) for the given (pageId, compCounter),
+     * preserving rows within each group. Oracle-native using DENSE_RANK().
+     */
+    @Modifying
+    @Transactional
+    @Query(value = """
+        WITH grp_map AS (
+            SELECT old_grp,
+                   DENSE_RANK() OVER (ORDER BY old_grp) AS new_grp
+            FROM (
+                SELECT DISTINCT GRP_COUNTER AS old_grp
+                FROM MY_ATTR
+                WHERE PAGE_ID = :pageId
+                  AND COMP_COUNTER = :compCounter
+            )
+        )
+        UPDATE MY_ATTR t
+           SET t.GRP_COUNTER = (
+               SELECT m.new_grp
+               FROM grp_map m
+               WHERE m.old_grp = t.GRP_COUNTER
+           )
+         WHERE t.PAGE_ID = :pageId
+           AND t.COMP_COUNTER = :compCounter
+        """, nativeQuery = true)
+    void resequenceGroupsOracle(@Param("pageId") Long pageId,
+                                @Param("compCounter") Integer compCounter);
+}
